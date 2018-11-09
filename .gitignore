@@ -15,8 +15,8 @@ DerivedData/
 !default.mode2v3
 *.perspectivev3
 !default.perspectivev3
-xcuserdata/
-xcshareddata/
+*xcworkspace/xcuserdata/
+*xcworkspace/xcshareddata/
 
 ## Other
 *.moved-aside
@@ -29,7 +29,7 @@ xcshareddata/
 *.dSYM.zip
 *.dSYM
 .DS_Store
-*.DS_Store
+**/.DS_Store
 
 ## Playgrounds
 timeline.xctimeline
