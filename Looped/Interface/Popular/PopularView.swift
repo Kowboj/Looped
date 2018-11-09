@@ -22,14 +22,17 @@ final class PopularView: View {
     }()
     
     override func setupViewHierarchy() {
+        super.setupViewHierarchy()
         [tableView, popularInfoLabel].forEach(addSubview)
     }
     
     override func setupProperties() {
+        super.setupProperties()
         backgroundColor = UIColor.brown
     }
 
     override func setupLayoutConstraints() {
+        super.setupLayoutConstraints()
         tableView.centerInSuperview(size: CGSize(width: 300, height: 500))
         popularInfoLabel.anchor(top: tableView.topAnchor, leading: tableView.leadingAnchor, trailing: tableView.trailingAnchor, bottom: tableView.bottomAnchor)
     }

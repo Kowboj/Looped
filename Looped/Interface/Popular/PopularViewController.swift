@@ -8,12 +8,14 @@ final class PopularViewController: ViewController {
     private let popularView = PopularView()
     weak var flowDelegate: PopularViewControllerFlowDelegate?
     
-    // MARK: - Private
+    // MARK: - Overrides
     override func loadView() {
+        super.loadView()
         view = popularView
     }
     
     override func setupProperties() {
+        super.setupProperties()
         popularView.tableView.delegate = self
         popularView.tableView.dataSource = self
     }
@@ -26,6 +28,7 @@ extension PopularViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
+        cell.selectionStyle = .none
         return cell
     }
     

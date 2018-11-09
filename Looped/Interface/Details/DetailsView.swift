@@ -11,10 +11,12 @@ final class DetailsView: View {
     }()
     
     override func setupViewHierarchy() {
+        super.setupViewHierarchy()
         [detailsInfoLabel].forEach(addSubview)
     }
     
     override func setupProperties() {
+        super.setupProperties()
         backgroundColor = .lightGray
     }
 }

@@ -1,12 +1,12 @@
 import UIKit
 
-class TabBarController: UITabBarController {
+final class TabBarController: UITabBarController {
     
     // MARK: - Properties
     
-    let popularRootViewController = PopularFlowController(navigationController: UINavigationController(), rootViewController: PopularViewController()).root
-    let userRootViewController = UserFlowController(navigationController: UINavigationController(), rootViewController: UserViewController()).root
-    let createRootViewController = CreateFlowController(navigationController: UINavigationController(), rootViewController: CreateViewController()).root
+    let popularRootViewController = PopularFlowController().rootViewController
+    let userRootViewController = UserFlowController().rootViewController
+    let createRootViewController = CreateFlowController().rootViewController
     
     // MARK: - Initializers
     init() {
@@ -17,7 +17,7 @@ class TabBarController: UITabBarController {
         viewControllers = [popularRootViewController, userRootViewController, createRootViewController]
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    @available(*, unavailable) required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     

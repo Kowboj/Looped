@@ -11,10 +11,12 @@ class TabView: View {
     }()
     
     override func setupViewHierarchy() {
+        super.setupViewHierarchy()
         [customTabInfoLabel].forEach(addSubview)
     }
     
     override func setupLayoutConstraints() {
+        super.setupViewHierarchy()
         customTabInfoLabel.centerInSuperview(size: CGSize(width: 300, height: 30))
     }
 }

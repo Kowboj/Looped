@@ -12,12 +12,14 @@ final class DetailsViewController: ViewController {
         super.init()
     }
     
-    // MARK: - Private
+    // MARK: - Overrides
     override func loadView() {
+        super.loadView()
         view = detailsView
     }
     
     override func setupProperties() {
+        super.setupProperties()
         detailsView.detailsInfoLabel.text = gif
     }
 }

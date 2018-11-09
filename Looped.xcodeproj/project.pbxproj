@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F44001D721959F3D0039A707 /* PopularFlowControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44001D621959F3D0039A707 /* PopularFlowControllerFactory.swift */; };
+		F44001DB2195A1BB0039A707 /* UserFlowControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44001DA2195A1BB0039A707 /* UserFlowControllerFactory.swift */; };
+		F44001DD2195A1C50039A707 /* CreateFlowControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44001DC2195A1C50039A707 /* CreateFlowControllerFactory.swift */; };
 		F4B424A621944D6A00C3709B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B424A521944D6A00C3709B /* AppDelegate.swift */; };
 		F4B424AD21944D6C00C3709B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4B424AC21944D6C00C3709B /* Assets.xcassets */; };
 		F4B424B021944D6C00C3709B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4B424AE21944D6C00C3709B /* LaunchScreen.storyboard */; };
@@ -31,6 +34,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F44001D621959F3D0039A707 /* PopularFlowControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularFlowControllerFactory.swift; sourceTree = "<group>"; };
+		F44001DA2195A1BB0039A707 /* UserFlowControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFlowControllerFactory.swift; sourceTree = "<group>"; };
+		F44001DC2195A1C50039A707 /* CreateFlowControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateFlowControllerFactory.swift; sourceTree = "<group>"; };
 		F4B424A221944D6A00C3709B /* Looped.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Looped.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4B424A521944D6A00C3709B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F4B424AC21944D6C00C3709B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -67,6 +73,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F44001D92195A1AA0039A707 /* Factories */ = {
+			isa = PBXGroup;
+			children = (
+				F44001D621959F3D0039A707 /* PopularFlowControllerFactory.swift */,
+				F44001DA2195A1BB0039A707 /* UserFlowControllerFactory.swift */,
+				F44001DC2195A1C50039A707 /* CreateFlowControllerFactory.swift */,
+			);
+			path = Factories;
+			sourceTree = "<group>";
+		};
 		F4B4249921944D6A00C3709B = {
 			isa = PBXGroup;
 			children = (
@@ -122,6 +138,7 @@
 		F4B424B9219451BC00C3709B /* FlowControllers */ = {
 			isa = PBXGroup;
 			children = (
+				F44001D92195A1AA0039A707 /* Factories */,
 				F4B424E82194751C00C3709B /* PopularFlowController.swift */,
 				F4B424EA2194771C00C3709B /* UserFlowController.swift */,
 				F4B424EC2194772C00C3709B /* CreateFlowController.swift */,
@@ -262,10 +279,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F44001DD2195A1C50039A707 /* CreateFlowControllerFactory.swift in Sources */,
 				F4B424D82194617F00C3709B /* CreateView.swift in Sources */,
+				F44001DB2195A1BB0039A707 /* UserFlowControllerFactory.swift in Sources */,
 				F4B424D62194617800C3709B /* CreateViewController.swift in Sources */,
 				F4B424DD2194647500C3709B /* TabView.swift in Sources */,
 				F4B424C5219454B600C3709B /* PopularViewController.swift in Sources */,
+				F44001D721959F3D0039A707 /* PopularFlowControllerFactory.swift in Sources */,
 				F4B424DF2194675800C3709B /* ViewController.swift in Sources */,
 				F4B424D22194616600C3709B /* UserViewController.swift in Sources */,
 				F4B424A621944D6A00C3709B /* AppDelegate.swift in Sources */,

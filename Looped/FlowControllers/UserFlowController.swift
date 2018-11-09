@@ -1,13 +1,26 @@
 import UIKit
 
-class UserFlowController: FlowController {
+final class UserFlowController: FlowController {
     
-    let navigationController: UINavigationController
-    let root: UserViewController
+    let rootControllersFactory = UserFlowControllerFactory()
+    lazy var rootViewController: UINavigationController = {
+        navigationController.viewControllers = [rootControllersFactory.buildUserViewController(delegate: self)]
+        
+        return navigationController
+    }()
     
-    init(navigationController: UINavigationController, rootViewController: UserViewController) {
-        self.navigationController = navigationController
-        root = rootViewController
+    private lazy var navigationController: UINavigationController = {
+        return UINavigationController()
+    }()
+    
+    init() {
         navigationController.show(rootViewController, sender: nil)
+    }
+}
+
+extension UserFlowController: UserViewControllerFlowDelegate {
+    func showDetails(gif: String) {
+        let detailsViewController = DetailsViewController(gif: gif)
+        navigationController.show(detailsViewController, sender: nil)
     }
 }

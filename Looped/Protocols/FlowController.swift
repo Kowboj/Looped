@@ -1,5 +1,5 @@
 import UIKit
 
 protocol FlowController {
-    var navigationController: UINavigationController { get }
+    var rootViewController: UINavigationController { get }
 }

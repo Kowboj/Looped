@@ -17,7 +17,7 @@ class View: UIView {
     func setupProperties() {}
     func setupLayoutConstraints() {}
     
-    required init?(coder aDecoder: NSCoder) {
+    @available(*, unavailable) required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
