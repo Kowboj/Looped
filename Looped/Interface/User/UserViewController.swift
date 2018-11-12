@@ -10,7 +10,6 @@ final class UserViewController: ViewController {
     
     // MARK: - Overrides
     override func loadView() {
-        super.loadView()
         view = userView
     }
 }

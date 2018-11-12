@@ -7,13 +7,13 @@ extension UIView {
         NSLayoutConstraint.activate([
             widthAnchor.constraint(equalToConstant: size.width),
             heightAnchor.constraint(equalToConstant: size.height)
-            ])
+                                    ])
         
         if let superview = superview {
             NSLayoutConstraint.activate([
                 centerXAnchor.constraint(equalTo: superview.centerXAnchor),
                 centerYAnchor.constraint(equalTo: superview.centerYAnchor)
-                ])
+                                        ])
         }
         
     }

@@ -5,6 +5,8 @@ final class DetailsViewController: ViewController {
     // MARK: - Properties
     private let detailsView = DetailsView()
     private let gif: String
+    weak var popularFlowDelegate: PopularViewControllerFlowDelegate?
+    weak var userFlowDelegate: UserViewControllerFlowDelegate?
     
     // MARK: - Initializers
     init(gif: String) {
@@ -14,7 +16,6 @@ final class DetailsViewController: ViewController {
     
     // MARK: - Overrides
     override func loadView() {
-        super.loadView()
         view = detailsView
     }
     

@@ -10,7 +10,6 @@ final class PopularViewController: ViewController {
     
     // MARK: - Overrides
     override func loadView() {
-        super.loadView()
         view = popularView
     }
     

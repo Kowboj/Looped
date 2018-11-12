@@ -1,10 +1,11 @@
 import UIKit
 
 final class PopularFlowController: FlowController {
-
-    let rootControllersFactory = PopularFlowControllerFactory()
+    typealias RootViewController = UINavigationController
+    
+    let controllersFactory = PopularFlowControllerFactory()
     lazy var rootViewController: UINavigationController = {
-        navigationController.viewControllers = [rootControllersFactory.buildPopularViewController(delegate: self)]
+        navigationController.viewControllers = [controllersFactory.buildPopularViewController(delegate: self)]
         
         return navigationController
     }()
@@ -20,7 +21,6 @@ final class PopularFlowController: FlowController {
 
 extension PopularFlowController: PopularViewControllerFlowDelegate {
     func showDetails(gif: String) {
-        let detailsViewController = DetailsViewController(gif: gif)
-        navigationController.show(detailsViewController, sender: nil)
+        navigationController.pushViewController(controllersFactory.buildDetailsViewController(gif: gif, delegate: self), animated: true)
     }
 }

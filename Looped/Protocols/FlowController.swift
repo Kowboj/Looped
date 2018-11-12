@@ -1,5 +1,6 @@
 import UIKit
 
 protocol FlowController {
-    var rootViewController: UINavigationController { get }
+    associatedtype RootViewController
+    var rootViewController: RootViewController { get }
 }

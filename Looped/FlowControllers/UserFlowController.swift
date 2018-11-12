@@ -2,9 +2,9 @@ import UIKit
 
 final class UserFlowController: FlowController {
     
-    let rootControllersFactory = UserFlowControllerFactory()
+    let controllersFactory = UserFlowControllerFactory()
     lazy var rootViewController: UINavigationController = {
-        navigationController.viewControllers = [rootControllersFactory.buildUserViewController(delegate: self)]
+        navigationController.viewControllers = [controllersFactory.buildUserViewController(delegate: self)]
         
         return navigationController
     }()
@@ -20,7 +20,6 @@ final class UserFlowController: FlowController {
 
 extension UserFlowController: UserViewControllerFlowDelegate {
     func showDetails(gif: String) {
-        let detailsViewController = DetailsViewController(gif: gif)
-        navigationController.show(detailsViewController, sender: nil)
+        navigationController.pushViewController(controllersFactory.buildDetailsViewController(gif: gif, delegate: self), animated: true)
     }
 }

@@ -10,7 +10,6 @@ final class CreateViewController: ViewController {
     
     // MARK: - Overrides
     override func loadView() {
-        super.loadView()
         view = createView
     }
 }
