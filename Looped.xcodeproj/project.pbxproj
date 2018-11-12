@@ -10,6 +10,13 @@
 		F44001D721959F3D0039A707 /* PopularFlowControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44001D621959F3D0039A707 /* PopularFlowControllerFactory.swift */; };
 		F44001DB2195A1BB0039A707 /* UserFlowControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44001DA2195A1BB0039A707 /* UserFlowControllerFactory.swift */; };
 		F44001DD2195A1C50039A707 /* CreateFlowControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44001DC2195A1C50039A707 /* CreateFlowControllerFactory.swift */; };
+		F48B4B7A2199CDB900E4C1DF /* GifCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48B4B792199CDB900E4C1DF /* GifCell.swift */; };
+		F48B4B7C2199CDE500E4C1DF /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48B4B7B2199CDE500E4C1DF /* Cell.swift */; };
+		F48B4B7E2199CE0600E4C1DF /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48B4B7D2199CE0600E4C1DF /* Reusable.swift */; };
+		F48B4B812199DFD100E4C1DF /* CreateOnlineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48B4B802199DFD100E4C1DF /* CreateOnlineViewController.swift */; };
+		F48B4B832199DFDF00E4C1DF /* CreateLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48B4B822199DFDF00E4C1DF /* CreateLibraryViewController.swift */; };
+		F48B4B872199E01400E4C1DF /* CreateOnlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48B4B862199E01400E4C1DF /* CreateOnlineView.swift */; };
+		F48B4B892199E01F00E4C1DF /* CreateLibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48B4B882199E01F00E4C1DF /* CreateLibraryView.swift */; };
 		F4B424A621944D6A00C3709B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B424A521944D6A00C3709B /* AppDelegate.swift */; };
 		F4B424AD21944D6C00C3709B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4B424AC21944D6C00C3709B /* Assets.xcassets */; };
 		F4B424B021944D6C00C3709B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4B424AE21944D6C00C3709B /* LaunchScreen.storyboard */; };
@@ -37,6 +44,13 @@
 		F44001D621959F3D0039A707 /* PopularFlowControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularFlowControllerFactory.swift; sourceTree = "<group>"; };
 		F44001DA2195A1BB0039A707 /* UserFlowControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFlowControllerFactory.swift; sourceTree = "<group>"; };
 		F44001DC2195A1C50039A707 /* CreateFlowControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateFlowControllerFactory.swift; sourceTree = "<group>"; };
+		F48B4B792199CDB900E4C1DF /* GifCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifCell.swift; sourceTree = "<group>"; };
+		F48B4B7B2199CDE500E4C1DF /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
+		F48B4B7D2199CE0600E4C1DF /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
+		F48B4B802199DFD100E4C1DF /* CreateOnlineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateOnlineViewController.swift; sourceTree = "<group>"; };
+		F48B4B822199DFDF00E4C1DF /* CreateLibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateLibraryViewController.swift; sourceTree = "<group>"; };
+		F48B4B862199E01400E4C1DF /* CreateOnlineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateOnlineView.swift; sourceTree = "<group>"; };
+		F48B4B882199E01F00E4C1DF /* CreateLibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateLibraryView.swift; sourceTree = "<group>"; };
 		F4B424A221944D6A00C3709B /* Looped.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Looped.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4B424A521944D6A00C3709B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F4B424AC21944D6C00C3709B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -83,6 +97,24 @@
 			path = Factories;
 			sourceTree = "<group>";
 		};
+		F48B4B842199DFF800E4C1DF /* CreateOnline */ = {
+			isa = PBXGroup;
+			children = (
+				F48B4B802199DFD100E4C1DF /* CreateOnlineViewController.swift */,
+				F48B4B862199E01400E4C1DF /* CreateOnlineView.swift */,
+			);
+			path = CreateOnline;
+			sourceTree = "<group>";
+		};
+		F48B4B852199DFFD00E4C1DF /* CreateLibrary */ = {
+			isa = PBXGroup;
+			children = (
+				F48B4B822199DFDF00E4C1DF /* CreateLibraryViewController.swift */,
+				F48B4B882199E01F00E4C1DF /* CreateLibraryView.swift */,
+			);
+			path = CreateLibrary;
+			sourceTree = "<group>";
+		};
 		F4B4249921944D6A00C3709B = {
 			isa = PBXGroup;
 			children = (
@@ -118,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				F4B424CB2194594800C3709B /* TabBarController.swift */,
+				F48B4B792199CDB900E4C1DF /* GifCell.swift */,
 				F4B424C6219454C400C3709B /* Popular */,
 				F4B424CF2194613400C3709B /* User */,
 				F4B424D02194614100C3709B /* Create */,
@@ -159,6 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				F4B424C92194558A00C3709B /* UIKit.UIView.swift */,
+				F48B4B7D2199CE0600E4C1DF /* Reusable.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -186,6 +220,8 @@
 			children = (
 				F4B424D52194617800C3709B /* CreateViewController.swift */,
 				F4B424D72194617F00C3709B /* CreateView.swift */,
+				F48B4B842199DFF800E4C1DF /* CreateOnline */,
+				F48B4B852199DFFD00E4C1DF /* CreateLibrary */,
 			);
 			path = Create;
 			sourceTree = "<group>";
@@ -196,6 +232,7 @@
 				F4B424DA2194644600C3709B /* View.swift */,
 				F4B424DC2194647500C3709B /* TabView.swift */,
 				F4B424DE2194675800C3709B /* ViewController.swift */,
+				F48B4B7B2199CDE500E4C1DF /* Cell.swift */,
 			);
 			path = Abstractions;
 			sourceTree = "<group>";
@@ -283,11 +320,16 @@
 				F4B424D82194617F00C3709B /* CreateView.swift in Sources */,
 				F44001DB2195A1BB0039A707 /* UserFlowControllerFactory.swift in Sources */,
 				F4B424D62194617800C3709B /* CreateViewController.swift in Sources */,
+				F48B4B7E2199CE0600E4C1DF /* Reusable.swift in Sources */,
 				F4B424DD2194647500C3709B /* TabView.swift in Sources */,
+				F48B4B7C2199CDE500E4C1DF /* Cell.swift in Sources */,
 				F4B424C5219454B600C3709B /* PopularViewController.swift in Sources */,
+				F48B4B7A2199CDB900E4C1DF /* GifCell.swift in Sources */,
 				F44001D721959F3D0039A707 /* PopularFlowControllerFactory.swift in Sources */,
 				F4B424DF2194675800C3709B /* ViewController.swift in Sources */,
+				F48B4B832199DFDF00E4C1DF /* CreateLibraryViewController.swift in Sources */,
 				F4B424D22194616600C3709B /* UserViewController.swift in Sources */,
+				F48B4B872199E01400E4C1DF /* CreateOnlineView.swift in Sources */,
 				F4B424A621944D6A00C3709B /* AppDelegate.swift in Sources */,
 				F4B424CA2194558A00C3709B /* UIKit.UIView.swift in Sources */,
 				F4B424CC2194594800C3709B /* TabBarController.swift in Sources */,
@@ -298,7 +340,9 @@
 				F4B424ED2194772C00C3709B /* CreateFlowController.swift in Sources */,
 				F4B424D42194616E00C3709B /* UserView.swift in Sources */,
 				F4B424E421946BD400C3709B /* DetailsView.swift in Sources */,
+				F48B4B812199DFD100E4C1DF /* CreateOnlineViewController.swift in Sources */,
 				F4B424E621946E2800C3709B /* DetailsShowable.swift in Sources */,
+				F48B4B892199E01F00E4C1DF /* CreateLibraryView.swift in Sources */,
 				F4B424E221946BCD00C3709B /* DetailsViewController.swift in Sources */,
 				F4B424E92194751C00C3709B /* PopularFlowController.swift in Sources */,
 			);

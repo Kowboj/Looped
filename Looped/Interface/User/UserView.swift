@@ -2,27 +2,35 @@ import UIKit
 
 final class UserView: TabView {
     
-    private(set) lazy var userInfoLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Second tab - User - requires logging.\n\nIn the top there's profile image and some info.\n\nIn the middle - a custom tab bar with two tabs - User Feed (sent by user), and User Favorites (liked by user) - shown below"
-        label.textAlignment = .center
-        label.numberOfLines = 0
-        return label
+    private(set) lazy var photoImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.backgroundColor = UIColor.init(white: 0.9, alpha: 0.9)
+        imageView.layer.cornerRadius = 50
+        return imageView
+    }()
+    
+    private(set) lazy var tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.backgroundColor = .clear
+        tableView.separatorStyle = .none
+        tableView.tableFooterView = UIView(frame: .zero)
+        return tableView
     }()
     
     override func setupViewHierarchy() {
         super.setupViewHierarchy()
-        [userInfoLabel].forEach(addSubview)
+        [photoImageView, tableView].forEach(addSubview)
     }
     
     override func setupProperties() {
         super.setupProperties()
-        backgroundColor = UIColor.orange
     }
     
     override func setupLayoutConstraints() {
         super.setupLayoutConstraints()
-        userInfoLabel.anchor(top: customTabInfoLabel.bottomAnchor, leading: customTabInfoLabel.leadingAnchor, trailing: customTabInfoLabel.trailingAnchor, bottom: safeAreaLayoutGuide.bottomAnchor)
+        photoImageView.anchor(top: safeAreaLayoutGuide.topAnchor, leading: leadingAnchor, trailing: nil, bottom: nil, padding: UIEdgeInsets(top: 20, left: 20, bottom: 0, right: 0), size: CGSize(width: 100, height: 100))
+        tableView.anchor(top: segmentedControl.bottomAnchor, leading: leadingAnchor, trailing: trailingAnchor, bottom: safeAreaLayoutGuide.bottomAnchor, padding: UIEdgeInsets.zero, size: CGSize.zero)
     }
 }

@@ -2,27 +2,23 @@ import UIKit
 
 final class CreateView: TabView {
     
-    private(set) lazy var userInfoLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Third tab - Create - for not logged users ('Create' click asks for logging).\n\nIn the top there's profile image and some info.\n\nIn the middle - a custom tab bar with two tabs - User Feed (sent by user), and User Favorites (liked by user)"
-        label.textAlignment = .center
-        label.numberOfLines = 0
-        return label
+    private(set) lazy var containerView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
     
     override func setupViewHierarchy() {
         super.setupViewHierarchy()
-        [userInfoLabel].forEach(addSubview)
+        [containerView].forEach(addSubview)
     }
     
     override func setupProperties() {
         super.setupProperties()
-        backgroundColor = .yellow
     }
     
     override func setupLayoutConstraints() {
         super.setupLayoutConstraints()
-        userInfoLabel.anchor(top: customTabInfoLabel.bottomAnchor, leading: customTabInfoLabel.leadingAnchor, trailing: customTabInfoLabel.trailingAnchor, bottom: safeAreaLayoutGuide.bottomAnchor)
+        containerView.anchor(top: segmentedControl.bottomAnchor, leading: leadingAnchor, trailing: trailingAnchor, bottom: safeAreaLayoutGuide.bottomAnchor, padding: UIEdgeInsets.zero, size: CGSize.zero)
     }
 }

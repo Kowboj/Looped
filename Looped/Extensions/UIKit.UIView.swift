@@ -2,15 +2,12 @@ import UIKit
 
 extension UIView {
     
-    func centerInSuperview(size: CGSize) {
-        
-        NSLayoutConstraint.activate([
-            widthAnchor.constraint(equalToConstant: size.width),
-            heightAnchor.constraint(equalToConstant: size.height)
-                                    ])
-        
+    func centerInSuperview(padding: CGFloat = 0) {
+
         if let superview = superview {
             NSLayoutConstraint.activate([
+                widthAnchor.constraint(equalToConstant: superview.frame.size.width - padding*2),
+                heightAnchor.constraint(equalToConstant: superview.frame.size.height - padding*2),
                 centerXAnchor.constraint(equalTo: superview.centerXAnchor),
                 centerYAnchor.constraint(equalTo: superview.centerYAnchor)
                                         ])
