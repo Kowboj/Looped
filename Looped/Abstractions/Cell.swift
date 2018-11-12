@@ -19,5 +19,3 @@ class TableViewCell: UITableViewCell {
 }
 
 extension TableViewCell: Reusable {}
-
-

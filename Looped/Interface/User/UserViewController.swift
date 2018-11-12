@@ -4,15 +4,9 @@ protocol UserViewControllerFlowDelegate: class, DetailsShowable {}
 
 final class UserViewController: ViewController {
     
-    // MARK: - Actions
-    @objc func segmentedTapped(sender: UISegmentedControl) {
-        // TODO: - Create two dataSource objects?
-        userView.tableView.reloadData()
-    }
-    
     // MARK: - Properties
     private let userView = UserView()
-    var flowDelegate: UserViewControllerFlowDelegate?
+    weak var flowDelegate: UserViewControllerFlowDelegate?
     
     // MARK: - Overrides
     override func loadView() {
@@ -44,6 +38,11 @@ final class UserViewController: ViewController {
         userView.tableView.register(GifCell.self, forCellReuseIdentifier: GifCell.reuseIdentifier)
         userView.tableView.delegate = self
         userView.tableView.dataSource = self
+    }
+    
+    @objc private func segmentedTapped(sender: UISegmentedControl) {
+        // TODO: - Create two dataSource objects?
+        userView.tableView.reloadData()
     }
 }
 

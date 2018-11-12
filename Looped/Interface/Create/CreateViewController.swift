@@ -4,14 +4,9 @@ protocol CreateViewControllerFlowDelegate: class, DetailsShowable {}
 
 final class CreateViewController: ViewController {
     
-    // MARK: - Actions
-    @objc func segmentedTapped(sender: UISegmentedControl) {
-        changeContainerViewController(to: sender.selectedSegmentIndex)
-    }
-    
     // MARK: - Properties
     private let createView = CreateView()
-    var flowDelegate: CreateViewControllerFlowDelegate?
+    weak var flowDelegate: CreateViewControllerFlowDelegate?
     let createOnlineViewController = CreateOnlineViewController()
     let createLibraryViewController = CreateLibraryViewController()
     
@@ -41,31 +36,32 @@ final class CreateViewController: ViewController {
     private func changeContainerViewController(to index: Int) {
         switch index {
         case 0: // Create from URL
-            removeContainer(viewController: createOnlineViewController)
-            
-            addChild(createOnlineViewController)
-            let createOnlineView = createOnlineViewController.createOnlineView
-            createOnlineView.translatesAutoresizingMaskIntoConstraints = false
-            createView.containerView.addSubview(createOnlineView)
-            createOnlineView.centerInSuperview(padding: 10)
-            createOnlineViewController.didMove(toParent: self)
+            removeContainer(viewController: createLibraryViewController)
+            addContainer(viewController: createOnlineViewController)
         case 1: // Create from Library
             removeContainer(viewController: createOnlineViewController)
-            
-            addChild(createLibraryViewController)
-            let createLibraryView = createLibraryViewController.createLibraryView
-            createLibraryView.translatesAutoresizingMaskIntoConstraints = false
-            createView.containerView.addSubview(createLibraryView)
-            createLibraryView.centerInSuperview(padding: 10)
-            createLibraryViewController.didMove(toParent: self)
+            addContainer(viewController: createLibraryViewController)
         default:
             break
         }
+    }
+    
+    private func addContainer(viewController: UIViewController) {
+        guard let view = viewController.view else { return }
+        addChild(viewController)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        createView.containerView.addSubview(view)
+        view.centerInSuperview(padding: 10)
+        createOnlineViewController.didMove(toParent: self)
     }
     
     private func removeContainer(viewController: UIViewController) {
         viewController.willMove(toParent: nil)
         viewController.view.removeFromSuperview()
         viewController.removeFromParent()
+    }
+    
+    @objc private func segmentedTapped(sender: UISegmentedControl) {
+        changeContainerViewController(to: sender.selectedSegmentIndex)
     }
 }

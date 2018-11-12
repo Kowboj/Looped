@@ -6,7 +6,6 @@ final class PopularFlowController: FlowController {
     let controllersFactory = PopularFlowControllerFactory()
     lazy var rootViewController: UINavigationController = {
         navigationController.viewControllers = [controllersFactory.buildPopularViewController(delegate: self)]
-        
         return navigationController
     }()
     
@@ -15,7 +14,7 @@ final class PopularFlowController: FlowController {
     }()
     
     init() {
-        navigationController.show(rootViewController, sender: nil)
+//        navigationController.show(rootViewController, sender: nil)
     }
 }
 

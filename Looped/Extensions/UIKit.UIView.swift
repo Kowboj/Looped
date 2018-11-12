@@ -5,22 +5,9 @@ extension UIView {
     func centerInSuperview(padding: CGFloat = 0) {
 
         if let superview = superview {
-            NSLayoutConstraint.activate([
-                widthAnchor.constraint(equalToConstant: superview.frame.size.width - padding*2),
-                heightAnchor.constraint(equalToConstant: superview.frame.size.height - padding*2),
-                centerXAnchor.constraint(equalTo: superview.centerXAnchor),
-                centerYAnchor.constraint(equalTo: superview.centerYAnchor)
-                                        ])
+            anchor(top: superview.topAnchor, leading: superview.leadingAnchor, trailing: superview.trailingAnchor, bottom: superview.bottomAnchor, padding: UIEdgeInsets(top: padding, left: padding, bottom: -padding, right: -padding))
         }
         
-    }
-    
-    func anchorSize(to view: UIView) {
-        
-        NSLayoutConstraint.activate([
-            widthAnchor.constraint(equalTo: view.widthAnchor),
-            heightAnchor.constraint(equalTo: view.heightAnchor)
-            ])
     }
     
     func anchor(top: NSLayoutYAxisAnchor?, leading: NSLayoutXAxisAnchor?, trailing: NSLayoutXAxisAnchor?, bottom: NSLayoutYAxisAnchor?, padding: UIEdgeInsets = .zero, size: CGSize = .zero) {

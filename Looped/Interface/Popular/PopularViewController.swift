@@ -6,7 +6,7 @@ final class PopularViewController: ViewController {
     
     // MARK: - Properties
     private let popularView = PopularView()
-    var flowDelegate: PopularViewControllerFlowDelegate?
+    weak var flowDelegate: PopularViewControllerFlowDelegate?
     
     // MARK: - Overrides
     override func loadView() {
@@ -15,6 +15,7 @@ final class PopularViewController: ViewController {
     
     override func setupNavigationItem() {
         super.setupNavigationItem()
+        title = "Popular"
         navigationItem.titleView = popularView.searchBar
     }
     

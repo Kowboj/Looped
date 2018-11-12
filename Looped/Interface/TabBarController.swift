@@ -7,6 +7,7 @@ final class TabBarController: UITabBarController {
     let popularRootViewController = PopularFlowController().rootViewController
     let userRootViewController = UserFlowController().rootViewController
     let createRootViewController = CreateFlowController().rootViewController
+    let tabBarItemImages = ["barItemPopular", "barItemUser", "barItemCreate"]
     
     // MARK: - Initializers
     init() {
@@ -22,17 +23,17 @@ final class TabBarController: UITabBarController {
     // MARK: - Private
     
     private func setupTabBarItems() {
-        let popularImage = UIImage(named: "barItemPopular")?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
-        popularRootViewController.tabBarItem = UITabBarItem(title: "Featured", image: popularImage, tag: 0)
-        
-        let userImage = UIImage(named: "barItemUser")?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
-        userRootViewController.tabBarItem = UITabBarItem(title: nil, image: userImage, tag: 1)
-
-        let createImage = UIImage(named: "barItemCreate")?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
-        createRootViewController.tabBarItem = UITabBarItem(title: nil, image: createImage, tag: 2)
+        popularRootViewController.tabBarItem = tabBarItem(at: 0)
+        userRootViewController.tabBarItem = tabBarItem(at: 1)
+        createRootViewController.tabBarItem = tabBarItem(at: 2)
     }
     
     private func setupViewControllers() {
         viewControllers = [popularRootViewController, userRootViewController, createRootViewController]
+    }
+    
+    private func tabBarItem(at index: Int) -> UITabBarItem {
+        let image = UIImage(named: tabBarItemImages[index])?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
+        return UITabBarItem(title: nil, image: image, tag: index)
     }
 }

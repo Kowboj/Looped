@@ -3,7 +3,7 @@ import UIKit
 final class CreateLibraryViewController: ViewController {
     
     // MARK: - Properties
-    let createLibraryView = CreateLibraryView()
+    private let createLibraryView = CreateLibraryView()
     
     // MARK: - Overrides
     override func loadView() {

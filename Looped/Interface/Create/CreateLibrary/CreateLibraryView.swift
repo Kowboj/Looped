@@ -28,4 +28,3 @@ final class CreateLibraryView: View {
         testLabel.anchor(top: topAnchor, leading: leadingAnchor, trailing: trailingAnchor, bottom: bottomAnchor)
     }
 }
-
