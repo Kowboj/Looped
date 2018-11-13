@@ -12,10 +12,6 @@ final class UserFlowController: FlowController {
     private lazy var navigationController: UINavigationController = {
         return UINavigationController()
     }()
-    
-    init() {
-        navigationController.show(rootViewController, sender: nil)
-    }
 }
 
 extension UserFlowController: UserViewControllerFlowDelegate {
