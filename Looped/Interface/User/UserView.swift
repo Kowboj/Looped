@@ -3,10 +3,11 @@ import UIKit
 final class UserView: TabView {
     
     private(set) lazy var photoImageView: UIImageView = {
-        let imageView = UIImageView()
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.backgroundColor = UIColor.init(white: 0.9, alpha: 0.9)
-        imageView.layer.cornerRadius = 50
+        imageView.layer.cornerRadius = imageView.frame.size.width / 2
+        imageView.clipsToBounds = true
         return imageView
     }()
     

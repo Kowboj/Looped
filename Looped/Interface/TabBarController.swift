@@ -4,9 +4,9 @@ final class TabBarController: UITabBarController {
     
     // MARK: - Properties
     
-    let popularRootViewController = PopularFlowController().rootViewController
-    let userRootViewController = UserFlowController().rootViewController
-    let createRootViewController = CreateFlowController().rootViewController
+    let popularRootViewController = PopularFlowController()
+    let userRootViewController = UserFlowController()
+    let createRootViewController = CreateFlowController()
     let tabBarItemImages = ["barItemPopular", "barItemUser", "barItemCreate"]
     
     // MARK: - Initializers
@@ -23,13 +23,13 @@ final class TabBarController: UITabBarController {
     // MARK: - Private
     
     private func setupTabBarItems() {
-        popularRootViewController.tabBarItem = tabBarItem(at: 0)
-        userRootViewController.tabBarItem = tabBarItem(at: 1)
-        createRootViewController.tabBarItem = tabBarItem(at: 2)
+        popularRootViewController.rootViewController.tabBarItem = tabBarItem(at: 0)
+        userRootViewController.rootViewController.tabBarItem = tabBarItem(at: 1)
+        createRootViewController.rootViewController.tabBarItem = tabBarItem(at: 2)
     }
     
     private func setupViewControllers() {
-        viewControllers = [popularRootViewController, userRootViewController, createRootViewController]
+        viewControllers = [popularRootViewController.rootViewController, userRootViewController.rootViewController, createRootViewController.rootViewController]
     }
     
     private func tabBarItem(at index: Int) -> UITabBarItem {

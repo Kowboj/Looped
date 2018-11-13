@@ -34,7 +34,6 @@
 		F4B424DF2194675800C3709B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B424DE2194675800C3709B /* ViewController.swift */; };
 		F4B424E221946BCD00C3709B /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B424E121946BCD00C3709B /* DetailsViewController.swift */; };
 		F4B424E421946BD400C3709B /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B424E321946BD400C3709B /* DetailsView.swift */; };
-		F4B424E621946E2800C3709B /* DetailsShowable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B424E521946E2800C3709B /* DetailsShowable.swift */; };
 		F4B424E92194751C00C3709B /* PopularFlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B424E82194751C00C3709B /* PopularFlowController.swift */; };
 		F4B424EB2194771C00C3709B /* UserFlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B424EA2194771C00C3709B /* UserFlowController.swift */; };
 		F4B424ED2194772C00C3709B /* CreateFlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B424EC2194772C00C3709B /* CreateFlowController.swift */; };
@@ -70,7 +69,6 @@
 		F4B424DE2194675800C3709B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F4B424E121946BCD00C3709B /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		F4B424E321946BD400C3709B /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
-		F4B424E521946E2800C3709B /* DetailsShowable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsShowable.swift; sourceTree = "<group>"; };
 		F4B424E82194751C00C3709B /* PopularFlowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularFlowController.swift; sourceTree = "<group>"; };
 		F4B424EA2194771C00C3709B /* UserFlowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFlowController.swift; sourceTree = "<group>"; };
 		F4B424EC2194772C00C3709B /* CreateFlowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateFlowController.swift; sourceTree = "<group>"; };
@@ -183,7 +181,6 @@
 			isa = PBXGroup;
 			children = (
 				F4B424C22194544700C3709B /* FlowController.swift */,
-				F4B424E521946E2800C3709B /* DetailsShowable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -341,7 +338,6 @@
 				F4B424D42194616E00C3709B /* UserView.swift in Sources */,
 				F4B424E421946BD400C3709B /* DetailsView.swift in Sources */,
 				F48B4B812199DFD100E4C1DF /* CreateOnlineViewController.swift in Sources */,
-				F4B424E621946E2800C3709B /* DetailsShowable.swift in Sources */,
 				F48B4B892199E01F00E4C1DF /* CreateLibraryView.swift in Sources */,
 				F4B424E221946BCD00C3709B /* DetailsViewController.swift in Sources */,
 				F4B424E92194751C00C3709B /* PopularFlowController.swift in Sources */,

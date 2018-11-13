@@ -1,6 +1,8 @@
 import UIKit
 
-protocol UserViewControllerFlowDelegate: class, DetailsShowable {}
+protocol UserViewControllerFlowDelegate: class {
+    func showDetails(gif: String)
+}
 
 final class UserViewController: ViewController {
     
@@ -15,14 +17,13 @@ final class UserViewController: ViewController {
     
     override func setupNavigationItem() {
         super.setupNavigationItem()
-        title = "Arnold Kangur"
+        navigationItem.title = "Arnold Kangur"
     }
     
     override func setupProperties() {
         super.setupProperties()
         setupSegmentedControl()
         setupTableView()
-        
     }
     
     // MARK: - Private

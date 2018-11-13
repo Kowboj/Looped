@@ -1,6 +1,8 @@
 import UIKit
 
-protocol PopularViewControllerFlowDelegate: class, DetailsShowable {}
+protocol PopularViewControllerFlowDelegate: class {
+    func showDetails(gif: String)
+}
 
 final class PopularViewController: ViewController {
     
@@ -15,7 +17,6 @@ final class PopularViewController: ViewController {
     
     override func setupNavigationItem() {
         super.setupNavigationItem()
-        title = "Popular"
         navigationItem.titleView = popularView.searchBar
     }
     
@@ -32,26 +33,26 @@ final class PopularViewController: ViewController {
     }
 }
 
-extension PopularViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: GifCell.reuseIdentifier) as? GifCell {
-            
-            return cell
-        } else {
-            return UITableViewCell()
-        }
-        
-    }
-    
+extension PopularViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 200
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         flowDelegate?.showDetails(gif: "Selected Gif \(indexPath.row)")
+    }
+}
+
+extension PopularViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: GifCell.reuseIdentifier) as? GifCell {
+            return cell
+        } else {
+            return UITableViewCell()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 2
     }
 }

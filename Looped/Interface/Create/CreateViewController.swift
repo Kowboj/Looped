@@ -1,6 +1,8 @@
 import UIKit
 
-protocol CreateViewControllerFlowDelegate: class, DetailsShowable {}
+protocol CreateViewControllerFlowDelegate: class {
+    func showDetails(gif: String)
+}
 
 final class CreateViewController: ViewController {
     
@@ -17,7 +19,7 @@ final class CreateViewController: ViewController {
     
     override func setupNavigationItem() {
         super.setupNavigationItem()
-        title = "Create GIF"
+        navigationItem.title = "Create GIF"
     }
     
     override func setupProperties() {

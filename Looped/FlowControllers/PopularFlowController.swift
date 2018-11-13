@@ -12,10 +12,6 @@ final class PopularFlowController: FlowController {
     private lazy var navigationController: UINavigationController = {
         return UINavigationController()
     }()
-    
-    init() {
-//        navigationController.show(rootViewController, sender: nil)
-    }
 }
 
 extension PopularFlowController: PopularViewControllerFlowDelegate {
