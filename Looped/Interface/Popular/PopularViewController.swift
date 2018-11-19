@@ -1,4 +1,5 @@
 import UIKit
+import SwiftyGif
 
 protocol PopularViewControllerFlowDelegate: class {
     func showDetails(gif: String)
