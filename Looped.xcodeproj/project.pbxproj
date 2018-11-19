@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F4191E0C21A2FCBE00577DB0 /* SwiftyGif.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4191E0A21A2FCBE00577DB0 /* SwiftyGif.framework */; };
+		F4191E0D21A2FCBE00577DB0 /* Regift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4191E0B21A2FCBE00577DB0 /* Regift.framework */; };
 		F44001D721959F3D0039A707 /* PopularFlowControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44001D621959F3D0039A707 /* PopularFlowControllerFactory.swift */; };
 		F44001DB2195A1BB0039A707 /* UserFlowControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44001DA2195A1BB0039A707 /* UserFlowControllerFactory.swift */; };
 		F44001DD2195A1C50039A707 /* CreateFlowControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44001DC2195A1C50039A707 /* CreateFlowControllerFactory.swift */; };
@@ -40,6 +42,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F4191E0A21A2FCBE00577DB0 /* SwiftyGif.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyGif.framework; path = Carthage/Build/iOS/SwiftyGif.framework; sourceTree = "<group>"; };
+		F4191E0B21A2FCBE00577DB0 /* Regift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Regift.framework; path = Carthage/Build/iOS/Regift.framework; sourceTree = "<group>"; };
 		F44001D621959F3D0039A707 /* PopularFlowControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularFlowControllerFactory.swift; sourceTree = "<group>"; };
 		F44001DA2195A1BB0039A707 /* UserFlowControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFlowControllerFactory.swift; sourceTree = "<group>"; };
 		F44001DC2195A1C50039A707 /* CreateFlowControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateFlowControllerFactory.swift; sourceTree = "<group>"; };
@@ -79,12 +83,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4191E0C21A2FCBE00577DB0 /* SwiftyGif.framework in Frameworks */,
+				F4191E0D21A2FCBE00577DB0 /* Regift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F4191E0921A2FCBE00577DB0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F4191E0B21A2FCBE00577DB0 /* Regift.framework */,
+				F4191E0A21A2FCBE00577DB0 /* SwiftyGif.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F44001D92195A1AA0039A707 /* Factories */ = {
 			isa = PBXGroup;
 			children = (
@@ -118,6 +133,7 @@
 			children = (
 				F4B424A421944D6A00C3709B /* Looped */,
 				F4B424A321944D6A00C3709B /* Products */,
+				F4191E0921A2FCBE00577DB0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -253,6 +269,7 @@
 				F4B4249E21944D6A00C3709B /* Sources */,
 				F4B4249F21944D6A00C3709B /* Frameworks */,
 				F4B424A021944D6A00C3709B /* Resources */,
+				F4191E0E21A2FCE500577DB0 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -307,6 +324,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		F4191E0E21A2FCE500577DB0 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Regift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftyGif.framework",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F4B4249E21944D6A00C3709B /* Sources */ = {
@@ -480,6 +519,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B746NKQ5P6;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/Looped/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -499,6 +542,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B746NKQ5P6;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/Looped/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
