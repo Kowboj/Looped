@@ -7,18 +7,6 @@ protocol GifPlayable {
 
 final class GifCell: TableViewCell {
     
-    // MARK: - Properties
-    var gifViewModel: GifViewModel! {
-        didSet {
-            if gifViewModel != nil {
-                loadGif()
-                setTitle()
-                setLikes()
-            }
-        }
-    }
-    var reactionTag: ReactionTag?
-    
     private(set) lazy var gifImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -67,28 +55,6 @@ final class GifCell: TableViewCell {
         gifImageView.anchor(top: topAnchor, leading: leadingAnchor, trailing: trailingAnchor, bottom: bottomAnchor, padding: UIEdgeInsets(top: 10, left: 10, bottom: 0, right: -10), size: CGSize.zero)
         titleLabel.anchor(top: nil, leading: gifImageView.leadingAnchor, trailing: gifImageView.trailingAnchor, bottom: gifImageView.bottomAnchor, padding: UIEdgeInsets(top: 0, left: 10, bottom: -10, right: -10))
         likesLabel.anchor(top: gifImageView.topAnchor, leading: gifImageView.leadingAnchor, trailing: nil, bottom: nil, padding: UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 0))
-    }
-    
-    // MARK: - Private
-    
-    private func loadGif() {
-        if let url = URL(string: gifViewModel.gifUrl) {
-            openGifFrom(url: url)
-        }
-    }
-    
-    private func setTitle() {
-        if reactionTag != nil {
-            titleLabel.text = reactionTag?.tag
-        } else {
-            titleLabel.text = gifViewModel.title
-        }
-    }
-    
-    private func setLikes() {
-        if reactionTag == nil {
-            likesLabel.text = gifViewModel.likes
-        }
     }
 }
 

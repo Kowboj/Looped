@@ -1,4 +1,4 @@
-import Foundation
+import UIKit
 
 final class DefaultAPIClient: APIClient {
     
@@ -9,6 +9,7 @@ final class DefaultAPIClient: APIClient {
     }
     
     func send(request: APIRequest, completion: @escaping (Result<Data>) -> ()) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
         do {
             let request = try URLRequest(request: request)
             session.dataTask(with: request, completionHandler: { (data, response, error) in
@@ -17,26 +18,15 @@ final class DefaultAPIClient: APIClient {
                 } else if let error = error {
                     completion(Result.failure(error))
                 }
+                DispatchQueue.main.async {
+                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                }
             }).resume()
         } catch let error {
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
             completion(Result<Data>.failure(error))
         }
     }
-    
-//    func perform<T: Decodable>(request: APIRequest, completion: @escaping (Result<RoznowskieResponse<T>>) -> ()) {
-//        do {
-//            let request = try URLRequest(request: request)
-//            session.dataTask(with: request) { (data, response, error) in
-//                if let data = data {
-//                    completion(self.decode(data: data))
-//                } else if let error = error {
-//                    completion(Result.failure(error))
-//                }
-//            }.resume()
-//        } catch let error {
-//            completion(Result.failure(error))
-//        }
-//    }
     
     private func decode<T: Decodable>(data: Data) -> Result<T> {
         do {

@@ -6,9 +6,14 @@ protocol PopularViewControllerFlowDelegate: class {
 
 final class PopularViewController: ViewController {
     
+    init(viewModel: PopularViewModel) {
+        self.popularViewModel = viewModel
+        super.init()
+    }
+    
     // MARK: - Properties
+    private let popularViewModel: PopularViewModel
     private let popularView = PopularView()
-    private let apiClient = DefaultAPIClient()
     weak var flowDelegate: PopularViewControllerFlowDelegate?
     private var reactionTags: [ReactionTag] = []
     
@@ -25,12 +30,10 @@ final class PopularViewController: ViewController {
     override func setupProperties() {
         super.setupProperties()
         setupTableView()
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        getReactionTags { (tags) in
+        popularViewModel.getReactionTags { (tags) in
             self.reactionTags = tags
             DispatchQueue.main.async {
                 self.popularView.tableView.reloadData()
-                UIApplication.shared.isNetworkActivityIndicatorVisible = false
             }
         }
     }
@@ -41,25 +44,6 @@ final class PopularViewController: ViewController {
         popularView.tableView.delegate = self
         popularView.tableView.dataSource = self
     }
-    
-    private func getReactionTags(completion: @escaping ([ReactionTag]) -> Void) {
-        apiClient.send(request: ReactionTagsRequest()) { (result) in
-            switch result {
-            case .success(let data):
-                do {
-                    let model = try JSONDecoder().decode(ReactionTagsResponse.self, from: data)
-                    // TODO: - Save to Realm
-                    completion(model.tags)
-                } catch let jsonError {
-                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
-                    print(jsonError)
-                }
-            case .failure(let error):
-                UIApplication.shared.isNetworkActivityIndicatorVisible = false
-                print(error)
-            }
-        }
-    }
 }
 
 extension PopularViewController: UITableViewDelegate {
@@ -68,7 +52,7 @@ extension PopularViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        flowDelegate?.showDetails(gif: gifUrlStrings[indexPath.row])
+        // TODO: - Push to details or show more gifs of this tag in the same tableView
     }
 }
 
@@ -76,9 +60,13 @@ extension PopularViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: GifCell.reuseIdentifier) as? GifCell {
             let currentTag = reactionTags[indexPath.row]
-            cell.reactionTag = currentTag
             if let firstGif = currentTag.gfycats.first {
-                cell.gifViewModel = firstGif
+                let cellViewModel = GifCellViewModel(viewModel: firstGif, reactionTag: currentTag)
+                cell.titleLabel.text = cellViewModel.title
+                cell.likesLabel.text = cellViewModel.likes
+                if let url = URL(string: cellViewModel.gifURLString) {
+                    cell.openGifFrom(url: url)
+                }
             }
             return cell
         } else {
