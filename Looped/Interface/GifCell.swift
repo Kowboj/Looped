@@ -7,13 +7,17 @@ protocol GifPlayable {
 
 final class GifCell: TableViewCell {
     
-    var gifUrlString: String? {
+    // MARK: - Properties
+    var gifViewModel: GifViewModel! {
         didSet {
-            if let gifUrl = URL(string: gifUrlString ?? "") {
-                openGifFrom(url: gifUrl)
+            if gifViewModel != nil {
+                loadGif()
+                setTitle()
+                setLikes()
             }
         }
     }
+    var reactionTag: ReactionTag?
     
     private(set) lazy var gifImageView: UIImageView = {
         let imageView = UIImageView()
@@ -26,9 +30,30 @@ final class GifCell: TableViewCell {
         return imageView
     }()
     
+    private(set) lazy var titleLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 0
+        label.textColor = .white
+        label.font = UIFont(name: "AmericanTypewriter", size: 20)
+        label.backgroundColor = UIColor.black.withAlphaComponent(0.8)
+        return label
+    }()
+    
+    private(set) lazy var likesLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .white
+        label.font = UIFont(name: "AmericanTypewriter", size: 26)
+        label.backgroundColor = UIColor.black.withAlphaComponent(0.8)
+        return label
+    }()
+    
+    // MARK: - Overrides
+    
     override func setupViewHierarchy() {
         super.setupViewHierarchy()
-        [gifImageView].forEach(addSubview)
+        [gifImageView, titleLabel, likesLabel].forEach(addSubview)
     }
     
     override func setupProperties() {
@@ -40,6 +65,30 @@ final class GifCell: TableViewCell {
     override func setupLayoutConstraints() {
         super.setupLayoutConstraints()
         gifImageView.anchor(top: topAnchor, leading: leadingAnchor, trailing: trailingAnchor, bottom: bottomAnchor, padding: UIEdgeInsets(top: 10, left: 10, bottom: 0, right: -10), size: CGSize.zero)
+        titleLabel.anchor(top: nil, leading: gifImageView.leadingAnchor, trailing: gifImageView.trailingAnchor, bottom: gifImageView.bottomAnchor, padding: UIEdgeInsets(top: 0, left: 10, bottom: -10, right: -10))
+        likesLabel.anchor(top: gifImageView.topAnchor, leading: gifImageView.leadingAnchor, trailing: nil, bottom: nil, padding: UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 0))
+    }
+    
+    // MARK: - Private
+    
+    private func loadGif() {
+        if let url = URL(string: gifViewModel.gifUrl) {
+            openGifFrom(url: url)
+        }
+    }
+    
+    private func setTitle() {
+        if reactionTag != nil {
+            titleLabel.text = reactionTag?.tag
+        } else {
+            titleLabel.text = gifViewModel.title
+        }
+    }
+    
+    private func setLikes() {
+        if reactionTag == nil {
+            likesLabel.text = gifViewModel.likes
+        }
     }
 }
 

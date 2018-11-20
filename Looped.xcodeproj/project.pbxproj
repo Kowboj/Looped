@@ -39,6 +39,21 @@
 		F4B424E92194751C00C3709B /* PopularFlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B424E82194751C00C3709B /* PopularFlowController.swift */; };
 		F4B424EB2194771C00C3709B /* UserFlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B424EA2194771C00C3709B /* UserFlowController.swift */; };
 		F4B424ED2194772C00C3709B /* CreateFlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B424EC2194772C00C3709B /* CreateFlowController.swift */; };
+		F4F1FAC021A4211B00980C9E /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F1FAB421A4211B00980C9E /* APIError.swift */; };
+		F4F1FAC121A4211B00980C9E /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F1FAB521A4211B00980C9E /* APIService.swift */; };
+		F4F1FAC221A4211B00980C9E /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F1FAB621A4211B00980C9E /* APIClient.swift */; };
+		F4F1FAC321A4211B00980C9E /* DefaultAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F1FAB721A4211B00980C9E /* DefaultAPIClient.swift */; };
+		F4F1FAC421A4211B00980C9E /* ReactionTagsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F1FAB921A4211B00980C9E /* ReactionTagsRequest.swift */; };
+		F4F1FAC621A4211B00980C9E /* APIQueryParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F1FABB21A4211B00980C9E /* APIQueryParameter.swift */; };
+		F4F1FAC721A4211B00980C9E /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F1FABC21A4211B00980C9E /* APIRequest.swift */; };
+		F4F1FAC921A4211B00980C9E /* GfycatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F1FABF21A4211B00980C9E /* GfycatService.swift */; };
+		F4F1FACC21A421A700980C9E /* Foundation.URLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F1FACA21A421A700980C9E /* Foundation.URLRequest.swift */; };
+		F4F1FACD21A421A700980C9E /* Foundation.URLComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F1FACB21A421A700980C9E /* Foundation.URLComponents.swift */; };
+		F4F1FAD021A4220600980C9E /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F1FACF21A4220600980C9E /* Result.swift */; };
+		F4F1FAD221A425FA00980C9E /* SearchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F1FAD121A425FA00980C9E /* SearchRequest.swift */; };
+		F4F1FAD721A42DF700980C9E /* ReactionTagsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F1FAD621A42DF700980C9E /* ReactionTagsResponse.swift */; };
+		F4F1FAD921A42E0600980C9E /* ReactionTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F1FAD821A42E0600980C9E /* ReactionTag.swift */; };
+		F4F1FADB21A42E3900980C9E /* GifViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F1FADA21A42E3900980C9E /* GifViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,6 +91,21 @@
 		F4B424E82194751C00C3709B /* PopularFlowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularFlowController.swift; sourceTree = "<group>"; };
 		F4B424EA2194771C00C3709B /* UserFlowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFlowController.swift; sourceTree = "<group>"; };
 		F4B424EC2194772C00C3709B /* CreateFlowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateFlowController.swift; sourceTree = "<group>"; };
+		F4F1FAB421A4211B00980C9E /* APIError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		F4F1FAB521A4211B00980C9E /* APIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		F4F1FAB621A4211B00980C9E /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		F4F1FAB721A4211B00980C9E /* DefaultAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultAPIClient.swift; sourceTree = "<group>"; };
+		F4F1FAB921A4211B00980C9E /* ReactionTagsRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactionTagsRequest.swift; sourceTree = "<group>"; };
+		F4F1FABB21A4211B00980C9E /* APIQueryParameter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIQueryParameter.swift; sourceTree = "<group>"; };
+		F4F1FABC21A4211B00980C9E /* APIRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
+		F4F1FABF21A4211B00980C9E /* GfycatService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GfycatService.swift; sourceTree = "<group>"; };
+		F4F1FACA21A421A700980C9E /* Foundation.URLRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Foundation.URLRequest.swift; sourceTree = "<group>"; };
+		F4F1FACB21A421A700980C9E /* Foundation.URLComponents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Foundation.URLComponents.swift; sourceTree = "<group>"; };
+		F4F1FACF21A4220600980C9E /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		F4F1FAD121A425FA00980C9E /* SearchRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRequest.swift; sourceTree = "<group>"; };
+		F4F1FAD621A42DF700980C9E /* ReactionTagsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactionTagsResponse.swift; sourceTree = "<group>"; };
+		F4F1FAD821A42E0600980C9E /* ReactionTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactionTag.swift; sourceTree = "<group>"; };
+		F4F1FADA21A42E3900980C9E /* GifViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,11 +179,13 @@
 			isa = PBXGroup;
 			children = (
 				F4B424A521944D6A00C3709B /* AppDelegate.swift */,
+				F4F1FACE21A421D800980C9E /* Model */,
 				F4B424D92194643400C3709B /* Abstractions */,
 				F4B424B9219451BC00C3709B /* FlowControllers */,
 				F4B424B72194516800C3709B /* Interface */,
 				F4B424BA219451C700C3709B /* Protocols */,
 				F4B424BB219451CB00C3709B /* Extensions */,
+				F4F1FAB321A4211B00980C9E /* Network */,
 				F4B424B82194518A00C3709B /* Resources */,
 				F4B424AE21944D6C00C3709B /* LaunchScreen.storyboard */,
 			);
@@ -204,6 +236,8 @@
 		F4B424BB219451CB00C3709B /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				F4F1FACB21A421A700980C9E /* Foundation.URLComponents.swift */,
+				F4F1FACA21A421A700980C9E /* Foundation.URLRequest.swift */,
 				F4B424C92194558A00C3709B /* UIKit.UIView.swift */,
 				F48B4B7D2199CE0600E4C1DF /* Reusable.swift */,
 			);
@@ -257,6 +291,73 @@
 				F4B424E321946BD400C3709B /* DetailsView.swift */,
 			);
 			path = Details;
+			sourceTree = "<group>";
+		};
+		F4F1FAB321A4211B00980C9E /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				F4F1FACF21A4220600980C9E /* Result.swift */,
+				F4F1FAB421A4211B00980C9E /* APIError.swift */,
+				F4F1FAB521A4211B00980C9E /* APIService.swift */,
+				F4F1FAB621A4211B00980C9E /* APIClient.swift */,
+				F4F1FAB721A4211B00980C9E /* DefaultAPIClient.swift */,
+				F4F1FAB821A4211B00980C9E /* Requests */,
+				F4F1FABB21A4211B00980C9E /* APIQueryParameter.swift */,
+				F4F1FABC21A4211B00980C9E /* APIRequest.swift */,
+				F4F1FABD21A4211B00980C9E /* Services */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		F4F1FAB821A4211B00980C9E /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				F4F1FAB921A4211B00980C9E /* ReactionTagsRequest.swift */,
+				F4F1FAD121A425FA00980C9E /* SearchRequest.swift */,
+			);
+			path = Requests;
+			sourceTree = "<group>";
+		};
+		F4F1FABD21A4211B00980C9E /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				F4F1FABF21A4211B00980C9E /* GfycatService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		F4F1FACE21A421D800980C9E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F4F1FAD421A42DB700980C9E /* ViewModel */,
+				F4F1FAD321A42DA000980C9E /* APIResponse */,
+				F4F1FAD521A42DBF00980C9E /* Realm */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F4F1FAD321A42DA000980C9E /* APIResponse */ = {
+			isa = PBXGroup;
+			children = (
+				F4F1FAD621A42DF700980C9E /* ReactionTagsResponse.swift */,
+				F4F1FAD821A42E0600980C9E /* ReactionTag.swift */,
+			);
+			path = APIResponse;
+			sourceTree = "<group>";
+		};
+		F4F1FAD421A42DB700980C9E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F4F1FADA21A42E3900980C9E /* GifViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F4F1FAD521A42DBF00980C9E /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Realm;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -355,31 +456,46 @@
 				F44001DD2195A1C50039A707 /* CreateFlowControllerFactory.swift in Sources */,
 				F4B424D82194617F00C3709B /* CreateView.swift in Sources */,
 				F44001DB2195A1BB0039A707 /* UserFlowControllerFactory.swift in Sources */,
+				F4F1FAC921A4211B00980C9E /* GfycatService.swift in Sources */,
 				F4B424D62194617800C3709B /* CreateViewController.swift in Sources */,
 				F48B4B7E2199CE0600E4C1DF /* Reusable.swift in Sources */,
 				F4B424DD2194647500C3709B /* TabView.swift in Sources */,
 				F48B4B7C2199CDE500E4C1DF /* Cell.swift in Sources */,
 				F4B424C5219454B600C3709B /* PopularViewController.swift in Sources */,
 				F48B4B7A2199CDB900E4C1DF /* GifCell.swift in Sources */,
+				F4F1FAC621A4211B00980C9E /* APIQueryParameter.swift in Sources */,
 				F44001D721959F3D0039A707 /* PopularFlowControllerFactory.swift in Sources */,
+				F4F1FADB21A42E3900980C9E /* GifViewModel.swift in Sources */,
 				F4B424DF2194675800C3709B /* ViewController.swift in Sources */,
+				F4F1FAD221A425FA00980C9E /* SearchRequest.swift in Sources */,
 				F48B4B832199DFDF00E4C1DF /* CreateLibraryViewController.swift in Sources */,
+				F4F1FAD921A42E0600980C9E /* ReactionTag.swift in Sources */,
 				F4B424D22194616600C3709B /* UserViewController.swift in Sources */,
 				F48B4B872199E01400E4C1DF /* CreateOnlineView.swift in Sources */,
+				F4F1FAD021A4220600980C9E /* Result.swift in Sources */,
 				F4B424A621944D6A00C3709B /* AppDelegate.swift in Sources */,
+				F4F1FAC321A4211B00980C9E /* DefaultAPIClient.swift in Sources */,
 				F4B424CA2194558A00C3709B /* UIKit.UIView.swift in Sources */,
+				F4F1FAC421A4211B00980C9E /* ReactionTagsRequest.swift in Sources */,
+				F4F1FAC121A4211B00980C9E /* APIService.swift in Sources */,
 				F4B424CC2194594800C3709B /* TabBarController.swift in Sources */,
 				F4B424C32194544700C3709B /* FlowController.swift in Sources */,
 				F4B424DB2194644600C3709B /* View.swift in Sources */,
 				F4B424C82194550300C3709B /* PopularView.swift in Sources */,
+				F4F1FAD721A42DF700980C9E /* ReactionTagsResponse.swift in Sources */,
 				F4B424EB2194771C00C3709B /* UserFlowController.swift in Sources */,
 				F4B424ED2194772C00C3709B /* CreateFlowController.swift in Sources */,
 				F4B424D42194616E00C3709B /* UserView.swift in Sources */,
 				F4B424E421946BD400C3709B /* DetailsView.swift in Sources */,
 				F48B4B812199DFD100E4C1DF /* CreateOnlineViewController.swift in Sources */,
+				F4F1FAC021A4211B00980C9E /* APIError.swift in Sources */,
+				F4F1FACC21A421A700980C9E /* Foundation.URLRequest.swift in Sources */,
 				F48B4B892199E01F00E4C1DF /* CreateLibraryView.swift in Sources */,
 				F4B424E221946BCD00C3709B /* DetailsViewController.swift in Sources */,
 				F4B424E92194751C00C3709B /* PopularFlowController.swift in Sources */,
+				F4F1FAC721A4211B00980C9E /* APIRequest.swift in Sources */,
+				F4F1FAC221A4211B00980C9E /* APIClient.swift in Sources */,
+				F4F1FACD21A421A700980C9E /* Foundation.URLComponents.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
