@@ -1,5 +1,4 @@
 import UIKit
-import SwiftyGif
 
 protocol PopularViewControllerFlowDelegate: class {
     func showDetails(gif: String)
@@ -10,6 +9,11 @@ final class PopularViewController: ViewController {
     // MARK: - Properties
     private let popularView = PopularView()
     weak var flowDelegate: PopularViewControllerFlowDelegate?
+    let gifUrlStrings = ["https://media.giphy.com/media/lfmYxOkGpNtEk/giphy.gif",
+                         "https://media.giphy.com/media/NZIlOR29UF3k4/giphy.gif",
+                         "https://media.giphy.com/media/JPsFUPp3vLS5q/giphy.gif",
+                         "https://media.giphy.com/media/ld1RKulOqeeaI/giphy.gif"
+                        ]
     
     // MARK: - Overrides
     override func loadView() {
@@ -40,13 +44,15 @@ extension PopularViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        flowDelegate?.showDetails(gif: "Selected Gif \(indexPath.row)")
+        flowDelegate?.showDetails(gif: gifUrlStrings[indexPath.row])
     }
 }
 
 extension PopularViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: GifCell.reuseIdentifier) as? GifCell {
+            let currentGifUrlString = gifUrlStrings[indexPath.row]
+            cell.gifUrlString = currentGifUrlString
             return cell
         } else {
             return UITableViewCell()
@@ -54,6 +60,6 @@ extension PopularViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return gifUrlStrings.count
     }
 }
