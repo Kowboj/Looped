@@ -4,8 +4,8 @@ final class DefaultAPIClient: APIClient {
     
     private let session: URLSession
     
-    init() {
-        session = .shared
+    init(session: URLSession = .shared) {
+        self.session = session
     }
     
     func send(request: APIRequest, completion: @escaping (Result<Data>) -> ()) {

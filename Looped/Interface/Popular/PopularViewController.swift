@@ -15,7 +15,13 @@ final class PopularViewController: ViewController {
     private let popularViewModel: PopularViewModelProtocol
     private let popularView = PopularView()
     weak var flowDelegate: PopularViewControllerFlowDelegate?
-    private var reactionTags: [ReactionTag] = []
+    private var reactionTags: [ReactionTag] = [] {
+        didSet {
+            DispatchQueue.main.async {
+                self.popularView.tableView.reloadData()
+            }
+        }
+    }
     
     // MARK: - Overrides
     override func loadView() {
@@ -32,9 +38,6 @@ final class PopularViewController: ViewController {
         setupTableView()
         fetchTags { [weak self] (tags) in
             self?.reactionTags = tags
-            DispatchQueue.main.async {
-                self?.popularView.tableView.reloadData()
-            }
         }
     }
     
