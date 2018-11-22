@@ -1,14 +1,25 @@
 import Foundation
 
-final class PopularViewModel {
+protocol PopularViewModelProtocol {
+    func getReactionTags(completion: @escaping ([ReactionTag], Error?) -> Void)
+}
+
+final class PopularViewModel: PopularViewModelProtocol {
     
-    private let service: ReactionTagsService
+    private var service: ReactionTagsServiceProtocol
     
-    init(service: ReactionTagsService) {
+    init(service: ReactionTagsServiceProtocol) {
         self.service = service
     }
     
-    func getReactionTags(completion: @escaping ([ReactionTag]) -> Void) {
-        service.getReactionTags(completion: completion)
+    func getReactionTags(completion: @escaping ([ReactionTag], Error?) -> Void) {
+        service.getReactionTags { (result) in
+            switch result {
+            case .success(let tags):
+                completion(tags, nil)
+            case .failure(let error):
+                completion([], error)
+            }
+        }
     }
 }

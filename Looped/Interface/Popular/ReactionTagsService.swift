@@ -1,7 +1,7 @@
 import Foundation
 
 protocol ReactionTagsServiceProtocol {
-    func getReactionTags(completion: @escaping ([ReactionTag]) -> Void)
+    func getReactionTags(completion: @escaping (Result<[ReactionTag]>) -> Void)
 }
 
 final class ReactionTagsService: ReactionTagsServiceProtocol {
@@ -12,19 +12,19 @@ final class ReactionTagsService: ReactionTagsServiceProtocol {
         self.apiClient = apiClient
     }
     
-    func getReactionTags(completion: @escaping ([ReactionTag]) -> Void) {
+    func getReactionTags(completion: @escaping (Result<[ReactionTag]>) -> Void) {
         apiClient.send(request: ReactionTagsRequest()) { (result) in
             switch result {
             case .success(let data):
                 do {
                     let model = try JSONDecoder().decode(ReactionTagsResponse.self, from: data)
                     // TODO: - Save to Realm
-                    completion(model.tags)
+                    completion(Result.success(model.tags))
                 } catch let jsonError {
-                    print(jsonError)
+                    completion(Result.failure(jsonError))
                 }
             case .failure(let error):
-                print(error)
+                completion(Result.failure(error))
             }
         }
     }

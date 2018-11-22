@@ -6,13 +6,13 @@ protocol PopularViewControllerFlowDelegate: class {
 
 final class PopularViewController: ViewController {
     
-    init(viewModel: PopularViewModel) {
+    init(viewModel: PopularViewModelProtocol) {
         self.popularViewModel = viewModel
         super.init()
     }
     
     // MARK: - Properties
-    private let popularViewModel: PopularViewModel
+    private let popularViewModel: PopularViewModelProtocol
     private let popularView = PopularView()
     weak var flowDelegate: PopularViewControllerFlowDelegate?
     private var reactionTags: [ReactionTag] = []
@@ -30,10 +30,10 @@ final class PopularViewController: ViewController {
     override func setupProperties() {
         super.setupProperties()
         setupTableView()
-        popularViewModel.getReactionTags { (tags) in
-            self.reactionTags = tags
+        fetchTags { [weak self] (tags) in
+            self?.reactionTags = tags
             DispatchQueue.main.async {
-                self.popularView.tableView.reloadData()
+                self?.popularView.tableView.reloadData()
             }
         }
     }
@@ -43,6 +43,16 @@ final class PopularViewController: ViewController {
         popularView.tableView.register(GifCell.self, forCellReuseIdentifier: GifCell.reuseIdentifier)
         popularView.tableView.delegate = self
         popularView.tableView.dataSource = self
+    }
+    
+    private func fetchTags(completion: @escaping ([ReactionTag]) -> ()) {
+        popularViewModel.getReactionTags { (tags, error) in
+            if error != nil {
+                // TODO: - load from Realm and complete with realmTags
+            } else {
+                completion(tags)
+            }
+        }
     }
 }
 
