@@ -6,7 +6,9 @@ protocol PopularFlowControllerFactoryProtocol {
 final class  PopularFlowControllerFactory: PopularFlowControllerFactoryProtocol {
     
     func buildPopularViewController(delegate: PopularViewControllerFlowDelegate) -> PopularViewController {
-        let viewController = PopularViewController()
+        let service = ReactionTagsService(apiClient: DefaultAPIClient())
+        let viewModel = PopularViewModel(service: service)
+        let viewController = PopularViewController(viewModel: viewModel)
         viewController.flowDelegate = delegate
         return viewController
     }
