@@ -2,7 +2,7 @@ import Foundation
 
 struct SearchRequest: APIRequest {
     
-    let text: String
+    private let text: String
     
     init(text: String) {
         self.text = text
