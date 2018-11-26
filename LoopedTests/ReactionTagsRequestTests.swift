@@ -1,11 +1,3 @@
-//
-//  ReactionTagsRequestTests.swift
-//  LoopedTests
-//
-//  Created by NoGravity DEV on 23/11/2018.
-//  Copyright © 2018 kowboj. All rights reserved.
-//
-
 import XCTest
 @testable import Looped
 
@@ -15,11 +7,13 @@ class ReactionTagsRequestTests: XCTestCase {
     var sut: ReactionTagsRequest?
     
     override func setUp() {
+        super.setUp()
         defaultAPIClient = DefaultAPIClient()
         sut = ReactionTagsRequest()
     }
 
     override func tearDown() {
+        super.tearDown()
         defaultAPIClient = nil
         sut = nil
     }
