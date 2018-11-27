@@ -1,14 +1,21 @@
-os: osx
 language: swift
-
-xcode_project: Looped.xcodeproj # path to your xcodeproj folder
-xcode_scheme: LoopedTests
-xcode_destination: platform=iOS Simulator,OS=11.4,name=iPhone X
+osx_image: xcode10.0
 
 cache:
   directories:
   - Carthage
-  
+
+env:
+  #environment variables
+  global:
+    - LANG=en_US.UTF-8
+    - LC_ALL=en_US.UTF-8
+    - PROJECT_NAME="Looped.xcodeproj"
+    - SCHEME_TESTS="LoopedTests"
+    - IOS_SDK=iphonesimulator12.0
+  matrix:
+    - DESTINATION="OS=12.0,name=iPhone X" SCHEME="$SCHEME_TESTS" SDK="$IOS_SDK"
+
 before_install:
   - brew install carthage || true
   - brew outdated carthage || brew upgrade carthage
@@ -17,7 +24,7 @@ before_install:
 before_script:
   # bootstrap the dependencies for the project
   - carthage bootstrap --platform iOS --no-use-binaries --cache-builds
-  
-  script:
+
+script:
   - set -o pipefail
-  - xcodebuild clean test -project "$xcode_project" -scheme "$xcode_scheme" -destination "$xcode_destination" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO | xcpretty -f `xcpretty-travis-formatter`
+  - xcodebuild clean test -project "$PROJECT_NAME" -scheme "$SCHEME" -destination "$DESTINATION" -sdk "$SDK" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO | xcpretty -f `xcpretty-travis-formatter`
