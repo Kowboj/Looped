@@ -1,10 +1,6 @@
 language: swift
 osx_image: xcode10.0
 
-cache:
-  directories:
-  - Carthage
-
 env:
   #environment variables
   global:
@@ -23,7 +19,7 @@ before_install:
 
 before_script:
   # bootstrap the dependencies for the project
-  - carthage bootstrap --platform iOS --no-use-binaries --cache-builds
+  - carthage bootstrap --platform iOS --no-use-binaries
 
 script:
   - set -o pipefail
