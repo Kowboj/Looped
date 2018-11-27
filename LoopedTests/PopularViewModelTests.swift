@@ -1,40 +1,20 @@
 import XCTest
 @testable import Looped
 
-class MockReactionTagsService: ReactionTagsServiceProtocol {
-    var isGetReactionTagsCalled = false
-    var result: Result<[ReactionTag]>?
-    
-    func getReactionTags(completion: @escaping (Result<[ReactionTag]>) -> Void) {
-        isGetReactionTagsCalled = true
-        if result != nil {
-            completion(result!)
-        }
-    }
-    
-    func getSuccess() {
-        result = Result.success([])
-    }
-    
-    func getFailure(error: APIError) {
-        result = Result.failure(error)
-    }
-}
-
 class PopularViewModelTests: XCTestCase {
     var apiError: APIError?
-    var mockReactionTagsService: MockReactionTagsService?
-    var sut: PopularViewModelProtocol?
+    var mockReactionTagsService: MockReactionTagsService!
+    var sut: PopularViewModelProtocol!
     
     override func setUp() {
         super.setUp()
         apiError = APIError.incorrectURL(url: "")
         mockReactionTagsService = MockReactionTagsService()
-        sut = PopularViewModel(service: mockReactionTagsService!)
+        sut = PopularViewModel(service: mockReactionTagsService)
     }
     
     func testGetReactionTags() {
-        sut!.getReactionTags { (tags, error) in }
+        sut.getReactionTags { (tags, error) in }
         XCTAssert(mockReactionTagsService!.isGetReactionTagsCalled)
     }
     

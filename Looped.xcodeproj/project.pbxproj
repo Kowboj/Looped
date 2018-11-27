@@ -15,6 +15,10 @@
 		F44001D721959F3D0039A707 /* PopularFlowControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44001D621959F3D0039A707 /* PopularFlowControllerFactory.swift */; };
 		F44001DB2195A1BB0039A707 /* UserFlowControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44001DA2195A1BB0039A707 /* UserFlowControllerFactory.swift */; };
 		F44001DD2195A1C50039A707 /* CreateFlowControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44001DC2195A1C50039A707 /* CreateFlowControllerFactory.swift */; };
+		F444280A21AD42DD0004D605 /* MockAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F444280921AD42DD0004D605 /* MockAPIService.swift */; };
+		F444280C21AD432E0004D605 /* MockAPIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F444280B21AD432E0004D605 /* MockAPIRequest.swift */; };
+		F444280E21AD43740004D605 /* MockAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F444280D21AD43740004D605 /* MockAPIClient.swift */; };
+		F444281021AD43C30004D605 /* MockReactionTagsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F444280F21AD43C30004D605 /* MockReactionTagsService.swift */; };
 		F48733EC21A7F681008CB201 /* PopularViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48733EB21A7F681008CB201 /* PopularViewModelTests.swift */; };
 		F48733EE21A7FF02008CB201 /* ReactionTagsServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48733ED21A7FF02008CB201 /* ReactionTagsServiceTests.swift */; };
 		F48733F221A80B7A008CB201 /* ReactionTagsRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48733F121A80B7A008CB201 /* ReactionTagsRequestTests.swift */; };
@@ -83,6 +87,10 @@
 		F44001D621959F3D0039A707 /* PopularFlowControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularFlowControllerFactory.swift; sourceTree = "<group>"; };
 		F44001DA2195A1BB0039A707 /* UserFlowControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFlowControllerFactory.swift; sourceTree = "<group>"; };
 		F44001DC2195A1C50039A707 /* CreateFlowControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateFlowControllerFactory.swift; sourceTree = "<group>"; };
+		F444280921AD42DD0004D605 /* MockAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAPIService.swift; sourceTree = "<group>"; };
+		F444280B21AD432E0004D605 /* MockAPIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAPIRequest.swift; sourceTree = "<group>"; };
+		F444280D21AD43740004D605 /* MockAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAPIClient.swift; sourceTree = "<group>"; };
+		F444280F21AD43C30004D605 /* MockReactionTagsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockReactionTagsService.swift; sourceTree = "<group>"; };
 		F48733E121A7F62B008CB201 /* LoopedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LoopedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F48733E521A7F62B008CB201 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F48733EB21A7F681008CB201 /* PopularViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularViewModelTests.swift; sourceTree = "<group>"; };
@@ -184,9 +192,29 @@
 			path = Factories;
 			sourceTree = "<group>";
 		};
+		F444280721AD42B00004D605 /* Doubles */ = {
+			isa = PBXGroup;
+			children = (
+				F444280821AD42BF0004D605 /* Mocks */,
+			);
+			path = Doubles;
+			sourceTree = "<group>";
+		};
+		F444280821AD42BF0004D605 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				F444280921AD42DD0004D605 /* MockAPIService.swift */,
+				F444280B21AD432E0004D605 /* MockAPIRequest.swift */,
+				F444280D21AD43740004D605 /* MockAPIClient.swift */,
+				F444280F21AD43C30004D605 /* MockReactionTagsService.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
 		F48733E221A7F62B008CB201 /* LoopedTests */ = {
 			isa = PBXGroup;
 			children = (
+				F444280721AD42B00004D605 /* Doubles */,
 				F48733EB21A7F681008CB201 /* PopularViewModelTests.swift */,
 				F48733ED21A7FF02008CB201 /* ReactionTagsServiceTests.swift */,
 				F48733F121A80B7A008CB201 /* ReactionTagsRequestTests.swift */,
@@ -544,9 +572,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F444280A21AD42DD0004D605 /* MockAPIService.swift in Sources */,
+				F444280E21AD43740004D605 /* MockAPIClient.swift in Sources */,
 				F48733EE21A7FF02008CB201 /* ReactionTagsServiceTests.swift in Sources */,
+				F444280C21AD432E0004D605 /* MockAPIRequest.swift in Sources */,
 				F49FA77B21AC6435004740C5 /* SearchRequestTests.swift in Sources */,
 				F48733F221A80B7A008CB201 /* ReactionTagsRequestTests.swift in Sources */,
+				F444281021AD43C30004D605 /* MockReactionTagsService.swift in Sources */,
 				F48733EC21A7F681008CB201 /* PopularViewModelTests.swift in Sources */,
 				F49FA77D21AC67B3004740C5 /* APIServiceTests.swift in Sources */,
 			);

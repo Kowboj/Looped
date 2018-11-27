@@ -3,8 +3,8 @@ import XCTest
 
 class ReactionTagsRequestTests: XCTestCase {
 
-    var defaultAPIClient: DefaultAPIClient?
-    var sut: ReactionTagsRequest?
+    var defaultAPIClient: DefaultAPIClient!
+    var sut: ReactionTagsRequest!
     
     override func setUp() {
         super.setUp()
@@ -19,7 +19,7 @@ class ReactionTagsRequestTests: XCTestCase {
     }
 
     func testReactionTagsRequest() {
-        defaultAPIClient?.send(request: sut!, completion: { (result) in
+        defaultAPIClient.send(request: sut, completion: { (result) in
             switch result {
             case .success(let data):
                 do {
