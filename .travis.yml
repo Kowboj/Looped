@@ -1,2 +1,23 @@
 os: osx
 language: swift
+
+xcode_project: Looped.xcodeproj # path to your xcodeproj folder
+xcode_scheme: LoopedTests
+xcode_destination: platform=iOS Simulator,OS=11.4,name=iPhone X
+
+cache:
+  directories:
+  - Carthage
+  
+before_install:
+  - brew install carthage || true
+  - brew outdated carthage || brew upgrade carthage
+  - gem install xcpretty-travis-formatter --no-rdoc --no-ri --no-document --quiet
+
+before_script:
+  # bootstrap the dependencies for the project
+  - carthage bootstrap --platform iOS --no-use-binaries --cache-builds
+  
+  script:
+  - set -o pipefail
+  - xcodebuild clean test -project "$xcode_project" -scheme "$xcode_scheme" -destination "$xcode_destination" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO | xcpretty -f `xcpretty-travis-formatter`
