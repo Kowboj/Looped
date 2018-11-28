@@ -58,8 +58,8 @@ final class PopularViewController: ViewController {
             .disposed(by: disposeBag)
         
         popularView.tableView.rx.modelSelected(ReactionTag.self)
-            .subscribe(onNext: { [unowned self] tag in
-                self.flowDelegate?.showDetails(gif: tag.tag)
+            .subscribe(onNext: { [weak self] tag in
+                self?.flowDelegate?.showDetails(gif: tag.tag)
             })
             .disposed(by: disposeBag)
     }

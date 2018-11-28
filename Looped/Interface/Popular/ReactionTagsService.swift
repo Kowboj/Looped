@@ -21,4 +21,8 @@ final class ReactionTagsService: ReactionTagsServiceProtocol {
             .asObservable()
             .asSingle()
     }
+    
+    private struct ReactionTagsResponse: Decodable {
+        let tags: [ReactionTag]
+    }
 }
