@@ -1,4 +1,5 @@
 import UIKit
+import RxSwift
 
 final class DefaultAPIClient: APIClient {
     
@@ -8,32 +9,43 @@ final class DefaultAPIClient: APIClient {
         self.session = session
     }
     
-    func send(request: APIRequest, completion: @escaping (Result<Data>) -> ()) {
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        do {
-            let request = try URLRequest(request: request)
-            session.dataTask(with: request, completionHandler: { (data, response, error) in
-                if let data = data {
-                    completion(Result.success(data))
-                } else if let error = error {
-                    completion(Result.failure(error))
+    func send(request: APIRequest) -> Single<APIResponse> {
+        return Single<APIResponse>.create { [unowned self] single in
+            var urlRequest: URLRequest
+            do {
+                urlRequest = try URLRequest(request: request)
+            } catch let error {
+                single(.error(error))
+                return Disposables.create()
+            }
+            
+            let task = self.session.dataTask(with: urlRequest) { data, response, error in
+                if let error = error {
+                    if (error as NSError).code == NSURLErrorNotConnectedToInternet {
+                        single(.error(NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey : "You need internet connection at first launch"])))
+                    } else {
+                        single(.error(error))
+                    }
+                    return
                 }
-                DispatchQueue.main.async {
-                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                
+                guard let response = response as? HTTPURLResponse else {
+                    single(.error(NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey : "No response"])))
+                    return
                 }
-            }).resume()
-        } catch let error {
-            UIApplication.shared.isNetworkActivityIndicatorVisible = false
-            completion(Result<Data>.failure(error))
-        }
-    }
-    
-    private func decode<T: Decodable>(data: Data) -> Result<T> {
-        do {
-            let model = try JSONDecoder().decode(T.self, from: data)
-            return Result.success(model)
-        } catch let error {
-            return Result.failure(error)
+                
+                if 200..<300 ~= response.statusCode {
+                    single(.success(APIResponse(data: data, response: response)))
+                } else {
+                    single(.error(NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey : "Incorrect status code"])))
+                }
+            }
+            
+            task.resume()
+            
+            return Disposables.create {
+                task.cancel()
+            }
         }
     }
 }

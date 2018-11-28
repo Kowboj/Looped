@@ -1,7 +1,8 @@
 import Foundation
+import RxSwift
 
 protocol ReactionTagsServiceProtocol {
-    func getReactionTags(completion: @escaping (Result<[ReactionTag]>) -> Void)
+    func getReactionTags() -> Single<[ReactionTag]>
 }
 
 final class ReactionTagsService: ReactionTagsServiceProtocol {
@@ -12,20 +13,12 @@ final class ReactionTagsService: ReactionTagsServiceProtocol {
         self.apiClient = apiClient
     }
     
-    func getReactionTags(completion: @escaping (Result<[ReactionTag]>) -> Void) {
-        apiClient.send(request: ReactionTagsRequest()) { (result) in
-            switch result {
-            case .success(let data):
-                do {
-                    let model = try JSONDecoder().decode(ReactionTagsResponse.self, from: data)
-                    // TODO: - Save to Realm
-                    completion(Result.success(model.tags))
-                } catch let jsonError {
-                    completion(Result.failure(jsonError))
-                }
-            case .failure(let error):
-                completion(Result.failure(error))
-            }
-        }
+    func getReactionTags() -> Single<[ReactionTag]> {
+        return apiClient.send(request: ReactionTagsRequest())
+            .filter { $0.data != nil }
+            .map { try JSONDecoder().decode(ReactionTagsResponse.self, from: $0.data!) }
+            .map { $0.tags }
+            .asObservable()
+            .asSingle()
     }
 }

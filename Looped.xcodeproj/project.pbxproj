@@ -51,6 +51,9 @@
 		F4B424E92194751C00C3709B /* PopularFlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B424E82194751C00C3709B /* PopularFlowController.swift */; };
 		F4B424EB2194771C00C3709B /* UserFlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B424EA2194771C00C3709B /* UserFlowController.swift */; };
 		F4B424ED2194772C00C3709B /* CreateFlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B424EC2194772C00C3709B /* CreateFlowController.swift */; };
+		F4EB1EAF21AEB4E70015AF82 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4EB1EAD21AEB4E70015AF82 /* RxSwift.framework */; };
+		F4EB1EB021AEB4E70015AF82 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4EB1EAE21AEB4E70015AF82 /* RxCocoa.framework */; };
+		F4EB1F0521AED6D20015AF82 /* APIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EB1F0421AED6D20015AF82 /* APIResponse.swift */; };
 		F4F1FAC021A4211B00980C9E /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F1FAB421A4211B00980C9E /* APIError.swift */; };
 		F4F1FAC121A4211B00980C9E /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F1FAB521A4211B00980C9E /* APIService.swift */; };
 		F4F1FAC221A4211B00980C9E /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F1FAB621A4211B00980C9E /* APIClient.swift */; };
@@ -127,6 +130,9 @@
 		F4B424E82194751C00C3709B /* PopularFlowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularFlowController.swift; sourceTree = "<group>"; };
 		F4B424EA2194771C00C3709B /* UserFlowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFlowController.swift; sourceTree = "<group>"; };
 		F4B424EC2194772C00C3709B /* CreateFlowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateFlowController.swift; sourceTree = "<group>"; };
+		F4EB1EAD21AEB4E70015AF82 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
+		F4EB1EAE21AEB4E70015AF82 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
+		F4EB1F0421AED6D20015AF82 /* APIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResponse.swift; sourceTree = "<group>"; };
 		F4F1FAB421A4211B00980C9E /* APIError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		F4F1FAB521A4211B00980C9E /* APIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		F4F1FAB621A4211B00980C9E /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
@@ -158,6 +164,8 @@
 			files = (
 				F4191E0C21A2FCBE00577DB0 /* SwiftyGif.framework in Frameworks */,
 				F4191E0D21A2FCBE00577DB0 /* Regift.framework in Frameworks */,
+				F4EB1EAF21AEB4E70015AF82 /* RxSwift.framework in Frameworks */,
+				F4EB1EB021AEB4E70015AF82 /* RxCocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -176,6 +184,8 @@
 		F4191E0921A2FCBE00577DB0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F4EB1EAE21AEB4E70015AF82 /* RxCocoa.framework */,
+				F4EB1EAD21AEB4E70015AF82 /* RxSwift.framework */,
 				F4191E0B21A2FCBE00577DB0 /* Regift.framework */,
 				F4191E0A21A2FCBE00577DB0 /* SwiftyGif.framework */,
 			);
@@ -389,6 +399,7 @@
 				F4F1FAB421A4211B00980C9E /* APIError.swift */,
 				F4F1FAB521A4211B00980C9E /* APIService.swift */,
 				F4F1FAB621A4211B00980C9E /* APIClient.swift */,
+				F4EB1F0421AED6D20015AF82 /* APIResponse.swift */,
 				F4F1FAB721A4211B00980C9E /* DefaultAPIClient.swift */,
 				F4F1FAB821A4211B00980C9E /* Requests */,
 				F4F1FABB21A4211B00980C9E /* APIQueryParameter.swift */,
@@ -556,6 +567,8 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Regift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyGif.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
 			);
 			outputFileListPaths = (
 			);
@@ -631,6 +644,7 @@
 				F48B4B892199E01F00E4C1DF /* CreateLibraryView.swift in Sources */,
 				F4B424E221946BCD00C3709B /* DetailsViewController.swift in Sources */,
 				F4B424E92194751C00C3709B /* PopularFlowController.swift in Sources */,
+				F4EB1F0521AED6D20015AF82 /* APIResponse.swift in Sources */,
 				F4F1FAC721A4211B00980C9E /* APIRequest.swift in Sources */,
 				F4F1FAC221A4211B00980C9E /* APIClient.swift in Sources */,
 				F4F1FACD21A421A700980C9E /* Foundation.URLComponents.swift in Sources */,

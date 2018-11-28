@@ -1,6 +1,4 @@
-import Foundation
-
-struct ReactionTagsResponse: Codable {
+struct ReactionTagsResponse: Decodable {
     
     let tags: [ReactionTag]
 }
