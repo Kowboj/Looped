@@ -2,6 +2,7 @@ import UIKit
 
 protocol UserViewControllerFlowDelegate: class {
     func showDetails(gif: String)
+    func presentLogin()
 }
 
 final class UserViewController: ViewController {
@@ -22,6 +23,7 @@ final class UserViewController: ViewController {
     
     override func setupProperties() {
         super.setupProperties()
+        userView.loginButton.addTarget(self, action: #selector(loginTapped), for: UIControl.Event.touchUpInside)
         setupSegmentedControl()
         setupTableView()
     }
@@ -34,8 +36,7 @@ final class UserViewController: ViewController {
         userView.segmentedControl.addTarget(self, action: #selector(segmentedTapped), for: .valueChanged)
     }
     
-    // MARK: - Private
-    func setupTableView() {
+    private func setupTableView() {
         userView.tableView.register(GifCell.self, forCellReuseIdentifier: GifCell.reuseIdentifier)
         userView.tableView.delegate = self
         userView.tableView.dataSource = self
@@ -44,6 +45,10 @@ final class UserViewController: ViewController {
     @objc private func segmentedTapped(sender: UISegmentedControl) {
         // TODO: - Create two dataSource objects?
         userView.tableView.reloadData()
+    }
+    
+    @objc private func loginTapped() {
+        flowDelegate?.presentLogin()
     }
 }
 

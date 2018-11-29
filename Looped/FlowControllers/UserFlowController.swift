@@ -15,7 +15,13 @@ final class UserFlowController: FlowController {
 }
 
 extension UserFlowController: UserViewControllerFlowDelegate {
+
     func showDetails(gif: String) {
         navigationController.pushViewController(controllersFactory.buildDetailsViewController(gif: gif, delegate: self), animated: true)
     }
+    
+    func presentLogin() {
+        navigationController.present(controllersFactory.buildLoginViewController(delegate: self), animated: true, completion: nil)
+    }
+    
 }
