@@ -1,5 +1,5 @@
-import Foundation
+import RxSwift
 
 protocol APIClient {
-    func send(request: APIRequest, completion: @escaping (Result<Data>) -> ())
+    func send(request: APIRequest) -> Single<APIResponse>
 }

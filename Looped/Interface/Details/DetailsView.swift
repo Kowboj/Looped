@@ -19,4 +19,9 @@ final class DetailsView: View {
         super.setupProperties()
         backgroundColor = .lightGray
     }
+    
+    override func setupLayoutConstraints() {
+        super.setupLayoutConstraints()
+        detailsInfoLabel.centerInSuperview()
+    }
 }

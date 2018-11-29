@@ -1,4 +1,5 @@
 import UIKit
+import RxSwift
 
 final class DetailsViewController: ViewController {
     

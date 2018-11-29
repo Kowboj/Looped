@@ -1,7 +1,8 @@
 import Foundation
+import RxSwift
 
 protocol PopularViewModelProtocol {
-    func getReactionTags(completion: @escaping ([ReactionTag], Error?) -> Void)
+    var reactionTags: Observable<[ReactionTag]> { get }
 }
 
 final class PopularViewModel: PopularViewModelProtocol {
@@ -12,14 +13,7 @@ final class PopularViewModel: PopularViewModelProtocol {
         self.service = service
     }
     
-    func getReactionTags(completion: @escaping ([ReactionTag], Error?) -> Void) {
-        service.getReactionTags { (result) in
-            switch result {
-            case .success(let tags):
-                completion(tags, nil)
-            case .failure(let error):
-                completion([], error)
-            }
-        }
-    }
+    lazy var reactionTags: Observable<[ReactionTag]> = {
+        return service.getReactionTags().asObservable()
+    }()
 }

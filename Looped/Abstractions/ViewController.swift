@@ -14,9 +14,11 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         setupNavigationItem()
         setupProperties()
+        setupBindings()
     }
     
     func setupNavigationItem() {}
     func setupProperties() {}
-    
+    func setupBindings() {}
+
 }
