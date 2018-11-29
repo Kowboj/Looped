@@ -39,12 +39,9 @@ final class PopularViewController: ViewController {
     override func setupProperties() {
         super.setupProperties()
         popularView.tableView.register(GifCell.self, forCellReuseIdentifier: GifCell.reuseIdentifier)
-        setupBindings()
     }
     
-    // MARK: - Private
-    
-    private func setupBindings() {
+    override func setupBindings() {
         
         popularViewModel.reactionTags
             .bind(to: popularView.tableView.rx.items(cellIdentifier: GifCell.reuseIdentifier, cellType: GifCell.self)) { _ , element, cell in

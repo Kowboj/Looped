@@ -15,6 +15,7 @@
 		F44001D721959F3D0039A707 /* PopularFlowControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44001D621959F3D0039A707 /* PopularFlowControllerFactory.swift */; };
 		F44001DB2195A1BB0039A707 /* UserFlowControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44001DA2195A1BB0039A707 /* UserFlowControllerFactory.swift */; };
 		F44001DD2195A1C50039A707 /* CreateFlowControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44001DC2195A1C50039A707 /* CreateFlowControllerFactory.swift */; };
+		F4867CA621AFF32E006BD547 /* ExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4867CA521AFF32E006BD547 /* ExampleTests.swift */; };
 		F48B4B7A2199CDB900E4C1DF /* GifCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48B4B792199CDB900E4C1DF /* GifCell.swift */; };
 		F48B4B7C2199CDE500E4C1DF /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48B4B7B2199CDE500E4C1DF /* Cell.swift */; };
 		F48B4B7E2199CE0600E4C1DF /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48B4B7D2199CE0600E4C1DF /* Reusable.swift */; };
@@ -80,6 +81,7 @@
 		F44001D621959F3D0039A707 /* PopularFlowControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularFlowControllerFactory.swift; sourceTree = "<group>"; };
 		F44001DA2195A1BB0039A707 /* UserFlowControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFlowControllerFactory.swift; sourceTree = "<group>"; };
 		F44001DC2195A1C50039A707 /* CreateFlowControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateFlowControllerFactory.swift; sourceTree = "<group>"; };
+		F4867CA521AFF32E006BD547 /* ExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleTests.swift; sourceTree = "<group>"; };
 		F48733E121A7F62B008CB201 /* LoopedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LoopedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F48733E521A7F62B008CB201 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F48B4B792199CDB900E4C1DF /* GifCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifCell.swift; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				F48733E521A7F62B008CB201 /* Info.plist */,
+				F4867CA521AFF32E006BD547 /* ExampleTests.swift */,
 			);
 			path = LoopedTests;
 			sourceTree = "<group>";
@@ -465,6 +468,7 @@
 				TargetAttributes = {
 					F48733E021A7F62B008CB201 = {
 						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1010;
 						TestTargetID = F4B424A121944D6A00C3709B;
 					};
 					F4B424A121944D6A00C3709B = {
@@ -539,6 +543,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4867CA621AFF32E006BD547 /* ExampleTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -621,6 +626,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B746NKQ5P6;
 				INFOPLIST_FILE = LoopedTests/Info.plist;
@@ -631,6 +637,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.kowboj.LoopedTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Looped.app/Looped";
@@ -641,6 +649,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B746NKQ5P6;
 				INFOPLIST_FILE = LoopedTests/Info.plist;
@@ -651,6 +660,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.kowboj.LoopedTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Looped.app/Looped";
