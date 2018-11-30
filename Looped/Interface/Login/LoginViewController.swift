@@ -1,4 +1,5 @@
 import UIKit
+import RxSwift
 
 final class LoginViewController: ViewController {
     
@@ -14,6 +15,10 @@ final class LoginViewController: ViewController {
     override func setupProperties() {
         super.setupProperties()
         loginView.closeButton.addTarget(self, action: #selector(close), for: UIControl.Event.touchUpInside)
+    }
+
+    override func setupBindings() {
+        super.setupBindings()
     }
     
     // MARK: - Private

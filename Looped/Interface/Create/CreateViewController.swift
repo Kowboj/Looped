@@ -1,7 +1,7 @@
 import UIKit
 
 protocol CreateViewControllerFlowDelegate: class {
-    func showDetails(gif: String)
+    func showDetails(gif: GifViewModel)
 }
 
 final class CreateViewController: ViewController {

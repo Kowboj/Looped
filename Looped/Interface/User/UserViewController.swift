@@ -1,4 +1,5 @@
 import UIKit
+import RxSwift
 
 protocol UserViewControllerFlowDelegate: class {
     func showDetails(gif: String)
@@ -9,6 +10,8 @@ final class UserViewController: ViewController {
     
     // MARK: - Properties
     private let userView = UserView()
+    private let disposeBag = DisposeBag()
+
     weak var flowDelegate: UserViewControllerFlowDelegate?
     
     // MARK: - Overrides
@@ -18,16 +21,31 @@ final class UserViewController: ViewController {
     
     override func setupNavigationItem() {
         super.setupNavigationItem()
-        navigationItem.title = "Arnold Kangur"
     }
     
     override func setupProperties() {
         super.setupProperties()
-        userView.loginButton.addTarget(self, action: #selector(loginTapped), for: UIControl.Event.touchUpInside)
+
+        userView.tableView.estimatedRowHeight = 200
+
         setupSegmentedControl()
         setupTableView()
     }
-    
+
+    override func setupBindings() {
+        super.setupBindings()
+
+        Observable.just("Arnold Kangur")
+            .bind(to: rx.title)
+            .disposed(by: disposeBag)
+
+        userView.loginButton.rx.tap
+            .subscribe(onNext: { [unowned self] in
+                self.flowDelegate?.presentLogin()
+            })
+            .disposed(by: disposeBag)
+    }
+
     // MARK: - Private
     
     private func setupSegmentedControl() {

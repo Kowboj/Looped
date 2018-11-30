@@ -1,7 +1,14 @@
 import UIKit
 
+
 final class UserFlowController: FlowController {
-    
+
+    private let sessionProvider: SessionProviding
+
+    init(sessionProvider: SessionProviding) {
+        self.sessionProvider = sessionProvider
+    }
+
     let controllersFactory = UserFlowControllerFactory()
     lazy var rootViewController: UINavigationController = {
         navigationController.viewControllers = [controllersFactory.buildUserViewController(delegate: self)]
@@ -23,5 +30,6 @@ extension UserFlowController: UserViewControllerFlowDelegate {
     func presentLogin() {
         navigationController.present(controllersFactory.buildLoginViewController(delegate: self), animated: true, completion: nil)
     }
-    
+
+
 }

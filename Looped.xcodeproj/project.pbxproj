@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		73292F5A21B1259A00330469 /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73292F5921B1259A00330469 /* DetailsViewModel.swift */; };
+		73292F5D21B12A7500330469 /* ApplicationDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73292F5C21B12A7500330469 /* ApplicationDependencies.swift */; };
+		73292F6021B12D3F00330469 /* SessionProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73292F5F21B12D3F00330469 /* SessionProvider.swift */; };
+		73292F6221B12D8B00330469 /* SessionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73292F6121B12D8B00330469 /* SessionStore.swift */; };
 		F403A8D121A4678100087587 /* PopularViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F403A8D021A4678100087587 /* PopularViewModel.swift */; };
 		F403A8D321A4684900087587 /* ReactionTagsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F403A8D221A4684900087587 /* ReactionTagsService.swift */; };
 		F403A8D621A46FFF00087587 /* GifCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F403A8D521A46FFF00087587 /* GifCellViewModel.swift */; };
@@ -76,6 +80,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		73292F5921B1259A00330469 /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
+		73292F5C21B12A7500330469 /* ApplicationDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationDependencies.swift; sourceTree = "<group>"; };
+		73292F5F21B12D3F00330469 /* SessionProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionProvider.swift; sourceTree = "<group>"; };
+		73292F6121B12D8B00330469 /* SessionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionStore.swift; sourceTree = "<group>"; };
 		F403A8D021A4678100087587 /* PopularViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularViewModel.swift; sourceTree = "<group>"; };
 		F403A8D221A4684900087587 /* ReactionTagsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactionTagsService.swift; sourceTree = "<group>"; };
 		F403A8D521A46FFF00087587 /* GifCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifCellViewModel.swift; sourceTree = "<group>"; };
@@ -160,6 +168,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		73292F5B21B12A5F00330469 /* Dependencies */ = {
+			isa = PBXGroup;
+			children = (
+				73292F5C21B12A7500330469 /* ApplicationDependencies.swift */,
+			);
+			path = Dependencies;
+			sourceTree = "<group>";
+		};
+		73292F5E21B12D2D00330469 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				73292F5F21B12D3F00330469 /* SessionProvider.swift */,
+				73292F6121B12D8B00330469 /* SessionStore.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
 		F403A8D421A46FBA00087587 /* GifCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -239,6 +264,8 @@
 		F4B424A421944D6A00C3709B /* Looped */ = {
 			isa = PBXGroup;
 			children = (
+				73292F5E21B12D2D00330469 /* Authentication */,
+				73292F5B21B12A5F00330469 /* Dependencies */,
 				F4B424A521944D6A00C3709B /* AppDelegate.swift */,
 				F4F1FACE21A421D800980C9E /* Model */,
 				F4B424D92194643400C3709B /* Abstractions */,
@@ -353,6 +380,7 @@
 			children = (
 				F4B424E121946BCD00C3709B /* DetailsViewController.swift */,
 				F4B424E321946BD400C3709B /* DetailsView.swift */,
+				73292F5921B1259A00330469 /* DetailsViewModel.swift */,
 			);
 			path = Details;
 			sourceTree = "<group>";
@@ -583,8 +611,10 @@
 				F4EE316921B028010023B68A /* LoginViewController.swift in Sources */,
 				F4F1FAC621A4211B00980C9E /* APIQueryParameter.swift in Sources */,
 				F44001D721959F3D0039A707 /* PopularFlowControllerFactory.swift in Sources */,
+				73292F6021B12D3F00330469 /* SessionProvider.swift in Sources */,
 				F4EE316B21B029BE0023B68A /* LoginView.swift in Sources */,
 				F4F1FADB21A42E3900980C9E /* GifViewModel.swift in Sources */,
+				73292F6221B12D8B00330469 /* SessionStore.swift in Sources */,
 				F4B424DF2194675800C3709B /* ViewController.swift in Sources */,
 				F4F1FAD221A425FA00980C9E /* SearchRequest.swift in Sources */,
 				F48B4B832199DFDF00E4C1DF /* CreateLibraryViewController.swift in Sources */,
@@ -605,6 +635,7 @@
 				F4B424EB2194771C00C3709B /* UserFlowController.swift in Sources */,
 				F4B424ED2194772C00C3709B /* CreateFlowController.swift in Sources */,
 				F4B424D42194616E00C3709B /* UserView.swift in Sources */,
+				73292F5A21B1259A00330469 /* DetailsViewModel.swift in Sources */,
 				F4B424E421946BD400C3709B /* DetailsView.swift in Sources */,
 				F48B4B812199DFD100E4C1DF /* CreateOnlineViewController.swift in Sources */,
 				F4F1FAC021A4211B00980C9E /* APIError.swift in Sources */,
@@ -612,6 +643,7 @@
 				F4F1FACC21A421A700980C9E /* Foundation.URLRequest.swift in Sources */,
 				F48B4B892199E01F00E4C1DF /* CreateLibraryView.swift in Sources */,
 				F4B424E221946BCD00C3709B /* DetailsViewController.swift in Sources */,
+				73292F5D21B12A7500330469 /* ApplicationDependencies.swift in Sources */,
 				F4B424E92194751C00C3709B /* PopularFlowController.swift in Sources */,
 				F4EB1F0521AED6D20015AF82 /* APIResponse.swift in Sources */,
 				F4F1FAC721A4211B00980C9E /* APIRequest.swift in Sources */,
