@@ -1,11 +1,3 @@
-//
-//  SessionStore.swift
-//  Looped
-//
-//  Created by Piotr Torczyński on 30/11/2018.
-//  Copyright © 2018 kowboj. All rights reserved.
-//
-
 import Foundation
 
 protocol SessionStoring {
@@ -18,7 +10,7 @@ protocol SessionStoring {
 final class SessionStore: SessionStoring {
 
     func getSession() -> Session? {
-        return keychain[token]
+        return nil // TODO: Save in Keychain
     }
 
     func saveSession(session: Session) {

@@ -1,11 +1,3 @@
-//
-//  SessionProvider.swift
-//  Looped
-//
-//  Created by Piotr Torczyński on 30/11/2018.
-//  Copyright © 2018 kowboj. All rights reserved.
-//
-
 import RxSwift
 
 protocol SessionProviding {
@@ -16,6 +8,9 @@ protocol SessionProviding {
 }
 
 final class SessionProvider: SessionProviding {
+    
+    var lastSession: Session?
+    
     func authorizeRequest(request: inout APIRequest) {
 
     }
@@ -33,7 +28,6 @@ final class SessionProvider: SessionProviding {
     func saveSession(session: Session) {
 
     }
-
 }
 
 struct Session {

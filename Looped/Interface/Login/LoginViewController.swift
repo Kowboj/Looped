@@ -4,10 +4,12 @@ import RxSwift
 final class LoginViewController: ViewController {
     
     // MARK: - Properties
+    
     private let loginView = LoginView()
     weak var userFlowDelegate: UserViewControllerFlowDelegate?
     
     // MARK: - Overrides
+    
     override func loadView() {
         view = loginView
     }
@@ -22,6 +24,7 @@ final class LoginViewController: ViewController {
     }
     
     // MARK: - Private
+    
     @objc private func close() {
         dismiss(animated: true, completion: nil)
     }

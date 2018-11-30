@@ -20,6 +20,8 @@
 		F44001DB2195A1BB0039A707 /* UserFlowControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44001DA2195A1BB0039A707 /* UserFlowControllerFactory.swift */; };
 		F44001DD2195A1C50039A707 /* CreateFlowControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44001DC2195A1C50039A707 /* CreateFlowControllerFactory.swift */; };
 		F4867CA621AFF32E006BD547 /* ExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4867CA521AFF32E006BD547 /* ExampleTests.swift */; };
+		F486A42321B1416600BEA589 /* TabBarControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F486A42221B1416600BEA589 /* TabBarControllerFactory.swift */; };
+		F486A42921B155CB00BEA589 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F486A42821B155CB00BEA589 /* UserViewModel.swift */; };
 		F48B4B7A2199CDB900E4C1DF /* GifCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48B4B792199CDB900E4C1DF /* GifCell.swift */; };
 		F48B4B7C2199CDE500E4C1DF /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48B4B7B2199CDE500E4C1DF /* Cell.swift */; };
 		F48B4B7E2199CE0600E4C1DF /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48B4B7D2199CE0600E4C1DF /* Reusable.swift */; };
@@ -93,6 +95,8 @@
 		F44001DA2195A1BB0039A707 /* UserFlowControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFlowControllerFactory.swift; sourceTree = "<group>"; };
 		F44001DC2195A1C50039A707 /* CreateFlowControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateFlowControllerFactory.swift; sourceTree = "<group>"; };
 		F4867CA521AFF32E006BD547 /* ExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleTests.swift; sourceTree = "<group>"; };
+		F486A42221B1416600BEA589 /* TabBarControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarControllerFactory.swift; sourceTree = "<group>"; };
+		F486A42821B155CB00BEA589 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		F48733E121A7F62B008CB201 /* LoopedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LoopedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F48733E521A7F62B008CB201 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F48B4B792199CDB900E4C1DF /* GifCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifCell.swift; sourceTree = "<group>"; };
@@ -215,6 +219,15 @@
 			path = Factories;
 			sourceTree = "<group>";
 		};
+		F486A42121B1414F00BEA589 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				F486A42221B1416600BEA589 /* TabBarControllerFactory.swift */,
+				F4B424CB2194594800C3709B /* TabBarController.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
 		F48733E221A7F62B008CB201 /* LoopedTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -283,7 +296,7 @@
 		F4B424B72194516800C3709B /* Interface */ = {
 			isa = PBXGroup;
 			children = (
-				F4B424CB2194594800C3709B /* TabBarController.swift */,
+				F486A42121B1414F00BEA589 /* TabBar */,
 				F403A8D421A46FBA00087587 /* GifCell */,
 				F4B424C6219454C400C3709B /* Popular */,
 				F4B424CF2194613400C3709B /* User */,
@@ -347,6 +360,7 @@
 		F4B424CF2194613400C3709B /* User */ = {
 			isa = PBXGroup;
 			children = (
+				F486A42821B155CB00BEA589 /* UserViewModel.swift */,
 				F4B424D12194616600C3709B /* UserViewController.swift */,
 				F4B424D32194616E00C3709B /* UserView.swift */,
 			);
@@ -379,8 +393,8 @@
 			isa = PBXGroup;
 			children = (
 				F4B424E121946BCD00C3709B /* DetailsViewController.swift */,
-				F4B424E321946BD400C3709B /* DetailsView.swift */,
 				73292F5921B1259A00330469 /* DetailsViewModel.swift */,
+				F4B424E321946BD400C3709B /* DetailsView.swift */,
 			);
 			path = Details;
 			sourceTree = "<group>";
@@ -619,6 +633,7 @@
 				F4F1FAD221A425FA00980C9E /* SearchRequest.swift in Sources */,
 				F48B4B832199DFDF00E4C1DF /* CreateLibraryViewController.swift in Sources */,
 				F4F1FAD921A42E0600980C9E /* ReactionTag.swift in Sources */,
+				F486A42921B155CB00BEA589 /* UserViewModel.swift in Sources */,
 				F4B424D22194616600C3709B /* UserViewController.swift in Sources */,
 				F48B4B872199E01400E4C1DF /* CreateOnlineView.swift in Sources */,
 				F4F1FAD021A4220600980C9E /* Result.swift in Sources */,
@@ -630,6 +645,7 @@
 				F4B424CC2194594800C3709B /* TabBarController.swift in Sources */,
 				F4B424C32194544700C3709B /* FlowController.swift in Sources */,
 				F4B424DB2194644600C3709B /* View.swift in Sources */,
+				F486A42321B1416600BEA589 /* TabBarControllerFactory.swift in Sources */,
 				F403A8D621A46FFF00087587 /* GifCellViewModel.swift in Sources */,
 				F4B424C82194550300C3709B /* PopularView.swift in Sources */,
 				F4B424EB2194771C00C3709B /* UserFlowController.swift in Sources */,

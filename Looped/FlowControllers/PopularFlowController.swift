@@ -20,7 +20,7 @@ final class PopularFlowController: FlowController {
 }
 
 extension PopularFlowController: PopularViewControllerFlowDelegate {
-    func showDetails(gif: String) {
+    func showDetails(gif: GifViewModel) {
         navigationController.pushViewController(controllersFactory.buildDetailsViewController(gif: gif), animated: true)
     }
 }

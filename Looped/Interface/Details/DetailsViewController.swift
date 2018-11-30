@@ -8,6 +8,7 @@ protocol DetailsViewControllerFlowDelegate: class {
 final class DetailsViewController: ViewController {
     
     // MARK: - Properties
+    
     private let detailsView = DetailsView()
     private let disposeBag = DisposeBag()
     private let viewModel: DetailsViewModelProtocol
@@ -15,12 +16,14 @@ final class DetailsViewController: ViewController {
     weak var delegate: DetailsViewControllerFlowDelegate?
     
     // MARK: - Initializers
+    
     init(viewModel: DetailsViewModelProtocol) {
         self.viewModel = viewModel
         super.init()
     }
     
     // MARK: - Overrides
+    
     override func loadView() {
         view = detailsView
     }

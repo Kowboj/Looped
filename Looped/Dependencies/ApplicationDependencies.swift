@@ -9,11 +9,16 @@ protocol ApplicationDependenciesProvider {
 
 final class ApplicationDependencies: ApplicationDependenciesProvider {
     lazy var apiClient: APIClient = {
-        return DefaultAPIClient(session: .shared)
+        return DefaultAPIClient()
     }()
 
     lazy var tabBarController: TabBarController = {
-        return TabBarController()
+        let tabBarControllerFactory = TabBarControllerFactory(
+            popularFlowControllerFactory: PopularFlowControllerFactory(applicationDependencies: self),
+            userFlowControllerFactory: UserFlowControllerFactory(applicationDependencies: self),
+            createFlowControllerFactory: CreateFlowControllerFactory(applicationDependencies: self)
+        )
+        return tabBarControllerFactory.buildTabBarController()
     }()
 
     lazy var sessionProvider: SessionProviding = {

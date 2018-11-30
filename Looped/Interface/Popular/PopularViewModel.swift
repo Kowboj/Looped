@@ -9,21 +9,23 @@ protocol PopularViewModelProtocol {
 
 final class PopularViewModel: PopularViewModelProtocol {
     
+    private let disposeBag = DisposeBag()
     private var service: ReactionTagsServiceProtocol
-
     private let tagsSubject = PublishSubject<[ReactionTag]>()
     
     init(service: ReactionTagsServiceProtocol) {
         self.service = service
+        getReactionTags()
     }
     
     lazy var reactionTags: Observable<[ReactionTag]> = {
         return tagsSubject
     }()
-
+    
     func getReactionTags() {
-        let tags = service.getReactionTags().asObservable()
-        let array = [ReactionTag]()
-        tagsSubject.onNext(array)
+        service.getReactionTags()
+            .asObservable()
+            .bind(to: tagsSubject)
+            .disposed(by: disposeBag)
     }
 }

@@ -13,6 +13,7 @@ final class CreateViewController: ViewController {
     let createLibraryViewController = CreateLibraryViewController()
     
     // MARK: - Overrides
+    
     override func loadView() {
         view = createView
     }
@@ -29,6 +30,7 @@ final class CreateViewController: ViewController {
     }
     
     // MARK: - Private
+    
     private func setupSegmentedControl() {
         createView.segmentedControl.setTitle("URL", forSegmentAt: 0)
         createView.segmentedControl.setTitle("Library", forSegmentAt: 1)

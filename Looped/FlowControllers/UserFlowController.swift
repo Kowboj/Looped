@@ -3,13 +3,13 @@ import UIKit
 
 final class UserFlowController: FlowController {
 
-    private let sessionProvider: SessionProviding
-
-    init(sessionProvider: SessionProviding) {
-        self.sessionProvider = sessionProvider
+    private let controllersFactory: UserFlowControllerFactoryProtocol
+    
+    init(controllersFactory: UserFlowControllerFactoryProtocol) {
+        self.controllersFactory = controllersFactory
     }
 
-    let controllersFactory = UserFlowControllerFactory()
+    
     lazy var rootViewController: UINavigationController = {
         navigationController.viewControllers = [controllersFactory.buildUserViewController(delegate: self)]
         
@@ -23,7 +23,7 @@ final class UserFlowController: FlowController {
 
 extension UserFlowController: UserViewControllerFlowDelegate {
 
-    func showDetails(gif: String) {
+    func showDetails(gif: GifViewModel) {
         navigationController.pushViewController(controllersFactory.buildDetailsViewController(gif: gif, delegate: self), animated: true)
     }
     

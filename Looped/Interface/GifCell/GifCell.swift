@@ -38,7 +38,7 @@ final class GifCell: TableViewCell {
     }()
     
     // MARK: - Overrides
-    
+
     override func setupViewHierarchy() {
         super.setupViewHierarchy()
         [gifImageView, titleLabel, likesLabel].forEach(addSubview)
