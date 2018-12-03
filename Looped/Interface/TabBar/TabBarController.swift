@@ -6,7 +6,20 @@ final class TabBarController: UITabBarController {
     private let controllersFactory: TabBarControllerFactoryProtocol
     let tabBarItemImages = ["barItemPopular", "barItemUser", "barItemCreate"]
     
+    private lazy var popularRootViewController: PopularFlowController = {
+        return controllersFactory.buildPopularFlowController()
+    }()
+    
+    private lazy var userRootViewController: UserFlowController = {
+        return controllersFactory.buildUserFlowController()
+    }()
+    
+    private lazy var createRootViewController: CreateFlowController = {
+        return controllersFactory.buildCreateFlowController()
+    }()
+    
     // MARK: - Initializers
+    
     init(controllersFactory: TabBarControllerFactoryProtocol) {
         self.controllersFactory = controllersFactory
         super.init(nibName: nil, bundle: nil)
@@ -20,14 +33,11 @@ final class TabBarController: UITabBarController {
     // MARK: - Private
     
     private func setupTabBarItems() {
-        let popularRootViewController = controllersFactory.buildPopularFlowController().rootViewController
-        let userRootViewController = controllersFactory.buildUserFlowController().rootViewController
-        let createRootViewController = controllersFactory.buildCreateFlowController().rootViewController
         
-        popularRootViewController.tabBarItem = tabBarItem(at: 0)
-        userRootViewController.tabBarItem = tabBarItem(at: 1)
-        createRootViewController.tabBarItem = tabBarItem(at: 2)
-        viewControllers = [popularRootViewController, userRootViewController, createRootViewController]
+        popularRootViewController.rootViewController.tabBarItem = tabBarItem(at: 0)
+        userRootViewController.rootViewController.tabBarItem = tabBarItem(at: 1)
+        createRootViewController.rootViewController.tabBarItem = tabBarItem(at: 2)
+        viewControllers = [popularRootViewController.rootViewController, userRootViewController.rootViewController, createRootViewController.rootViewController]
     }
     
     private func tabBarItem(at index: Int) -> UITabBarItem {

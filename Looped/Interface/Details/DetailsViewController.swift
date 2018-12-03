@@ -31,7 +31,7 @@ final class DetailsViewController: ViewController {
     override func setupBindings() {
         super.setupBindings()
 
-        viewModel.userName
+        viewModel.title
             .bind(to: detailsView.detailsInfoLabel.rx.text)
             .disposed(by: disposeBag)
     }
