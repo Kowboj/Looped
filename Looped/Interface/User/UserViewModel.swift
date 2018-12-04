@@ -13,7 +13,6 @@ final class UserViewModel: UserViewModelProtocol {
     
     init(service: ReactionTagsServiceProtocol) {
         self.service = service
-        getLikedReactionTags()
     }
     
     private let disposeBag = DisposeBag()

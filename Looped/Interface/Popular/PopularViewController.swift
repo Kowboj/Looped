@@ -33,8 +33,7 @@ final class PopularViewController: ViewController {
     
     override func setupProperties() {
         super.setupProperties()
-        
-        popularView.tableView.estimatedRowHeight = 200
+        popularView.tableView.refreshControl = UIRefreshControl()
         popularView.tableView.register(GifCell.self, forCellReuseIdentifier: GifCell.reuseIdentifier)
     }
     
@@ -59,9 +58,13 @@ final class PopularViewController: ViewController {
             })
             .disposed(by: disposeBag)
         
-        popularView.refreshControl.rx.controlEvent(UIControl.Event.valueChanged)
+        let refreshControl = popularView.tableView.refreshControl!
+        
+        refreshControl.rx.controlEvent(UIControl.Event.valueChanged)
             .subscribe({[unowned self] _ in
                 self.popularViewModel.getReactionTags()
+                    .drive(refreshControl.rx.isRefreshing)
+                    .disposed(by: self.disposeBag)
             })
             .disposed(by: disposeBag)
     }

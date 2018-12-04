@@ -19,22 +19,11 @@ final class PopularView: View {
         return tableView
     }()
     
-    private(set) lazy var refreshControl: UIRefreshControl = {
-        let refreshControl = UIRefreshControl(frame: .zero)
-        refreshControl.translatesAutoresizingMaskIntoConstraints = false
-        return refreshControl
-    }()
-    
     override func setupViewHierarchy() {
         super.setupViewHierarchy()
         [tableView].forEach(addSubview)
-        tableView.addSubview(refreshControl)
     }
     
-    override func setupProperties() {
-        super.setupProperties()
-    }
-
     override func setupLayoutConstraints() {
         super.setupLayoutConstraints()
         tableView.anchor(top: topAnchor, leading: leadingAnchor, trailing: trailingAnchor, bottom: bottomAnchor, padding: .zero, size: CGSize.zero)

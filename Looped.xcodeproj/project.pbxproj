@@ -16,6 +16,7 @@
 		F403A8D621A46FFF00087587 /* GifCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F403A8D521A46FFF00087587 /* GifCellViewModel.swift */; };
 		F4191E0C21A2FCBE00577DB0 /* SwiftyGif.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4191E0A21A2FCBE00577DB0 /* SwiftyGif.framework */; };
 		F4191E0D21A2FCBE00577DB0 /* Regift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4191E0B21A2FCBE00577DB0 /* Regift.framework */; };
+		F41D892321B6C24700CFC376 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41D892221B6C24700CFC376 /* ActivityIndicator.swift */; };
 		F44001D721959F3D0039A707 /* PopularFlowControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44001D621959F3D0039A707 /* PopularFlowControllerFactory.swift */; };
 		F44001DB2195A1BB0039A707 /* UserFlowControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44001DA2195A1BB0039A707 /* UserFlowControllerFactory.swift */; };
 		F44001DD2195A1C50039A707 /* CreateFlowControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44001DC2195A1C50039A707 /* CreateFlowControllerFactory.swift */; };
@@ -91,6 +92,7 @@
 		F403A8D521A46FFF00087587 /* GifCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifCellViewModel.swift; sourceTree = "<group>"; };
 		F4191E0A21A2FCBE00577DB0 /* SwiftyGif.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyGif.framework; path = Carthage/Build/iOS/SwiftyGif.framework; sourceTree = "<group>"; };
 		F4191E0B21A2FCBE00577DB0 /* Regift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Regift.framework; path = Carthage/Build/iOS/Regift.framework; sourceTree = "<group>"; };
+		F41D892221B6C24700CFC376 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		F44001D621959F3D0039A707 /* PopularFlowControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularFlowControllerFactory.swift; sourceTree = "<group>"; };
 		F44001DA2195A1BB0039A707 /* UserFlowControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFlowControllerFactory.swift; sourceTree = "<group>"; };
 		F44001DC2195A1C50039A707 /* CreateFlowControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateFlowControllerFactory.swift; sourceTree = "<group>"; };
@@ -209,6 +211,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		F41D892121B6C23A00CFC376 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				F41D892221B6C24700CFC376 /* ActivityIndicator.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
 		F44001D92195A1AA0039A707 /* Factories */ = {
 			isa = PBXGroup;
 			children = (
@@ -277,6 +287,7 @@
 		F4B424A421944D6A00C3709B /* Looped */ = {
 			isa = PBXGroup;
 			children = (
+				F41D892121B6C23A00CFC376 /* Utility */,
 				73292F5E21B12D2D00330469 /* Authentication */,
 				73292F5B21B12A5F00330469 /* Dependencies */,
 				F4B424A521944D6A00C3709B /* AppDelegate.swift */,
@@ -649,6 +660,7 @@
 				F403A8D621A46FFF00087587 /* GifCellViewModel.swift in Sources */,
 				F4B424C82194550300C3709B /* PopularView.swift in Sources */,
 				F4B424EB2194771C00C3709B /* UserFlowController.swift in Sources */,
+				F41D892321B6C24700CFC376 /* ActivityIndicator.swift in Sources */,
 				F4B424ED2194772C00C3709B /* CreateFlowController.swift in Sources */,
 				F4B424D42194616E00C3709B /* UserView.swift in Sources */,
 				73292F5A21B1259A00330469 /* DetailsViewModel.swift in Sources */,

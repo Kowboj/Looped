@@ -33,7 +33,6 @@ final class TabBarController: UITabBarController {
     // MARK: - Private
     
     private func setupTabBarItems() {
-        
         popularRootViewController.rootViewController.tabBarItem = tabBarItem(at: 0)
         userRootViewController.rootViewController.tabBarItem = tabBarItem(at: 1)
         createRootViewController.rootViewController.tabBarItem = tabBarItem(at: 2)

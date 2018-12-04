@@ -52,8 +52,7 @@ final class GifCell: TableViewCell {
     
     override func setupLayoutConstraints() {
         super.setupLayoutConstraints()
-        anchor(top: nil, leading: nil, trailing: nil, bottom: nil, padding: UIEdgeInsets.zero, size: CGSize(width: 0, height: 200))
-        gifImageView.anchor(top: topAnchor, leading: leadingAnchor, trailing: trailingAnchor, bottom: bottomAnchor, padding: UIEdgeInsets(top: 10, left: 10, bottom: 0, right: -10), size: CGSize.zero)
+        gifImageView.anchor(top: topAnchor, leading: leadingAnchor, trailing: trailingAnchor, bottom: bottomAnchor, padding: UIEdgeInsets(top: 10, left: 10, bottom: 0, right: -10), size: CGSize(width: 0, height: 150))
         titleLabel.anchor(top: nil, leading: gifImageView.leadingAnchor, trailing: gifImageView.trailingAnchor, bottom: gifImageView.bottomAnchor, padding: UIEdgeInsets(top: 0, left: 10, bottom: -10, right: -10))
         likesLabel.anchor(top: gifImageView.topAnchor, leading: gifImageView.leadingAnchor, trailing: nil, bottom: nil, padding: UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 0))
     }

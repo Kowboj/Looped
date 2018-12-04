@@ -26,14 +26,8 @@ final class UserViewController: ViewController {
         view = userView
     }
     
-    override func setupNavigationItem() {
-        super.setupNavigationItem()
-    }
-    
     override func setupProperties() {
         super.setupProperties()
-
-        userView.tableView.estimatedRowHeight = 200
         userView.tableView.register(GifCell.self, forCellReuseIdentifier: GifCell.reuseIdentifier)
         setupSegmentedControl()
     }
@@ -94,6 +88,8 @@ final class UserViewController: ViewController {
             }
             .subscribe()
             .disposed(by: disposeBag)
+        
+        userViewModel.getLikedReactionTags()
     }
 
     // MARK: - Private
