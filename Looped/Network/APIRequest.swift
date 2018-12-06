@@ -11,6 +11,7 @@ protocol APIRequest {
     var method: HttpMethod { get }
     var query: [String: APIQueryParameter] { get }
     var body: [String: APIQueryParameter]? { get }
+    var header: [String: String]? { get }
 }
 
 extension APIRequest {
@@ -18,6 +19,7 @@ extension APIRequest {
     var method: HttpMethod { return .GET }
     var query: [String: APIQueryParameter] { return [:] }
     var body: [String: APIQueryParameter]? { return nil }
+    var header: [String: String]? { return nil }
 }
 
 extension APIRequest {

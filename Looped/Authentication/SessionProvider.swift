@@ -3,33 +3,47 @@ import RxSwift
 protocol SessionProviding {
     var lastSession: Session? { get }
     var currentSession: Observable<Session?> { get }
-    func saveSession(session: Session)
-    func authorizeRequest(request: inout APIRequest)
+    func saveSession(session: Session) -> Bool
+    func deleteSession(session: Session) -> Bool
+    func authorizeRequest(request: APIRequest) -> APIRequest?
 }
 
 final class SessionProvider: SessionProviding {
     
-    var lastSession: Session?
+    // MARK: - Properties
     
-    func authorizeRequest(request: inout APIRequest) {
-
-    }
-
     private let sessionStore: SessionStoring
+    private let disposeBag = DisposeBag()
 
+    // MARK: - Initializers
+    
     init(sessionStore: SessionStoring) {
         self.sessionStore = sessionStore
     }
 
+    // MARK: - SessionProvidingProtocol
+    
+    func saveSession(session: Session) -> Bool {
+        lastSession = session
+        return sessionStore.saveSession(session: session)
+    }
+    
+    func deleteSession(session: Session) -> Bool {
+        return sessionStore.deleteSession(session: session)
+    }
+    
     lazy var currentSession: Observable<Session?> = {
         return .just(sessionStore.getSession())
     }()
-
-    func saveSession(session: Session) {
-
+    
+    var lastSession: Session?
+    
+    func authorizeRequest(request: APIRequest) -> APIRequest? {
+        guard let session = lastSession else { return nil }
+        return NewRequest(path: request.path, service: request.service, method: request.method, query: request.query, body: request.body!, header: ["Authorization": "Bearer \(session.token)"])
     }
 }
 
 struct Session {
-    let name: String
+    let token: String
 }

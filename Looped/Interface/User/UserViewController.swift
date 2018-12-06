@@ -11,6 +11,7 @@ final class UserViewController: ViewController {
     init(userViewModel: UserViewModelProtocol) {
         self.userViewModel = userViewModel
         super.init()
+        userViewModel.getLikedReactionTags()
     }
     
     // MARK: - Properties
@@ -30,6 +31,7 @@ final class UserViewController: ViewController {
         super.setupProperties()
         userView.tableView.register(GifCell.self, forCellReuseIdentifier: GifCell.reuseIdentifier)
         setupSegmentedControl()
+
     }
     
     override func setupBindings() {
@@ -88,8 +90,6 @@ final class UserViewController: ViewController {
             }
             .subscribe()
             .disposed(by: disposeBag)
-        
-        userViewModel.getLikedReactionTags()
     }
 
     // MARK: - Private

@@ -23,6 +23,7 @@
 		F4867CA621AFF32E006BD547 /* ExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4867CA521AFF32E006BD547 /* ExampleTests.swift */; };
 		F486A42321B1416600BEA589 /* TabBarControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F486A42221B1416600BEA589 /* TabBarControllerFactory.swift */; };
 		F486A42921B155CB00BEA589 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F486A42821B155CB00BEA589 /* UserViewModel.swift */; };
+		F48981F621B90EC50000A76D /* NewRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48981F521B90EC50000A76D /* NewRequest.swift */; };
 		F48B4B7A2199CDB900E4C1DF /* GifCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48B4B792199CDB900E4C1DF /* GifCell.swift */; };
 		F48B4B7C2199CDE500E4C1DF /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48B4B7B2199CDE500E4C1DF /* Cell.swift */; };
 		F48B4B7E2199CE0600E4C1DF /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48B4B7D2199CE0600E4C1DF /* Reusable.swift */; };
@@ -101,6 +102,7 @@
 		F486A42821B155CB00BEA589 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		F48733E121A7F62B008CB201 /* LoopedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LoopedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F48733E521A7F62B008CB201 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F48981F521B90EC50000A76D /* NewRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRequest.swift; sourceTree = "<group>"; };
 		F48B4B792199CDB900E4C1DF /* GifCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifCell.swift; sourceTree = "<group>"; };
 		F48B4B7B2199CDE500E4C1DF /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
 		F48B4B7D2199CE0600E4C1DF /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
@@ -442,6 +444,7 @@
 				F4F1FAB921A4211B00980C9E /* ReactionTagsRequest.swift */,
 				F4F1FAD121A425FA00980C9E /* SearchRequest.swift */,
 				F4EE316521B01F330023B68A /* AuthRequest.swift */,
+				F48981F521B90EC50000A76D /* NewRequest.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -654,6 +657,7 @@
 				F4F1FAC421A4211B00980C9E /* ReactionTagsRequest.swift in Sources */,
 				F4F1FAC121A4211B00980C9E /* APIService.swift in Sources */,
 				F4B424CC2194594800C3709B /* TabBarController.swift in Sources */,
+				F48981F621B90EC50000A76D /* NewRequest.swift in Sources */,
 				F4B424C32194544700C3709B /* FlowController.swift in Sources */,
 				F4B424DB2194644600C3709B /* View.swift in Sources */,
 				F486A42321B1416600BEA589 /* TabBarControllerFactory.swift in Sources */,
