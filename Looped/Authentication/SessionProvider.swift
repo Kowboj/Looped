@@ -3,9 +3,9 @@ import RxSwift
 protocol SessionProviding {
     var lastSession: Session? { get }
     var currentSession: Observable<Session?> { get }
+
     func saveSession(session: Session) -> Bool
     func deleteSession(session: Session) -> Bool
-    func authorizeRequest(request: APIRequest) -> APIRequest?
 }
 
 final class SessionProvider: SessionProviding {

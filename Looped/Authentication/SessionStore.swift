@@ -10,11 +10,14 @@ protocol SessionStoring {
 final class SessionStore: SessionStoring {
 
     // MARK: - Properties
+
+    private enum SessionStoreKeys: String {
+        case token
+    }
     
-    private let tagString = "token"
-    
+
     func getSession() -> Session? {
-        let tag = tagString.data(using: .utf8)!
+        let tag = SessionStoreKeys.token.rawValue.data(using: .utf8)!
         let getQuery: [String: Any] = [kSecClass as String: kSecClassKey,
                                        kSecAttrApplicationTag as String: tag,
                                        kSecAttrKeyType as String: kSecAttrKeyTypeRSA,
@@ -28,7 +31,7 @@ final class SessionStore: SessionStoring {
 
     func saveSession(session: Session) -> Bool {
         let token = session.token
-        let tag = tagString.data(using: .utf8)!
+        let tag = SessionStoreKeys.token.rawValue.data(using: .utf8)!
         let addQuery: [String: Any] = [kSecClass as String: kSecClassKey,
                                        kSecAttrApplicationTag as String: tag,
                                        kSecValueRef as String: token]
@@ -39,7 +42,7 @@ final class SessionStore: SessionStoring {
 
     func deleteSession(session: Session) -> Bool {
         let token = session.token
-        let tag = tagString.data(using: .utf8)!
+        let tag = SessionStoreKeys.token.rawValue.data(using: .utf8)!
         let deleteQuery: [String: Any] = [kSecClass as String: kSecClassKey,
                                        kSecAttrApplicationTag as String: tag,
                                        kSecValueRef as String: token]

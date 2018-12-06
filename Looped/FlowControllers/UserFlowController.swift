@@ -8,8 +8,6 @@ final class UserFlowController: FlowController {
     init(controllersFactory: UserFlowControllerFactoryProtocol) {
         self.controllersFactory = controllersFactory
     }
-
-    
     lazy var rootViewController: UINavigationController = {
         navigationController.viewControllers = [controllersFactory.buildUserViewController(delegate: self)]
         

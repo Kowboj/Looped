@@ -4,7 +4,7 @@ final class TabBarController: UITabBarController {
     
     // MARK: - Properties
     private let controllersFactory: TabBarControllerFactoryProtocol
-    let tabBarItemImages = ["barItemPopular", "barItemUser", "barItemCreate"]
+    private let tabBarItemImages = ["barItemPopular", "barItemUser", "barItemCreate"]
     
     private lazy var popularRootViewController: PopularFlowController = {
         return controllersFactory.buildPopularFlowController()

@@ -14,9 +14,7 @@ final class ReactionTagsService: ReactionTagsServiceProtocol {
     }
     
     func getReactionTags() -> Single<[ReactionTag]> {
-        let application = ApplicationDependencies()
-        let authorizedReactionTagsRequest = application.sessionProvider.authorizeRequest(request: ReactionTagsRequest())
-        return apiClient.send(request: authorizedReactionTagsRequest ?? ReactionTagsRequest())
+        return apiClient.send(request: ReactionTagsRequest())
             .filter { $0.data != nil }
             .map { try JSONDecoder().decode(ReactionTagsResponse.self, from: $0.data!) }
             .map { $0.tags }

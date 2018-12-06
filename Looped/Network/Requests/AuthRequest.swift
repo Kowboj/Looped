@@ -1,7 +1,6 @@
 import Foundation
 
 struct AuthRequest: APIRequest {
-    
     var method: HttpMethod { return .POST }
     var path: String { return "oauth/token" }
     var body: [String : APIQueryParameter]? {

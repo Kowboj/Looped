@@ -3,11 +3,11 @@ import UIKit
 final class PopularFlowController: FlowController {
     typealias RootViewController = UINavigationController
 
+    private let controllersFactory: PopularFlowControllerFactoryProtocol
+
     init(controllersFactory: PopularFlowControllerFactoryProtocol) {
         self.controllersFactory = controllersFactory
     }
-    
-    private let controllersFactory: PopularFlowControllerFactoryProtocol
 
     lazy var rootViewController: UINavigationController = {
         navigationController.viewControllers = [controllersFactory.buildPopularViewController(delegate: self)]

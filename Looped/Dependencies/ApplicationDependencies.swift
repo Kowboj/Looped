@@ -2,14 +2,27 @@ import Foundation
 
 protocol ApplicationDependenciesProvider {
     var apiClient: APIClient { get }
-    var tabBarController: TabBarController { get }
+    var authenticationController: AuthenticationControlling { get }
     var sessionProvider: SessionProviding { get }
     var sessionStore: SessionStoring { get }
+    var tabBarController: TabBarController { get }
 }
 
 final class ApplicationDependencies: ApplicationDependenciesProvider {
     lazy var apiClient: APIClient = {
-        return DefaultAPIClient()
+        return DefaultAPIClient(authenticationController: authenticationController)
+    }()
+
+    lazy var authenticationController: AuthenticationControlling = {
+        return AuthenticationController(sessionProvider: sessionProvider)
+    }()
+
+    lazy var sessionProvider: SessionProviding = {
+        return SessionProvider(sessionStore: sessionStore)
+    }()
+
+    lazy var sessionStore: SessionStoring = {
+        return SessionStore()
     }()
 
     lazy var tabBarController: TabBarController = {
@@ -19,13 +32,5 @@ final class ApplicationDependencies: ApplicationDependenciesProvider {
             createFlowControllerFactory: CreateFlowControllerFactory(applicationDependencies: self)
         )
         return tabBarControllerFactory.buildTabBarController()
-    }()
-
-    lazy var sessionProvider: SessionProviding = {
-        return SessionProvider(sessionStore: sessionStore)
-    }()
-
-    lazy var sessionStore: SessionStoring = {
-        return SessionStore()
     }()
 }

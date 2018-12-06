@@ -31,10 +31,8 @@ final class  UserFlowControllerFactory: UserFlowControllerFactoryProtocol {
     }
     
     func buildLoginViewController(delegate: UserViewControllerFlowDelegate) -> LoginViewController {
-        
         let viewController = LoginViewController()
-        viewController.userFlowDelegate = delegate
-        
+
         return viewController
     }
 }

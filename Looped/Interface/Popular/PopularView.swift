@@ -1,7 +1,11 @@
 import UIKit
 
 final class PopularView: View {
-    
+
+    private(set) lazy var refreshControl: UIRefreshControl = {
+        return UIRefreshControl()
+    }()
+
     private(set) lazy var searchBar: UISearchBar = {
         let searchBar = UISearchBar(frame: .zero)
         searchBar.translatesAutoresizingMaskIntoConstraints = false

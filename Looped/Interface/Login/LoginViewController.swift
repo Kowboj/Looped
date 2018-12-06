@@ -6,7 +6,6 @@ final class LoginViewController: ViewController {
     // MARK: - Properties
     
     private let loginView = LoginView()
-    weak var userFlowDelegate: UserViewControllerFlowDelegate?
     
     // MARK: - Overrides
     
