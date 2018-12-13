@@ -3,11 +3,12 @@ import UIKit
 
 final class UserFlowController: FlowController {
 
-    private let controllersFactory: UserFlowControllerFactoryProtocol
-    
     init(controllersFactory: UserFlowControllerFactoryProtocol) {
         self.controllersFactory = controllersFactory
     }
+    
+    private let controllersFactory: UserFlowControllerFactoryProtocol
+    
     lazy var rootViewController: UINavigationController = {
         navigationController.viewControllers = [controllersFactory.buildUserViewController(delegate: self)]
         
@@ -22,12 +23,10 @@ final class UserFlowController: FlowController {
 extension UserFlowController: UserViewControllerFlowDelegate {
 
     func showDetails(gif: GifViewModel) {
-        navigationController.pushViewController(controllersFactory.buildDetailsViewController(gif: gif, delegate: self), animated: true)
+        navigationController.pushViewController(controllersFactory.buildDetailsViewController(gif: gif), animated: true)
     }
     
     func presentLogin() {
-        navigationController.present(controllersFactory.buildLoginViewController(delegate: self), animated: true, completion: nil)
+        navigationController.present(controllersFactory.buildLoginViewController(), animated: true, completion: nil)
     }
-
-
 }

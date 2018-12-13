@@ -4,32 +4,30 @@ protocol SessionProviding {
     var lastSession: Session? { get }
     var currentSession: Observable<Session?> { get }
 
-    func saveSession(session: Session) -> Bool
-    func deleteSession(session: Session) -> Bool
+    func saveSession(session: Session)
+    func deleteSession(session: Session)
 }
 
 final class SessionProvider: SessionProviding {
+    
+    init(sessionStore: SessionStoring) {
+        self.sessionStore = sessionStore
+    }
     
     // MARK: - Properties
     
     private let sessionStore: SessionStoring
     private let disposeBag = DisposeBag()
 
-    // MARK: - Initializers
-    
-    init(sessionStore: SessionStoring) {
-        self.sessionStore = sessionStore
-    }
-
     // MARK: - SessionProvidingProtocol
     
-    func saveSession(session: Session) -> Bool {
+    func saveSession(session: Session) {
         lastSession = session
-        return sessionStore.saveSession(session: session)
+        return sessionStore.save(session: session)
     }
     
-    func deleteSession(session: Session) -> Bool {
-        return sessionStore.deleteSession(session: session)
+    func deleteSession(session: Session) {
+        return sessionStore.deleteSession()
     }
     
     lazy var currentSession: Observable<Session?> = {
@@ -37,13 +35,14 @@ final class SessionProvider: SessionProviding {
     }()
     
     var lastSession: Session?
-    
-    func authorizeRequest(request: APIRequest) -> APIRequest? {
-        guard let session = lastSession else { return nil }
-        return NewRequest(path: request.path, service: request.service, method: request.method, query: request.query, body: request.body!, header: ["Authorization": "Bearer \(session.token)"])
-    }
 }
 
 struct Session {
     let token: String
+    let refreshToken: String
+    
+    init(token: String, refreshToken: String) {
+        self.token = token
+        self.refreshToken = refreshToken
+    }
 }

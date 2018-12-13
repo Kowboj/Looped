@@ -1,11 +1,22 @@
 import UIKit
 import RxSwift
 
+protocol LoginViewControllerFlowDelegate {
+    
+}
+
 final class LoginViewController: ViewController {
+    
+    init(viewModel: LoginViewModelProtocol) {
+        self.viewModel = viewModel
+        super.init()
+    }
     
     // MARK: - Properties
     
+    private let viewModel: LoginViewModelProtocol
     private let loginView = LoginView()
+    private let disposeBag = DisposeBag()
     
     // MARK: - Overrides
     
@@ -15,16 +26,36 @@ final class LoginViewController: ViewController {
     
     override func setupProperties() {
         super.setupProperties()
-        loginView.closeButton.addTarget(self, action: #selector(close), for: UIControl.Event.touchUpInside)
     }
 
     override func setupBindings() {
         super.setupBindings()
-    }
+        
+        viewModel.isLogged
+            .bind(to: loginView.loginButton.rx.isHidden)
+            .disposed(by: disposeBag)
+            
+        
+        loginView.closeButton.rx.tap
+            .bind { [unowned self] in
+                self.dismiss(animated: true, completion: nil)
+            }
+            .disposed(by: disposeBag)
+        
+        loginView.usernameTextField.rx.text
+            .orEmpty
+            .bind(to: viewModel.username)
+            .disposed(by: disposeBag)
+        
+        loginView.passwordTextField.rx.text
+            .orEmpty
+            .bind(to: viewModel.password)
+            .disposed(by: disposeBag)
     
-    // MARK: - Private
-    
-    @objc private func close() {
-        dismiss(animated: true, completion: nil)
+        loginView.loginButton.rx.tap
+            .bind { [weak self] in
+                self?.viewModel.login()
+            }
+            .disposed(by: disposeBag)
     }
 }

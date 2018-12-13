@@ -7,11 +7,15 @@ protocol ReactionTagsServiceProtocol {
 
 final class ReactionTagsService: ReactionTagsServiceProtocol {
     
-    private let apiClient: APIClient
-    
     init(apiClient: APIClient) {
         self.apiClient = apiClient
     }
+    
+    // MARK: - Properties
+    
+    private let apiClient: APIClient
+    
+    // MARK: - Public
     
     func getReactionTags() -> Single<[ReactionTag]> {
         return apiClient.send(request: ReactionTagsRequest())
@@ -21,6 +25,8 @@ final class ReactionTagsService: ReactionTagsServiceProtocol {
             .asObservable()
             .asSingle()
     }
+    
+    // MARK: - Private
     
     private struct ReactionTagsResponse: Decodable {
         let tags: [ReactionTag]

@@ -10,13 +10,18 @@ protocol PopularViewModelProtocol {
 
 final class PopularViewModel: PopularViewModelProtocol {
     
-    private let disposeBag = DisposeBag()
-    private var service: ReactionTagsServiceProtocol
-    private let tagsSubject = PublishSubject<[ReactionTag]>()
-    
     init(service: ReactionTagsServiceProtocol) {
         self.service = service
+        getReactionTags()
     }
+    
+    // MARK: - Properties
+    
+    private let disposeBag = DisposeBag()
+    private let service: ReactionTagsServiceProtocol
+    private let tagsSubject = PublishSubject<[ReactionTag]>()
+    
+    // MARK: - PopularViewModelProtocol
     
     lazy var reactionTags: Observable<[ReactionTag]> = {
         return tagsSubject

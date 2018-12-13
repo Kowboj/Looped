@@ -4,16 +4,17 @@ protocol CreateFlowControllerFactoryProtocol {
 
 final class  CreateFlowControllerFactory: CreateFlowControllerFactoryProtocol {
     
-    private let applicationDependencies: ApplicationDependenciesProvider
-    
     init(applicationDependencies: ApplicationDependenciesProvider) {
         self.applicationDependencies = applicationDependencies
     }
     
+    private let applicationDependencies: ApplicationDependenciesProvider
+    
     func buildCreateViewController(delegate: CreateViewControllerFlowDelegate) -> CreateViewController {
-        let viewController = CreateViewController()
         
+        let viewController = CreateViewController()
         viewController.flowDelegate = delegate
+        
         return viewController
     }
 }

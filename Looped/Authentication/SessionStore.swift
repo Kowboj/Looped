@@ -1,54 +1,50 @@
 import Foundation
+import KeychainAccess
 
 protocol SessionStoring {
 
     func getSession() -> Session?
-    func saveSession(session: Session) -> Bool
-    func deleteSession(session: Session) -> Bool
+    func save(session: Session)
+    func deleteSession()
 }
 
 final class SessionStore: SessionStoring {
 
     // MARK: - Properties
 
+    private var keychain: Keychain = {
+        return Keychain(service: SessionStoreKeys.service.rawValue)
+    }()
+    
     private enum SessionStoreKeys: String {
+        case service
         case token
+        case refreshToken
     }
     
-
+    // MARK: - SessionStoringProtocol
+    
     func getSession() -> Session? {
-        let tag = SessionStoreKeys.token.rawValue.data(using: .utf8)!
-        let getQuery: [String: Any] = [kSecClass as String: kSecClassKey,
-                                       kSecAttrApplicationTag as String: tag,
-                                       kSecAttrKeyType as String: kSecAttrKeyTypeRSA,
-                                       kSecReturnRef as String: true]
-        var item: CFTypeRef?
-        let status = SecItemCopyMatching(getQuery as CFDictionary, &item)
-        guard status == errSecSuccess else { return nil }
-        guard let token = item?.stringValue else { return nil }
-        return Session(token: token)
+        let tokenTag = SessionStoreKeys.token.rawValue
+        let refreshTokenTag = SessionStoreKeys.refreshToken.rawValue
+        if let token = keychain[tokenTag], let refreshToken = keychain[refreshTokenTag] {
+            return Session(token: token, refreshToken: refreshToken)
+        }
+        return nil
     }
 
-    func saveSession(session: Session) -> Bool {
-        let token = session.token
-        let tag = SessionStoreKeys.token.rawValue.data(using: .utf8)!
-        let addQuery: [String: Any] = [kSecClass as String: kSecClassKey,
-                                       kSecAttrApplicationTag as String: tag,
-                                       kSecValueRef as String: token]
-        let status = SecItemAdd(addQuery as CFDictionary, nil)
-        guard status == errSecSuccess else { return false }
-        return true
+    func save(session: Session) {
+        let tokenTag = SessionStoreKeys.token.rawValue
+        let refreshTokenTag = SessionStoreKeys.refreshToken.rawValue
+        keychain[tokenTag] = session.token
+        keychain[refreshTokenTag] = session.refreshToken
     }
 
-    func deleteSession(session: Session) -> Bool {
-        let token = session.token
-        let tag = SessionStoreKeys.token.rawValue.data(using: .utf8)!
-        let deleteQuery: [String: Any] = [kSecClass as String: kSecClassKey,
-                                       kSecAttrApplicationTag as String: tag,
-                                       kSecValueRef as String: token]
-        let status = SecItemDelete(deleteQuery as CFDictionary)
-        guard status == errSecSuccess || status == errSecItemNotFound else { return false }
-        return true
+    func deleteSession() {
+        let tokenTag = SessionStoreKeys.token.rawValue
+        let refreshTokenTag = SessionStoreKeys.refreshToken.rawValue
+        keychain[tokenTag] = nil
+        keychain[refreshTokenTag] = nil
     }
 }
 

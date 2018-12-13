@@ -55,9 +55,12 @@
 		F4EB1EAF21AEB4E70015AF82 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4EB1EAD21AEB4E70015AF82 /* RxSwift.framework */; };
 		F4EB1EB021AEB4E70015AF82 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4EB1EAE21AEB4E70015AF82 /* RxCocoa.framework */; };
 		F4EB1F0521AED6D20015AF82 /* APIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EB1F0421AED6D20015AF82 /* APIResponse.swift */; };
+		F4ECB6BC21BA54060045D489 /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4ECB6BB21BA54060045D489 /* KeychainAccess.framework */; };
 		F4EE316621B01F330023B68A /* AuthRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EE316521B01F330023B68A /* AuthRequest.swift */; };
 		F4EE316921B028010023B68A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EE316821B028010023B68A /* LoginViewController.swift */; };
 		F4EE316B21B029BE0023B68A /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EE316A21B029BE0023B68A /* LoginView.swift */; };
+		F4EFA41821BE43AB00EB5B22 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EFA41721BE43AB00EB5B22 /* LoginViewModel.swift */; };
+		F4EFA41A21BE447300EB5B22 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EFA41921BE447300EB5B22 /* LoginService.swift */; };
 		F4F1FAC021A4211B00980C9E /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F1FAB421A4211B00980C9E /* APIError.swift */; };
 		F4F1FAC121A4211B00980C9E /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F1FAB521A4211B00980C9E /* APIService.swift */; };
 		F4F1FAC221A4211B00980C9E /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F1FAB621A4211B00980C9E /* APIClient.swift */; };
@@ -137,9 +140,12 @@
 		F4EB1EAD21AEB4E70015AF82 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		F4EB1EAE21AEB4E70015AF82 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
 		F4EB1F0421AED6D20015AF82 /* APIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResponse.swift; sourceTree = "<group>"; };
+		F4ECB6BB21BA54060045D489 /* KeychainAccess.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainAccess.framework; path = Carthage/Build/iOS/KeychainAccess.framework; sourceTree = "<group>"; };
 		F4EE316521B01F330023B68A /* AuthRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRequest.swift; sourceTree = "<group>"; };
 		F4EE316821B028010023B68A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F4EE316A21B029BE0023B68A /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		F4EFA41721BE43AB00EB5B22 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		F4EFA41921BE447300EB5B22 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		F4F1FAB421A4211B00980C9E /* APIError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		F4F1FAB521A4211B00980C9E /* APIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		F4F1FAB621A4211B00980C9E /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
@@ -170,6 +176,7 @@
 			files = (
 				F4191E0C21A2FCBE00577DB0 /* SwiftyGif.framework in Frameworks */,
 				F4191E0D21A2FCBE00577DB0 /* Regift.framework in Frameworks */,
+				F4ECB6BC21BA54060045D489 /* KeychainAccess.framework in Frameworks */,
 				F4EB1EAF21AEB4E70015AF82 /* RxSwift.framework in Frameworks */,
 				F4EB1EB021AEB4E70015AF82 /* RxCocoa.framework in Frameworks */,
 			);
@@ -189,9 +196,9 @@
 		73292F5E21B12D2D00330469 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
+				735A949921B91A56001E52A2 /* AuthenticationController.swift */,
 				73292F5F21B12D3F00330469 /* SessionProvider.swift */,
 				73292F6121B12D8B00330469 /* SessionStore.swift */,
-				735A949921B91A56001E52A2 /* AuthenticationController.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -208,6 +215,7 @@
 		F4191E0921A2FCBE00577DB0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F4ECB6BB21BA54060045D489 /* KeychainAccess.framework */,
 				F4EB1EAE21AEB4E70015AF82 /* RxCocoa.framework */,
 				F4EB1EAD21AEB4E70015AF82 /* RxSwift.framework */,
 				F4191E0B21A2FCBE00577DB0 /* Regift.framework */,
@@ -292,10 +300,10 @@
 		F4B424A421944D6A00C3709B /* Looped */ = {
 			isa = PBXGroup;
 			children = (
+				F4B424A521944D6A00C3709B /* AppDelegate.swift */,
 				F41D892121B6C23A00CFC376 /* Utility */,
 				73292F5E21B12D2D00330469 /* Authentication */,
 				73292F5B21B12A5F00330469 /* Dependencies */,
-				F4B424A521944D6A00C3709B /* AppDelegate.swift */,
 				F4F1FACE21A421D800980C9E /* Model */,
 				F4B424D92194643400C3709B /* Abstractions */,
 				F4B424B9219451BC00C3709B /* FlowControllers */,
@@ -408,8 +416,8 @@
 		F4B424E021946BB800C3709B /* Details */ = {
 			isa = PBXGroup;
 			children = (
-				F4B424E121946BCD00C3709B /* DetailsViewController.swift */,
 				73292F5921B1259A00330469 /* DetailsViewModel.swift */,
+				F4B424E121946BCD00C3709B /* DetailsViewController.swift */,
 				F4B424E321946BD400C3709B /* DetailsView.swift */,
 			);
 			path = Details;
@@ -418,6 +426,8 @@
 		F4EE316721B027F20023B68A /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				F4EFA41921BE447300EB5B22 /* LoginService.swift */,
+				F4EFA41721BE43AB00EB5B22 /* LoginViewModel.swift */,
 				F4EE316821B028010023B68A /* LoginViewController.swift */,
 				F4EE316A21B029BE0023B68A /* LoginView.swift */,
 			);
@@ -603,6 +613,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyGif.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/KeychainAccess.framework",
 			);
 			outputFileListPaths = (
 			);
@@ -634,6 +645,7 @@
 				F4B424D62194617800C3709B /* CreateViewController.swift in Sources */,
 				F48B4B7E2199CE0600E4C1DF /* Reusable.swift in Sources */,
 				F4B424DD2194647500C3709B /* TabView.swift in Sources */,
+				F4EFA41A21BE447300EB5B22 /* LoginService.swift in Sources */,
 				F48B4B7C2199CDE500E4C1DF /* Cell.swift in Sources */,
 				F403A8D321A4684900087587 /* ReactionTagsService.swift in Sources */,
 				F4B424C5219454B600C3709B /* PopularViewController.swift in Sources */,
@@ -672,6 +684,7 @@
 				F4B424D42194616E00C3709B /* UserView.swift in Sources */,
 				73292F5A21B1259A00330469 /* DetailsViewModel.swift in Sources */,
 				F4B424E421946BD400C3709B /* DetailsView.swift in Sources */,
+				F4EFA41821BE43AB00EB5B22 /* LoginViewModel.swift in Sources */,
 				F48B4B812199DFD100E4C1DF /* CreateOnlineViewController.swift in Sources */,
 				F4F1FAC021A4211B00980C9E /* APIError.swift in Sources */,
 				F403A8D121A4678100087587 /* PopularViewModel.swift in Sources */,
