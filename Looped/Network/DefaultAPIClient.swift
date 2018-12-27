@@ -16,6 +16,7 @@ final class DefaultAPIClient: APIClient {
             var urlRequest: URLRequest
             do {
                 urlRequest = try URLRequest(request: request)
+                // TODO: Handle expired session
                 authenticationController.authorizeRequest(request: &urlRequest)
             } catch let error {
                 single(.error(error))
@@ -24,6 +25,7 @@ final class DefaultAPIClient: APIClient {
             
             let task = session.dataTask(with: urlRequest) { data, response, error in
                 if let error = error {
+                    // TODO: Add APIError
                     if (error as NSError).code == NSURLErrorNotConnectedToInternet {
                         single(.error(NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey : "You need internet connection at first launch"])))
                     } else {
@@ -33,6 +35,7 @@ final class DefaultAPIClient: APIClient {
                 }
                 
                 guard let response = response as? HTTPURLResponse else {
+                    // TODO: Add APIError
                     single(.error(NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey : "No response"])))
                     return
                 }
@@ -40,7 +43,7 @@ final class DefaultAPIClient: APIClient {
                 if 200..<300 ~= response.statusCode {
                     single(.success(APIResponse(data: data, response: response)))
                 } else {
-                    single(.error(NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey : "Incorrect status code"])))
+                    single(.error(APIError.incorrectStatusCode(code: response.statusCode, data: data)))
                 }
             }
             

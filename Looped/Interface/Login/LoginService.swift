@@ -19,7 +19,6 @@ final class LoginService: LoginServiceProtocol {
     
     func login(username: String, password: String) -> Single<Session> {
         return apiClient.send(request: LoginRequest(username: username, password: password))
-            .filter { $0.data != nil }
             .map { try JSONDecoder().decode(LoginResponse.self, from: $0.data!) }
             .map { Session(token: $0.access_token, refreshToken: $0.refresh_token) }
             .asObservable()

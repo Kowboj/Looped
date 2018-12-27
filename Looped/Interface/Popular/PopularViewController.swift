@@ -71,5 +71,9 @@ final class PopularViewController: ViewController {
                 self?.popularViewModel.getReactionTags()
             })
             .disposed(by: disposeBag)
+
+        popularViewModel.isLoading
+            .bind(to: popularView.refreshControl.rx.isRefreshing)
+            .disposed(by: disposeBag)
     }
 }

@@ -6,6 +6,7 @@ protocol PopularViewModelProtocol {
     func getReactionTags()
 
     var reactionTags: Observable<[ReactionTag]> { get }
+    var isLoading: Observable<Bool> { get }
 }
 
 final class PopularViewModel: PopularViewModelProtocol {
@@ -18,6 +19,7 @@ final class PopularViewModel: PopularViewModelProtocol {
     // MARK: - Properties
     
     private let disposeBag = DisposeBag()
+    private let activity = ActivityIndicator()
     private let service: ReactionTagsServiceProtocol
     private let tagsSubject = PublishSubject<[ReactionTag]>()
     
@@ -26,9 +28,12 @@ final class PopularViewModel: PopularViewModelProtocol {
     lazy var reactionTags: Observable<[ReactionTag]> = {
         return tagsSubject
     }()
+
+    var isLoading: Observable<Bool> {
+        return activity.asSharedSequence().asObservable()
+    }
     
     func getReactionTags() {
-        let activity = ActivityIndicator()
         service.getReactionTags()
             .trackActivity(activity)
             .asObservable()

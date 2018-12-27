@@ -19,34 +19,54 @@ final class LoginViewController: ViewController {
     override func loadView() {
         view = loginView
     }
-    
-    override func setupProperties() {
-        super.setupProperties()
-    }
 
     override func setupBindings() {
         super.setupBindings()
-        
-        loginView.closeButton.rx.tap
-            .bind { [unowned self] in
-                self.dismiss(animated: true, completion: nil)
-            }
+
+        let textFieldsObservable = Observable.combineLatest(loginView.usernameTextField.rx.text.orEmpty, loginView.passwordTextField.rx.text.orEmpty)
+
+        textFieldsObservable
+            .map {  $0.0.count > 0 && $0.1.count > 0 }
+            .bind(to: loginView.loginButton.rx.isEnabled)
             .disposed(by: disposeBag)
-        
-        loginView.usernameTextField.rx.text
-            .orEmpty
-            .bind(to: viewModel.username)
-            .disposed(by: disposeBag)
-        
-        loginView.passwordTextField.rx.text
-            .orEmpty
-            .bind(to: viewModel.password)
-            .disposed(by: disposeBag)
-    
+
         loginView.loginButton.rx.tap
-            .bind { [weak self] in
-                self?.viewModel.login()
-            }
+            .debounce(0.5, scheduler: MainScheduler.instance)
+            .withLatestFrom(textFieldsObservable)
+            .subscribe(onNext: { [weak self] (userName, password) in
+                self?.viewModel.login(userName: userName, password: password)
+            })
             .disposed(by: disposeBag)
+
+        loginView.closeButton.rx.tap
+            .subscribe(onNext: { [unowned self] in
+                self.dismiss(animated: true, completion: nil)
+            })
+            .disposed(by: disposeBag)
+
+        viewModel.error
+            .map { $0 as? APIError }
+            .unwrap()
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { apiError in
+                switch apiError {
+                case .noConnection:
+                    self.loginView.infoLabel.text = "Kjgfkgjdfkg"
+                case .incorrectURL(let url):
+                    self.loginView.infoLabel.text = "fkldsfsl"
+                case .incorrectStatusCode(let code, let data):
+                    self.loginView.infoLabel.text = " Kjgfkgjdfkg"
+                case .missingData:
+                    self.loginView.infoLabel.text = "Kjgfkgjdfkg "
+                }
+            })
+            .disposed(by: disposeBag)
+
+        viewModel.didLogin
+            .subscribe(onCompleted: { [unowned self] in
+                self.loginView.infoLabel.text = "fdsfsdfs"
+            })
+            .disposed(by: disposeBag)
+
     }
 }

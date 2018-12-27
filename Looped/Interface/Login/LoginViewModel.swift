@@ -2,10 +2,11 @@ import RxSwift
 import RxCocoa
 
 protocol LoginViewModelProtocol {
-    func login()
-    
-    var username: Variable<String> { get }
-    var password: Variable<String> { get }
+    func login(userName: String, password: String)
+
+    var isLoading: Observable<Bool> { get }
+    var error: Observable<Error> { get }
+    var didLogin: Completable { get }
 }
 
 final class LoginViewModel: LoginViewModelProtocol {
@@ -13,35 +14,46 @@ final class LoginViewModel: LoginViewModelProtocol {
     init(service: LoginServiceProtocol, sessionProvider: SessionProviding) {
         self.service = service
         self.sessionProvider = sessionProvider
-        self.isValid = Observable.combineLatest(self.username.asObservable(), self.password.asObservable())
-        { (username, password) in
-            return username.count > 0
-                && password.count > 0
-        }
     }
     
     // MARK: - Properties
     
     private let service: LoginServiceProtocol
     private let sessionProvider: SessionProviding
-    private let isValid: Observable<Bool>
+    private let activity = ActivityIndicator()
+    private let errorSubject = PublishSubject<Error>()
+    private let didLoginSubject = PublishSubject<Void>()
+
     private let disposeBag = DisposeBag()
     
     // MARK: - LoginViewModelProtocol
-    
-    let username = Variable<String>("")
-    let password = Variable<String>("")
 
-    func login() {
+    var isLoading: Observable<Bool> {
+        return activity.asSharedSequence().asObservable()
+    }
+
+    lazy var error: Observable<Error> = {
+        return errorSubject
+    }()
+
+    lazy var didLogin: Completable = {
+        return didLoginSubject.asCompletable()
+    }()
+
+    func login(userName: String, password: String) {
+
         // TODO: - check isValid, if false - show alert
-        let activity = ActivityIndicator()
-        service.login(username: username.value, password: password.value)
+        service.login(username: userName, password: password)
             .trackActivity(activity)
-            .subscribe({ [weak self] (event) in
-                if let session = event.element {
-                    self?.sessionProvider.saveSession(session: session)
-                }
+            .catchError({ [weak self] error in
+                self?.errorSubject.onNext(error)
+                return .empty()
+            })
+            .subscribe(onNext: { [weak self] session in
+                self?.sessionProvider.saveSession(session: session)
+                self?.didLoginSubject.onCompleted()
             })
             .disposed(by: disposeBag)
+
     }
 }
