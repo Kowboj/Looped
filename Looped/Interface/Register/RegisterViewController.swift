@@ -1,51 +1,56 @@
 import UIKit
 import RxSwift
 
-final class LoginViewController: ViewController {
-    
-    init(viewModel: LoginViewModelProtocol) {
+final class RegisterViewController: ViewController {
+
+    init(viewModel: RegisterViewModelProtocol) {
         self.viewModel = viewModel
         super.init()
     }
     
     // MARK: - Properties
     
-    private let viewModel: LoginViewModelProtocol
-    private let loginView = LoginView(buttonTitle: "Login")
+    private let viewModel: RegisterViewModelProtocol
+    private let registerView = RegisterView(buttonTitle: "Register")
     private let disposeBag = DisposeBag()
-    
+
     // MARK: - Overrides
     
     override func loadView() {
-        view = loginView
+        view = registerView
     }
     
     override func setupProperties() {
         super.setupProperties()
     }
-
+    
     override func setupBindings() {
         super.setupBindings()
         
-        loginView.closeButton.rx.tap
+        viewModel.message
+            .asObservable()
+            .bind(to: registerView.infoLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        registerView.closeButton.rx.tap
             .bind { [unowned self] in
                 self.dismiss(animated: true, completion: nil)
             }
             .disposed(by: disposeBag)
         
-        loginView.usernameTextField.rx.text
+        registerView.usernameTextField.rx.text
             .orEmpty
             .bind(to: viewModel.username)
             .disposed(by: disposeBag)
         
-        loginView.passwordTextField.rx.text
+        registerView.passwordTextField.rx.text
             .orEmpty
             .bind(to: viewModel.password)
             .disposed(by: disposeBag)
-    
-        loginView.loginButton.rx.tap
+        
+        registerView.loginButton.rx.tap
             .bind { [weak self] in
-                self?.viewModel.login()
+                self?.viewModel.register()
             }
             .disposed(by: disposeBag)
     }

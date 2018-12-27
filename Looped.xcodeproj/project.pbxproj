@@ -15,6 +15,12 @@
 		F403A8D121A4678100087587 /* PopularViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F403A8D021A4678100087587 /* PopularViewModel.swift */; };
 		F403A8D321A4684900087587 /* ReactionTagsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F403A8D221A4684900087587 /* ReactionTagsService.swift */; };
 		F403A8D621A46FFF00087587 /* GifCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F403A8D521A46FFF00087587 /* GifCellViewModel.swift */; };
+		F40CE23F21D4F1AC0086FA03 /* RegisterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40CE23E21D4F1AC0086FA03 /* RegisterService.swift */; };
+		F40CE24121D4F1B70086FA03 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40CE24021D4F1B70086FA03 /* RegisterViewModel.swift */; };
+		F40CE24321D4F1C00086FA03 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40CE24221D4F1C00086FA03 /* RegisterViewController.swift */; };
+		F40CE24521D4F1C80086FA03 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40CE24421D4F1C80086FA03 /* RegisterView.swift */; };
+		F40CE24721D4FC900086FA03 /* LogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40CE24621D4FC900086FA03 /* LogView.swift */; };
+		F40CE24921D508CC0086FA03 /* RegisterRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40CE24821D508CC0086FA03 /* RegisterRequest.swift */; };
 		F4191E0C21A2FCBE00577DB0 /* SwiftyGif.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4191E0A21A2FCBE00577DB0 /* SwiftyGif.framework */; };
 		F4191E0D21A2FCBE00577DB0 /* Regift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4191E0B21A2FCBE00577DB0 /* Regift.framework */; };
 		F41D892321B6C24700CFC376 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41D892221B6C24700CFC376 /* ActivityIndicator.swift */; };
@@ -24,7 +30,6 @@
 		F4867CA621AFF32E006BD547 /* ExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4867CA521AFF32E006BD547 /* ExampleTests.swift */; };
 		F486A42321B1416600BEA589 /* TabBarControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F486A42221B1416600BEA589 /* TabBarControllerFactory.swift */; };
 		F486A42921B155CB00BEA589 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F486A42821B155CB00BEA589 /* UserViewModel.swift */; };
-		F48981F621B90EC50000A76D /* NewRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48981F521B90EC50000A76D /* NewRequest.swift */; };
 		F48B4B7A2199CDB900E4C1DF /* GifCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48B4B792199CDB900E4C1DF /* GifCell.swift */; };
 		F48B4B7C2199CDE500E4C1DF /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48B4B7B2199CDE500E4C1DF /* Cell.swift */; };
 		F48B4B7E2199CE0600E4C1DF /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48B4B7D2199CE0600E4C1DF /* Reusable.swift */; };
@@ -56,7 +61,7 @@
 		F4EB1EB021AEB4E70015AF82 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4EB1EAE21AEB4E70015AF82 /* RxCocoa.framework */; };
 		F4EB1F0521AED6D20015AF82 /* APIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EB1F0421AED6D20015AF82 /* APIResponse.swift */; };
 		F4ECB6BC21BA54060045D489 /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4ECB6BB21BA54060045D489 /* KeychainAccess.framework */; };
-		F4EE316621B01F330023B68A /* AuthRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EE316521B01F330023B68A /* AuthRequest.swift */; };
+		F4EE316621B01F330023B68A /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EE316521B01F330023B68A /* LoginRequest.swift */; };
 		F4EE316921B028010023B68A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EE316821B028010023B68A /* LoginViewController.swift */; };
 		F4EE316B21B029BE0023B68A /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EE316A21B029BE0023B68A /* LoginView.swift */; };
 		F4EFA41821BE43AB00EB5B22 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EFA41721BE43AB00EB5B22 /* LoginViewModel.swift */; };
@@ -96,6 +101,12 @@
 		F403A8D021A4678100087587 /* PopularViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularViewModel.swift; sourceTree = "<group>"; };
 		F403A8D221A4684900087587 /* ReactionTagsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactionTagsService.swift; sourceTree = "<group>"; };
 		F403A8D521A46FFF00087587 /* GifCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifCellViewModel.swift; sourceTree = "<group>"; };
+		F40CE23E21D4F1AC0086FA03 /* RegisterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterService.swift; sourceTree = "<group>"; };
+		F40CE24021D4F1B70086FA03 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
+		F40CE24221D4F1C00086FA03 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		F40CE24421D4F1C80086FA03 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		F40CE24621D4FC900086FA03 /* LogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogView.swift; sourceTree = "<group>"; };
+		F40CE24821D508CC0086FA03 /* RegisterRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRequest.swift; sourceTree = "<group>"; };
 		F4191E0A21A2FCBE00577DB0 /* SwiftyGif.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyGif.framework; path = Carthage/Build/iOS/SwiftyGif.framework; sourceTree = "<group>"; };
 		F4191E0B21A2FCBE00577DB0 /* Regift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Regift.framework; path = Carthage/Build/iOS/Regift.framework; sourceTree = "<group>"; };
 		F41D892221B6C24700CFC376 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
@@ -107,7 +118,6 @@
 		F486A42821B155CB00BEA589 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		F48733E121A7F62B008CB201 /* LoopedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LoopedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F48733E521A7F62B008CB201 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F48981F521B90EC50000A76D /* NewRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRequest.swift; sourceTree = "<group>"; };
 		F48B4B792199CDB900E4C1DF /* GifCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifCell.swift; sourceTree = "<group>"; };
 		F48B4B7B2199CDE500E4C1DF /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
 		F48B4B7D2199CE0600E4C1DF /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
@@ -141,7 +151,7 @@
 		F4EB1EAE21AEB4E70015AF82 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
 		F4EB1F0421AED6D20015AF82 /* APIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResponse.swift; sourceTree = "<group>"; };
 		F4ECB6BB21BA54060045D489 /* KeychainAccess.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainAccess.framework; path = Carthage/Build/iOS/KeychainAccess.framework; sourceTree = "<group>"; };
-		F4EE316521B01F330023B68A /* AuthRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRequest.swift; sourceTree = "<group>"; };
+		F4EE316521B01F330023B68A /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 		F4EE316821B028010023B68A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F4EE316A21B029BE0023B68A /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		F4EFA41721BE43AB00EB5B22 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
@@ -210,6 +220,17 @@
 				F403A8D521A46FFF00087587 /* GifCellViewModel.swift */,
 			);
 			path = GifCell;
+			sourceTree = "<group>";
+		};
+		F40CE23D21D4F1930086FA03 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				F40CE23E21D4F1AC0086FA03 /* RegisterService.swift */,
+				F40CE24021D4F1B70086FA03 /* RegisterViewModel.swift */,
+				F40CE24221D4F1C00086FA03 /* RegisterViewController.swift */,
+				F40CE24421D4F1C80086FA03 /* RegisterView.swift */,
+			);
+			path = Register;
 			sourceTree = "<group>";
 		};
 		F4191E0921A2FCBE00577DB0 /* Frameworks */ = {
@@ -327,6 +348,7 @@
 				F4B424D02194614100C3709B /* Create */,
 				F4B424E021946BB800C3709B /* Details */,
 				F4EE316721B027F20023B68A /* Login */,
+				F40CE23D21D4F1930086FA03 /* Register */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -407,6 +429,7 @@
 			children = (
 				F4B424DA2194644600C3709B /* View.swift */,
 				F4B424DC2194647500C3709B /* TabView.swift */,
+				F40CE24621D4FC900086FA03 /* LogView.swift */,
 				F4B424DE2194675800C3709B /* ViewController.swift */,
 				F48B4B7B2199CDE500E4C1DF /* Cell.swift */,
 			);
@@ -456,8 +479,8 @@
 			children = (
 				F4F1FAB921A4211B00980C9E /* ReactionTagsRequest.swift */,
 				F4F1FAD121A425FA00980C9E /* SearchRequest.swift */,
-				F4EE316521B01F330023B68A /* AuthRequest.swift */,
-				F48981F521B90EC50000A76D /* NewRequest.swift */,
+				F4EE316521B01F330023B68A /* LoginRequest.swift */,
+				F40CE24821D508CC0086FA03 /* RegisterRequest.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -647,10 +670,12 @@
 				F4B424DD2194647500C3709B /* TabView.swift in Sources */,
 				F4EFA41A21BE447300EB5B22 /* LoginService.swift in Sources */,
 				F48B4B7C2199CDE500E4C1DF /* Cell.swift in Sources */,
+				F40CE24321D4F1C00086FA03 /* RegisterViewController.swift in Sources */,
 				F403A8D321A4684900087587 /* ReactionTagsService.swift in Sources */,
 				F4B424C5219454B600C3709B /* PopularViewController.swift in Sources */,
 				F48B4B7A2199CDB900E4C1DF /* GifCell.swift in Sources */,
-				F4EE316621B01F330023B68A /* AuthRequest.swift in Sources */,
+				F40CE24521D4F1C80086FA03 /* RegisterView.swift in Sources */,
+				F4EE316621B01F330023B68A /* LoginRequest.swift in Sources */,
 				F4EE316921B028010023B68A /* LoginViewController.swift in Sources */,
 				F4F1FAC621A4211B00980C9E /* APIQueryParameter.swift in Sources */,
 				F44001D721959F3D0039A707 /* PopularFlowControllerFactory.swift in Sources */,
@@ -668,11 +693,12 @@
 				F4F1FAD021A4220600980C9E /* Result.swift in Sources */,
 				F4B424A621944D6A00C3709B /* AppDelegate.swift in Sources */,
 				F4F1FAC321A4211B00980C9E /* DefaultAPIClient.swift in Sources */,
+				F40CE24921D508CC0086FA03 /* RegisterRequest.swift in Sources */,
 				F4B424CA2194558A00C3709B /* UIKit.UIView.swift in Sources */,
+				F40CE24721D4FC900086FA03 /* LogView.swift in Sources */,
 				F4F1FAC421A4211B00980C9E /* ReactionTagsRequest.swift in Sources */,
 				F4F1FAC121A4211B00980C9E /* APIService.swift in Sources */,
 				F4B424CC2194594800C3709B /* TabBarController.swift in Sources */,
-				F48981F621B90EC50000A76D /* NewRequest.swift in Sources */,
 				F4B424C32194544700C3709B /* FlowController.swift in Sources */,
 				F4B424DB2194644600C3709B /* View.swift in Sources */,
 				F486A42321B1416600BEA589 /* TabBarControllerFactory.swift in Sources */,
@@ -687,6 +713,8 @@
 				F4EFA41821BE43AB00EB5B22 /* LoginViewModel.swift in Sources */,
 				F48B4B812199DFD100E4C1DF /* CreateOnlineViewController.swift in Sources */,
 				F4F1FAC021A4211B00980C9E /* APIError.swift in Sources */,
+				F40CE24121D4F1B70086FA03 /* RegisterViewModel.swift in Sources */,
+				F40CE23F21D4F1AC0086FA03 /* RegisterService.swift in Sources */,
 				F403A8D121A4678100087587 /* PopularViewModel.swift in Sources */,
 				F4F1FACC21A421A700980C9E /* Foundation.URLRequest.swift in Sources */,
 				F48B4B892199E01F00E4C1DF /* CreateLibraryView.swift in Sources */,

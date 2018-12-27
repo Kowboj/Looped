@@ -4,6 +4,7 @@ import RxSwift
 protocol UserViewControllerFlowDelegate: class {
     func showDetails(gif: GifViewModel)
     func presentLogin()
+    func presentRegister()
 }
 
 final class UserViewController: ViewController {
@@ -36,6 +37,15 @@ final class UserViewController: ViewController {
     
     override func setupBindings() {
         super.setupBindings()
+        
+        userViewModel.isLogged
+            .bind(to: userView.loginButton.rx.isHidden)
+            .disposed(by: disposeBag)
+        
+        userViewModel.isLogged
+            .bind(to: userView.registerButton.rx.isHidden)
+            .disposed(by: disposeBag)
+        
         userViewModel.likedReactionTags
             .bind(to: userView.tableView.rx.items(cellIdentifier: GifCell.reuseIdentifier, cellType: GifCell.self)) { _ , element, cell in
                 let cellViewModel = GifCellViewModel(viewModel: element.gfycats.first!, reactionTag: nil)
@@ -73,6 +83,12 @@ final class UserViewController: ViewController {
         userView.loginButton.rx.tap
             .subscribe(onNext: { [unowned self] in
                 self.flowDelegate?.presentLogin()
+            })
+            .disposed(by: disposeBag)
+        
+        userView.registerButton.rx.tap
+            .subscribe(onNext: { [unowned self] in
+                self.flowDelegate?.presentRegister()
             })
             .disposed(by: disposeBag)
         
