@@ -2,37 +2,34 @@ import Foundation
 import RxSwift
 
 protocol RegisterViewModelProtocol {
-    func register()
-
-    // TODO: Get rid of variables
-    var username: Variable<String> { get }
-    var password: Variable<String> { get }
-    var message: Variable<String> { get }
+    func register(userName: String, password: String)
 
     var isLoading: Observable<Bool> { get }
-
     var error: Observable<Error> { get }
+    var didLogin: Completable { get }
 }
 
 final class RegisterViewModel: RegisterViewModelProtocol {
     
-    init(service: RegisterServiceProtocol) {
+    init(service: RegisterServiceProtocol, sessionProvider: SessionProviding) {
         self.service = service
+        self.sessionProvider = sessionProvider
+        if sessionProvider.lastSession == nil {
+            authenticate()
+        }
     }
     
     // MARK: - Properties
 
-    private let activity = ActivityIndicator()
     private let service: RegisterServiceProtocol
-    private let disposeBag = DisposeBag()
+    private let sessionProvider: SessionProviding
+    private let activity = ActivityIndicator()
     private let errorSubject = PublishSubject<Error>()
+    private let didLoginSubject = PublishSubject<Void>()
+    private let disposeBag = DisposeBag()
     
     // MARK: - RegisterViewModelProtocol
     
-    let username = Variable<String>("")
-    let password = Variable<String>("")
-    let message = Variable<String>("")
-
     var isLoading: Observable<Bool> {
         return activity.asSharedSequence().asObservable()
     }
@@ -41,15 +38,35 @@ final class RegisterViewModel: RegisterViewModelProtocol {
         return errorSubject
     }()
 
-    func register() {
-        // TODO: - check isValid, if false - show alert
-        service.register(username: username.value, password: password.value)
+    lazy var didLogin: Completable = {
+        return didLoginSubject.asCompletable()
+    }()
+    
+    func register(userName: String, password: String) {
+        
+        service.register(userName: userName, password: password)
             .trackActivity(activity)
             .catchError({ [weak self] error in
                 self?.errorSubject.onNext(error)
                 return .empty()
             })
-            .bind(to: message)
+            .subscribe(onNext: { [weak self] session in
+                self?.sessionProvider.saveSession(session: session)
+                self?.didLoginSubject.onCompleted()
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    func authenticate() {
+        service.authenticate()
+            .trackActivity(activity)
+            .catchError({ [weak self] error in
+                self?.errorSubject.onNext(error)
+                return .empty()
+            })
+            .subscribe(onNext: { [weak self] session in
+                self?.sessionProvider.saveSession(session: session)
+            })
             .disposed(by: disposeBag)
     }
 }

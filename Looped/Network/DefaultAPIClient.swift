@@ -25,9 +25,8 @@ final class DefaultAPIClient: APIClient {
             
             let task = session.dataTask(with: urlRequest) { data, response, error in
                 if let error = error {
-                    // TODO: Add APIError
                     if (error as NSError).code == NSURLErrorNotConnectedToInternet {
-                        single(.error(NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey : "You need internet connection at first launch"])))
+                        single(.error(APIError.noConnection))
                     } else {
                         single(.error(error))
                     }
@@ -35,8 +34,7 @@ final class DefaultAPIClient: APIClient {
                 }
                 
                 guard let response = response as? HTTPURLResponse else {
-                    // TODO: Add APIError
-                    single(.error(NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey : "No response"])))
+                    single(.error(APIError.missingData))
                     return
                 }
                 

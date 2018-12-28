@@ -43,7 +43,7 @@ final class  UserFlowControllerFactory: UserFlowControllerFactoryProtocol {
     func buildRegisterViewController() -> RegisterViewController {
         
         let service = RegisterService(apiClient: applicationDependencies.apiClient)
-        let viewModel = RegisterViewModel(service: service)
+        let viewModel = RegisterViewModel(service: service, sessionProvider: applicationDependencies.sessionProvider)
         let viewController = RegisterViewController(viewModel: viewModel)
         
         return viewController

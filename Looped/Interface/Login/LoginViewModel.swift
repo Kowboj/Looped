@@ -23,7 +23,6 @@ final class LoginViewModel: LoginViewModelProtocol {
     private let activity = ActivityIndicator()
     private let errorSubject = PublishSubject<Error>()
     private let didLoginSubject = PublishSubject<Void>()
-
     private let disposeBag = DisposeBag()
     
     // MARK: - LoginViewModelProtocol
@@ -42,7 +41,6 @@ final class LoginViewModel: LoginViewModelProtocol {
 
     func login(userName: String, password: String) {
 
-        // TODO: - check isValid, if false - show alert
         service.login(username: userName, password: password)
             .trackActivity(activity)
             .catchError({ [weak self] error in

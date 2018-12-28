@@ -39,9 +39,9 @@ final class SessionProvider: SessionProviding {
 
 struct Session {
     let token: String
-    let refreshToken: String
+    let refreshToken: String?
     
-    init(token: String, refreshToken: String) {
+    init(token: String, refreshToken: String?) {
         self.token = token
         self.refreshToken = refreshToken
     }

@@ -12,7 +12,6 @@ final class UserViewController: ViewController {
     init(userViewModel: UserViewModelProtocol) {
         self.userViewModel = userViewModel
         super.init()
-        userViewModel.getLikedReactionTags()
     }
     
     // MARK: - Properties
@@ -76,7 +75,7 @@ final class UserViewController: ViewController {
             })
             .disposed(by: disposeBag)
         
-        Observable.just("Arnold Kangur")
+        Observable.just("User")
             .bind(to: rx.title)
             .disposed(by: disposeBag)
         

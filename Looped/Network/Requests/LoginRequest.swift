@@ -14,7 +14,7 @@ struct LoginRequest: APIRequest {
     var method: HttpMethod { return .POST }
     var path: String { return "oauth/token" }
     var body: [String : APIQueryParameter]? {
-        return ["grant_type" : .string("client_credentials"),
+        return ["grant_type" : .string("password"),
                 "client_id" : .string(keys.cLIENT_ID),
                 "client_secret" : .string(keys.cLIENT_SECRET),
                 "username" : .string(username),

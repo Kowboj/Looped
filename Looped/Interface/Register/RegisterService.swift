@@ -2,7 +2,8 @@ import Foundation
 import RxSwift
 
 protocol RegisterServiceProtocol {
-    func register(username: String, password: String) -> Single<String>
+    func authenticate() -> Single<Session>
+    func register(userName: String, password: String) -> Single<Session>
 }
 
 final class RegisterService: RegisterServiceProtocol {
@@ -17,23 +18,19 @@ final class RegisterService: RegisterServiceProtocol {
     
     // MARK: - Public
     
-    func register(username: String, password: String) -> Single<String> {
-        return apiClient.send(request: RegisterRequest(username: username, password: password))
-            .filter { $0.data != nil }
-            .map { try JSONDecoder().decode(RegisterResponse.self, from: $0.data!) }
-            .map { ($0.errorMessage != nil) ? $0.errorMessage?.description ?? "Error" : "Success" }
+    func register(userName: String, password: String) -> Single<Session> {
+        return apiClient.send(request: RegisterRequest(userName: userName, password: password))
+            .map { try JSONDecoder().decode(LoginResponse.self, from: $0.data!) }
+            .map { Session(token: $0.access_token, refreshToken: $0.refresh_token) }
             .asObservable()
             .asSingle()
     }
     
-    // MARK: - Private
-    
-    private struct RegisterResponse: Decodable {
-        let errorMessage: ErrorMessage?
+    func authenticate() -> Single<Session> {
+        return apiClient.send(request: AuthenticateRequest())
+            .map { try JSONDecoder().decode(LoginResponse.self, from: $0.data!) }
+            .map { Session(token: $0.access_token, refreshToken: $0.refresh_token) }
+            .asObservable()
+            .asSingle()
     }
-    private struct ErrorMessage: Decodable {
-        let code: String
-        let description: String
-    }
-    
 }
