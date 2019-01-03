@@ -11,6 +11,11 @@ extension URLRequest {
             "Accept": "application/json",
             "Content-Type": "application/json; charset=uft-8"
         ]
+        
+        if let header = request.header {
+            allHTTPHeaderFields = allHTTPHeaderFields!.merging(header) { $1 }
+        }
+        
         if let body = request.body, let data = try? JSONEncoder().encode(body) {
             httpBody = data
         }

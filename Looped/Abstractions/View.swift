@@ -15,7 +15,7 @@ class View: UIView {
     
     func setupViewHierarchy() {}
     func setupProperties() {
-        backgroundColor = UIColor(displayP3Red: 0, green: 0, blue: 0.1, alpha: 1)
+        backgroundColor = UIColor(displayP3Red: 0, green: 0.15, blue: 0.3, alpha: 1)
     }
     func setupLayoutConstraints() {}
     

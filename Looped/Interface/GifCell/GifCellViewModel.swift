@@ -11,9 +11,9 @@ final class GifCellViewModel: GifCellViewModelProtocol {
     private let gifViewModel: GifViewModel
     private let reactionTag: ReactionTag?
     
-    init(viewModel: GifViewModel, reactionTag: ReactionTag) {
+    init(viewModel: GifViewModel, reactionTag: ReactionTag?) {
         self.gifViewModel = viewModel
-        self.reactionTag = reactionTag
+        self.reactionTag = reactionTag ?? nil
     }
     
     var likes: String {

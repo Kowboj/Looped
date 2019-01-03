@@ -1,7 +1,11 @@
 import UIKit
 
 final class PopularView: View {
-    
+
+    private(set) lazy var refreshControl: UIRefreshControl = {
+        return UIRefreshControl()
+    }()
+
     private(set) lazy var searchBar: UISearchBar = {
         let searchBar = UISearchBar(frame: .zero)
         searchBar.translatesAutoresizingMaskIntoConstraints = false
@@ -24,10 +28,6 @@ final class PopularView: View {
         [tableView].forEach(addSubview)
     }
     
-    override func setupProperties() {
-        super.setupProperties()
-    }
-
     override func setupLayoutConstraints() {
         super.setupLayoutConstraints()
         tableView.anchor(top: topAnchor, leading: leadingAnchor, trailing: trailingAnchor, bottom: bottomAnchor, padding: .zero, size: CGSize.zero)

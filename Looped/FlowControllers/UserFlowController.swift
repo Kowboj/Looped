@@ -1,8 +1,14 @@
 import UIKit
 
+
 final class UserFlowController: FlowController {
+
+    init(controllersFactory: UserFlowControllerFactoryProtocol) {
+        self.controllersFactory = controllersFactory
+    }
     
-    let controllersFactory = UserFlowControllerFactory()
+    private let controllersFactory: UserFlowControllerFactoryProtocol
+    
     lazy var rootViewController: UINavigationController = {
         navigationController.viewControllers = [controllersFactory.buildUserViewController(delegate: self)]
         
@@ -15,7 +21,16 @@ final class UserFlowController: FlowController {
 }
 
 extension UserFlowController: UserViewControllerFlowDelegate {
-    func showDetails(gif: String) {
-        navigationController.pushViewController(controllersFactory.buildDetailsViewController(gif: gif, delegate: self), animated: true)
+
+    func showDetails(gif: GifViewModel) {
+        navigationController.pushViewController(controllersFactory.buildDetailsViewController(gif: gif), animated: true)
+    }
+    
+    func presentLogin() {
+        navigationController.present(controllersFactory.buildLoginViewController(), animated: true, completion: nil)
+    }
+    
+    func presentRegister() {
+        navigationController.present(controllersFactory.buildRegisterViewController(), animated: true, completion: nil)
     }
 }

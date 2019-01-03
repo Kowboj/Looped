@@ -3,17 +3,27 @@ import UIKit
 final class TabBarController: UITabBarController {
     
     // MARK: - Properties
+    private let controllersFactory: TabBarControllerFactoryProtocol
+    private let tabBarItemImages = ["barItemPopular", "barItemUser", "barItemCreate"]
     
-    let popularRootViewController = PopularFlowController()
-    let userRootViewController = UserFlowController()
-    let createRootViewController = CreateFlowController()
-    let tabBarItemImages = ["barItemPopular", "barItemUser", "barItemCreate"]
+    private lazy var popularRootViewController: PopularFlowController = {
+        return controllersFactory.buildPopularFlowController()
+    }()
+    
+    private lazy var userRootViewController: UserFlowController = {
+        return controllersFactory.buildUserFlowController()
+    }()
+    
+    private lazy var createRootViewController: CreateFlowController = {
+        return controllersFactory.buildCreateFlowController()
+    }()
     
     // MARK: - Initializers
-    init() {
+    
+    init(controllersFactory: TabBarControllerFactoryProtocol) {
+        self.controllersFactory = controllersFactory
         super.init(nibName: nil, bundle: nil)
         setupTabBarItems()
-        setupViewControllers()
     }
     
     @available(*, unavailable) required init?(coder aDecoder: NSCoder) {
@@ -26,9 +36,6 @@ final class TabBarController: UITabBarController {
         popularRootViewController.rootViewController.tabBarItem = tabBarItem(at: 0)
         userRootViewController.rootViewController.tabBarItem = tabBarItem(at: 1)
         createRootViewController.rootViewController.tabBarItem = tabBarItem(at: 2)
-    }
-    
-    private func setupViewControllers() {
         viewControllers = [popularRootViewController.rootViewController, userRootViewController.rootViewController, createRootViewController.rootViewController]
     }
     

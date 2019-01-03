@@ -3,7 +3,7 @@ import RxSwift
 import RxCocoa
 
 protocol PopularViewControllerFlowDelegate: class {
-    func showDetails(gif: String)
+    func showDetails(gif: GifViewModel)
 }
 
 final class PopularViewController: ViewController {
@@ -14,19 +14,14 @@ final class PopularViewController: ViewController {
     }
     
     // MARK: - Properties
+    
     private let popularViewModel: PopularViewModelProtocol
     private let popularView = PopularView()
     private let disposeBag = DisposeBag()
     weak var flowDelegate: PopularViewControllerFlowDelegate?
-    private var reactionTags: [ReactionTag] = [] {
-        didSet {
-            DispatchQueue.main.async {
-                self.popularView.tableView.reloadData()
-            }
-        }
-    }
     
     // MARK: - Overrides
+    
     override func loadView() {
         view = popularView
     }
@@ -38,11 +33,13 @@ final class PopularViewController: ViewController {
     
     override func setupProperties() {
         super.setupProperties()
+        popularView.tableView.refreshControl = popularView.refreshControl
         popularView.tableView.register(GifCell.self, forCellReuseIdentifier: GifCell.reuseIdentifier)
     }
     
     override func setupBindings() {
-        
+        super.setupBindings()
+
         popularViewModel.reactionTags
             .bind(to: popularView.tableView.rx.items(cellIdentifier: GifCell.reuseIdentifier, cellType: GifCell.self)) { _ , element, cell in
                 let cellViewModel = GifCellViewModel(viewModel: element.gfycats.first!, reactionTag: element)
@@ -53,11 +50,30 @@ final class PopularViewController: ViewController {
                 }
             }
             .disposed(by: disposeBag)
-        
+
         popularView.tableView.rx.modelSelected(ReactionTag.self)
             .subscribe(onNext: { [weak self] tag in
-                self?.flowDelegate?.showDetails(gif: tag.tag)
+                if let firstGif = tag.gfycats.first {
+                    self?.flowDelegate?.showDetails(gif: firstGif)
+                }
             })
+            .disposed(by: disposeBag)
+
+        popularView.refreshControl.rx.controlEvent(UIControl.Event.valueChanged)
+            .map { [popularView] _ in !popularView.refreshControl.isRefreshing }
+            .bind(to: popularView.refreshControl.rx.isRefreshing)
+            .disposed(by: disposeBag)
+
+        popularView.refreshControl.rx.controlEvent(UIControl.Event.valueChanged)
+            .debounce(2, scheduler: MainScheduler.instance)
+            .filter { [popularView] _ in !popularView.refreshControl.isRefreshing }
+            .subscribe(onNext: { [weak self] in
+                self?.popularViewModel.getReactionTags()
+            })
+            .disposed(by: disposeBag)
+
+        popularViewModel.isLoading
+            .bind(to: popularView.refreshControl.rx.isRefreshing)
             .disposed(by: disposeBag)
     }
 }

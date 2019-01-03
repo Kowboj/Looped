@@ -2,9 +2,14 @@ import UIKit
 
 final class CreateFlowController: FlowController {
     
-    let rootControllersFactory = CreateFlowControllerFactory()
+    private let controllersFactory: CreateFlowControllerFactoryProtocol
+    
+    init(controllersFactory: CreateFlowControllerFactoryProtocol) {
+        self.controllersFactory = controllersFactory
+    }
+    
     lazy var rootViewController: UINavigationController = {
-        navigationController.viewControllers = [rootControllersFactory.buildCreateViewController(delegate: self)]
+        navigationController.viewControllers = [controllersFactory.buildCreateViewController(delegate: self)]
         
         return navigationController
     }()
@@ -15,8 +20,9 @@ final class CreateFlowController: FlowController {
 }
 
 extension CreateFlowController: CreateViewControllerFlowDelegate {
-    func showDetails(gif: String) {
-        let detailsViewController = DetailsViewController(gif: gif)
+    func showDetails(gif: GifViewModel) {
+        let detailsViewModel = DetailsViewModel(gif: gif)
+        let detailsViewController = DetailsViewController(viewModel: detailsViewModel)
         navigationController.show(detailsViewController, sender: nil)
     }
 }

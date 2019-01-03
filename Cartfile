@@ -1,3 +1,4 @@
 github "matthewpalmer/Regift"
 github "kirualex/SwiftyGif"
 github "ReactiveX/RxSwift" ~> 4.0
+github "kishikawakatsumi/KeychainAccess"
