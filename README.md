@@ -6,10 +6,10 @@ Browse and create your own GIFs
 
 Project requires:
 
-- **Xcode 10.x
-- **[Carthage](https://github.com/Carthage/Carthage)
-- **[CocoaPods](https://github.com/CocoaPods/CocoaPods)
-- **[CocoaPods-Keys](https://github.com/orta/cocoapods-keys)
+- Xcode 10.x
+- [Carthage](https://github.com/Carthage/Carthage)
+- [CocoaPods](https://github.com/CocoaPods/CocoaPods)
+- [CocoaPods-Keys](https://github.com/orta/cocoapods-keys)
 
 ## Configuration
 
