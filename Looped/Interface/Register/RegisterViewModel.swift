@@ -64,6 +64,7 @@ final class RegisterViewModel: RegisterViewModelProtocol {
                 self?.errorSubject.onNext(error)
                 return .empty()
             })
+            .debug()
             .subscribe(onNext: { [weak self] session in
                 self?.sessionProvider.saveSession(session: session)
             })

@@ -2,6 +2,18 @@ import UIKit
 
 final class UserView: View {
     
+    private(set) lazy var logoutButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Logout", for: UIControl.State.normal)
+        button.titleLabel?.font = UIFont(name: "AmericanTypewriter", size: 16)
+        button.setTitleColor(UIColor.init(white: 0.9, alpha: 0.9), for: UIControl.State.normal)
+        button.layer.borderColor = UIColor.init(white: 0.9, alpha: 0.9).cgColor
+        button.layer.borderWidth = 1
+        button.layer.cornerRadius = 5
+        return button
+    }()
+    
     private(set) lazy var photoImageView: UIImageView = {
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -58,7 +70,7 @@ final class UserView: View {
     override func setupViewHierarchy() {
         super.setupViewHierarchy()
         
-        [photoImageView, segmentedControl, loginButton, registerButton, tableView].forEach(addSubview)
+        [logoutButton, photoImageView, segmentedControl, loginButton, registerButton, tableView].forEach(addSubview)
     }
     
     override func setupLayoutConstraints() {
@@ -68,6 +80,10 @@ final class UserView: View {
         segmentedControl.anchor(top: topAnchor, leading: leadingAnchor, trailing: trailingAnchor, bottom: nil, padding: UIEdgeInsets(top: 300, left: 10, bottom: 0, right: -10), size: CGSize(width: 0, height: 0))
         
         NSLayoutConstraint.activate([
+            logoutButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -30),
+            logoutButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 30),
+            logoutButton.widthAnchor.constraint(equalToConstant: 80),
+            
             loginButton.centerXAnchor.constraint(equalTo: centerXAnchor, constant: -60),
             loginButton.bottomAnchor.constraint(equalTo: segmentedControl.topAnchor, constant: -20),
             loginButton.widthAnchor.constraint(equalToConstant: 80),

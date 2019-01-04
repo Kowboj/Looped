@@ -2,6 +2,7 @@ import Foundation
 import RxSwift
 
 protocol UserViewModelProtocol {
+    func logout()
     func getLikedReactionTags()
     func getUploadedReactionTags()
     
@@ -15,19 +16,19 @@ final class UserViewModel: UserViewModelProtocol {
     init(service: ReactionTagsServiceProtocol, sessionProvider: SessionProviding) {
         self.service = service
         self.sessionProvider = sessionProvider
-        sessionProvider.currentSession
-            .map { $0 != nil }
-            .asObservable()
-            .bind(to: isLoggedSubject)
-            .disposed(by: disposeBag)
+        checkIfIsLogged()
     }
+    
+    // MARK: - Properties
     
     private let service: ReactionTagsServiceProtocol
     private let sessionProvider: SessionProviding
     private let disposeBag = DisposeBag()
     private let likedTagsSubject = PublishSubject<[ReactionTag]>()
     private let uploadedTagsSubject = PublishSubject<[ReactionTag]>()
-    private let isLoggedSubject = PublishSubject<Bool>()
+    private let isLoggedSubject = ReplaySubject<Bool>.create(bufferSize: 1)
+    
+    // MARK: - UserViewModelProtocol
     
     lazy var likedReactionTags: Observable<[ReactionTag]> = {
        return likedTagsSubject
@@ -41,6 +42,10 @@ final class UserViewModel: UserViewModelProtocol {
         return isLoggedSubject
     }()
     
+    func logout() {
+        sessionProvider.deleteSession()
+    }
+    
     func getLikedReactionTags() {
         service.getReactionTags() // TODO: Add proper API method (getLiked)
             .asObservable()
@@ -52,6 +57,17 @@ final class UserViewModel: UserViewModelProtocol {
         service.getReactionTags() // TODO: Add proper API method (getUploaded)
             .asObservable()
             .bind(to: uploadedTagsSubject)
+            .disposed(by: disposeBag)
+    }
+    
+    // MARK: - Private
+    
+    private func checkIfIsLogged() {
+        sessionProvider.currentSession
+            .debug()
+            .map { $0 != nil }
+            .asObservable()
+            .bind(to: isLoggedSubject)
             .disposed(by: disposeBag)
     }
 }

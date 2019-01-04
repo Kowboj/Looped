@@ -2,13 +2,6 @@ import UIKit
 
 final class RegisterView: View {
     
-    init(buttonTitle: String) {
-        self.buttonTitle = buttonTitle
-        super.init()
-    }
-    
-    private let buttonTitle: String
-    
     private(set) lazy var closeButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -54,7 +47,7 @@ final class RegisterView: View {
     private(set) lazy var loginButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle(buttonTitle, for: UIControl.State.normal)
+        button.setTitle("Register", for: UIControl.State.normal)
         button.titleLabel?.font = UIFont(name: "AmericanTypewriter", size: 16)
         button.setTitleColor(.white, for: UIControl.State.normal)
         button.setTitleColor(.darkGray, for: UIControl.State.disabled)

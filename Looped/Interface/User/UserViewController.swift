@@ -3,7 +3,7 @@ import RxSwift
 
 protocol UserViewControllerFlowDelegate: class {
     func showDetails(gif: GifViewModel)
-    func presentLogin()
+    func presentLogin(successDelegate: LoginViewControllerDelegate)
     func presentRegister()
 }
 
@@ -29,13 +29,18 @@ final class UserViewController: ViewController {
     
     override func setupProperties() {
         super.setupProperties()
+        
         userView.tableView.register(GifCell.self, forCellReuseIdentifier: GifCell.reuseIdentifier)
         setupSegmentedControl()
-
     }
     
     override func setupBindings() {
         super.setupBindings()
+        
+        userViewModel.isLogged
+            .map { !$0 }
+            .bind(to: userView.logoutButton.rx.isHidden)
+            .disposed(by: disposeBag)
         
         userViewModel.isLogged
             .bind(to: userView.loginButton.rx.isHidden)
@@ -79,9 +84,15 @@ final class UserViewController: ViewController {
             .bind(to: rx.title)
             .disposed(by: disposeBag)
         
+        userView.logoutButton.rx.tap
+            .subscribe(onNext: { [unowned self] in
+                self.userViewModel.logout()
+            })
+            .disposed(by: disposeBag)
+        
         userView.loginButton.rx.tap
             .subscribe(onNext: { [unowned self] in
-                self.flowDelegate?.presentLogin()
+                self.flowDelegate?.presentLogin(successDelegate: self)
             })
             .disposed(by: disposeBag)
         
@@ -92,7 +103,10 @@ final class UserViewController: ViewController {
             .disposed(by: disposeBag)
         
         userView.segmentedControl.rx.controlEvent(UIControl.Event.valueChanged)
+            .withLatestFrom(userViewModel.isLogged)
+            .map { $0 == true }
             .withLatestFrom(userView.segmentedControl.rx.value)
+            .debug()
             .map { (selectedIndex) in
                 switch selectedIndex {
                 case 0:
@@ -112,5 +126,11 @@ final class UserViewController: ViewController {
     private func setupSegmentedControl() {
         userView.segmentedControl.setTitle("My GIFs", forSegmentAt: 0)
         userView.segmentedControl.setTitle("Favorites", forSegmentAt: 1)
+    }
+}
+
+extension UserViewController: LoginViewControllerDelegate {
+    func onSuccess() {
+        // Probably useless delegate pattern as observing currentSession works
     }
 }

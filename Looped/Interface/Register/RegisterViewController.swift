@@ -11,7 +11,7 @@ final class RegisterViewController: ViewController {
     // MARK: - Properties
     
     private let viewModel: RegisterViewModelProtocol
-    private let registerView = RegisterView(buttonTitle: "Register")
+    private let registerView = RegisterView()
     private let disposeBag = DisposeBag()
 
     // MARK: - Overrides
@@ -54,7 +54,7 @@ final class RegisterViewController: ViewController {
                     self.registerView.infoLabel.text = "No internet connection"
                 case .incorrectURL(let url):
                     self.registerView.infoLabel.text = url
-                case .incorrectStatusCode(let code, let data):
+                case .incorrectStatusCode( _, let data):
                     if let data = data {
                         do {
                             let message = try JSONDecoder().decode(ErrorResponse.self, from: data).errorMessage.description
