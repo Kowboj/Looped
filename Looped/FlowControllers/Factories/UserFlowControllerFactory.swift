@@ -15,7 +15,7 @@ final class  UserFlowControllerFactory: UserFlowControllerFactoryProtocol {
     
     func buildUserViewController(delegate: UserViewControllerFlowDelegate) -> UserViewController {
         
-        let service = ReactionTagsService(apiClient: applicationDependencies.apiClient)
+        let service = UserGifsService(apiClient: applicationDependencies.apiClient)
         let viewModel = UserViewModel(service: service, sessionProvider: applicationDependencies.sessionProvider)
         let viewController = UserViewController(userViewModel: viewModel)
         viewController.flowDelegate = delegate

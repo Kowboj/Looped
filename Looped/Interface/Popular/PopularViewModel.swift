@@ -34,7 +34,8 @@ final class PopularViewModel: PopularViewModelProtocol {
     }
     
     func getReactionTags() {
-        service.getReactionTags()
+        // TODO: Combine with realm gifs
+        service.fetchReactionTags()
             .trackActivity(activity)
             .asObservable()
             .bind(to: tagsSubject)

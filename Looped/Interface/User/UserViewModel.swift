@@ -3,17 +3,17 @@ import RxSwift
 
 protocol UserViewModelProtocol {
     func logout()
-    func getLikedReactionTags()
-    func getUploadedReactionTags()
+    func getUploadedGifs()
+    func getBookmarkedGifs()
     
-    var likedReactionTags: Observable<[ReactionTag]> { get }
-    var uploadedReactionTags: Observable<[ReactionTag]> { get }
+    var uploadedGifs: Observable<[GifViewModel]> { get }
+    var bookmarkedGifs: Observable<[GifViewModel]> { get }
     var isLogged: Observable<Bool> { get }
 }
 
 final class UserViewModel: UserViewModelProtocol {
     
-    init(service: ReactionTagsServiceProtocol, sessionProvider: SessionProviding) {
+    init(service: UserGifsServiceProtocol, sessionProvider: SessionProviding) {
         self.service = service
         self.sessionProvider = sessionProvider
         checkIfIsLogged()
@@ -21,21 +21,21 @@ final class UserViewModel: UserViewModelProtocol {
     
     // MARK: - Properties
     
-    private let service: ReactionTagsServiceProtocol
+    private let service: UserGifsServiceProtocol
     private let sessionProvider: SessionProviding
     private let disposeBag = DisposeBag()
-    private let likedTagsSubject = PublishSubject<[ReactionTag]>()
-    private let uploadedTagsSubject = PublishSubject<[ReactionTag]>()
+    private let uploadedGifsSubject = PublishSubject<[GifViewModel]>()
+    private let bookmarkedGifsSubject = PublishSubject<[GifViewModel]>()
     private let isLoggedSubject = ReplaySubject<Bool>.create(bufferSize: 1)
     
     // MARK: - UserViewModelProtocol
     
-    lazy var likedReactionTags: Observable<[ReactionTag]> = {
-       return likedTagsSubject
+    lazy var uploadedGifs: Observable<[GifViewModel]> = {
+        return uploadedGifsSubject
     }()
     
-    lazy var uploadedReactionTags: Observable<[ReactionTag]> = {
-        return uploadedTagsSubject
+    lazy var bookmarkedGifs: Observable<[GifViewModel]> = {
+        return bookmarkedGifsSubject
     }()
     
     lazy var isLogged: Observable<Bool> = {
@@ -46,18 +46,15 @@ final class UserViewModel: UserViewModelProtocol {
         sessionProvider.deleteSession()
     }
     
-    func getLikedReactionTags() {
-        service.getReactionTags() // TODO: Add proper API method (getLiked)
+    func getUploadedGifs() {
+        service.fetchUploadedGifs()
             .asObservable()
-            .bind(to: likedTagsSubject)
+            .bind(to: uploadedGifsSubject)
             .disposed(by: disposeBag)
     }
     
-    func getUploadedReactionTags() {
-        service.getReactionTags() // TODO: Add proper API method (getUploaded)
-            .asObservable()
-            .bind(to: uploadedTagsSubject)
-            .disposed(by: disposeBag)
+    func getBookmarkedGifs() {
+        // TODO: get bookmarked gifs with service
     }
     
     // MARK: - Private

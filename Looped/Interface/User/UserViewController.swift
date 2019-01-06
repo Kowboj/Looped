@@ -51,34 +51,15 @@ final class UserViewController: ViewController {
             .bind(to: userView.registerButton.rx.isHidden)
             .disposed(by: disposeBag)
         
-        userViewModel.likedReactionTags
+        userViewModel.uploadedGifs
             .bind(to: userView.tableView.rx.items(cellIdentifier: GifCell.reuseIdentifier, cellType: GifCell.self)) { _ , element, cell in
-                let cellViewModel = GifCellViewModel(viewModel: element.gfycats.first!, reactionTag: nil)
+                let cellViewModel = GifCellViewModel(viewModel: element, reactionTag: nil)
                 cell.titleLabel.text = cellViewModel.title
                 cell.likesLabel.text = cellViewModel.likes
                 if let url = URL(string: cellViewModel.gifURLString) {
                     cell.openGifFrom(url: url)
                 }
             }
-            .disposed(by: disposeBag)
-        
-        userViewModel.uploadedReactionTags
-            .bind(to: userView.tableView.rx.items(cellIdentifier: GifCell.reuseIdentifier, cellType: GifCell.self)) { _ , element, cell in
-                let cellViewModel = GifCellViewModel(viewModel: element.gfycats.first!, reactionTag: nil)
-                cell.titleLabel.text = cellViewModel.title
-                cell.likesLabel.text = cellViewModel.likes
-                if let url = URL(string: cellViewModel.gifURLString) {
-                    cell.openGifFrom(url: url)
-                }
-            }
-            .disposed(by: disposeBag)
-        
-        userView.tableView.rx.modelSelected(ReactionTag.self)
-            .subscribe(onNext: { [weak self] tag in
-                if let firstGif = tag.gfycats.first {
-                    self?.flowDelegate?.showDetails(gif: firstGif)
-                }
-            })
             .disposed(by: disposeBag)
         
         Observable.just("User")
@@ -110,9 +91,9 @@ final class UserViewController: ViewController {
             .map { (selectedIndex) in
                 switch selectedIndex {
                 case 0:
-                    self.userViewModel.getLikedReactionTags()
+                    self.userViewModel.getUploadedGifs()
                 case 1:
-                    self.userViewModel.getUploadedReactionTags()
+                    self.userViewModel.getBookmarkedGifs()
                 default:
                     break
                 }
@@ -125,7 +106,7 @@ final class UserViewController: ViewController {
     
     private func setupSegmentedControl() {
         userView.segmentedControl.setTitle("My GIFs", forSegmentAt: 0)
-        userView.segmentedControl.setTitle("Favorites", forSegmentAt: 1)
+        userView.segmentedControl.setTitle("Saved", forSegmentAt: 1)
     }
 }
 
