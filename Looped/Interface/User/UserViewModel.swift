@@ -64,7 +64,6 @@ final class UserViewModel: UserViewModelProtocol {
     
     private func checkIfIsLogged() {
         sessionProvider.currentSession
-            .debug()
             .map { $0 != nil }
             .asObservable()
             .bind(to: isLoggedSubject)

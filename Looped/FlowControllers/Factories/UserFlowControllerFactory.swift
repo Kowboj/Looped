@@ -36,7 +36,7 @@ final class  UserFlowControllerFactory: UserFlowControllerFactoryProtocol {
         let service = LoginService(apiClient: applicationDependencies.apiClient)
         let viewModel = LoginViewModel(service: service, sessionProvider: applicationDependencies.sessionProvider)
         let viewController = LoginViewController(viewModel: viewModel)
-        viewController.successDelegate = delegate
+        viewController.delegate = delegate
         
         return viewController
     }

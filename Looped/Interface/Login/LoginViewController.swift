@@ -2,7 +2,7 @@ import UIKit
 import RxSwift
 
 protocol LoginViewControllerDelegate: class {
-    func onSuccess()
+    func dismiss()
 }
 
 final class LoginViewController: ViewController {
@@ -17,7 +17,7 @@ final class LoginViewController: ViewController {
     private let viewModel: LoginViewModelProtocol
     private let loginView = LoginView()
     private let disposeBag = DisposeBag()
-    weak var successDelegate: LoginViewControllerDelegate?
+    weak var delegate: LoginViewControllerDelegate?
     
     // MARK: - Overrides
     
@@ -45,7 +45,7 @@ final class LoginViewController: ViewController {
 
         loginView.closeButton.rx.tap
             .subscribe(onNext: { [unowned self] in
-                self.dismiss(animated: true, completion: nil)
+                self.delegate?.dismiss()
             })
             .disposed(by: disposeBag)
 
@@ -77,8 +77,7 @@ final class LoginViewController: ViewController {
         viewModel.didLogin
             .observeOn(MainScheduler.instance)
             .subscribe(onCompleted: { [unowned self] in
-                self.successDelegate?.onSuccess()
-                self.dismiss(animated: true, completion: nil)
+                self.delegate?.dismiss()
             })
             .disposed(by: disposeBag)
     }

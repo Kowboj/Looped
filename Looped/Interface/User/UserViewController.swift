@@ -3,7 +3,8 @@ import RxSwift
 
 protocol UserViewControllerFlowDelegate: class {
     func showDetails(gif: GifViewModel)
-    func presentLogin(successDelegate: LoginViewControllerDelegate)
+    func presentLogin(delegate: LoginViewControllerDelegate)
+    func dismissLogin()
     func presentRegister()
 }
 
@@ -92,7 +93,7 @@ final class UserViewController: ViewController {
         
         userView.loginButton.rx.tap
             .subscribe(onNext: { [unowned self] in
-                self.flowDelegate?.presentLogin(successDelegate: self)
+                self.flowDelegate?.presentLogin(delegate: self)
             })
             .disposed(by: disposeBag)
         
@@ -104,9 +105,8 @@ final class UserViewController: ViewController {
         
         userView.segmentedControl.rx.controlEvent(UIControl.Event.valueChanged)
             .withLatestFrom(userViewModel.isLogged)
-            .map { $0 == true }
+            .filter { $0 == true }
             .withLatestFrom(userView.segmentedControl.rx.value)
-            .debug()
             .map { (selectedIndex) in
                 switch selectedIndex {
                 case 0:
@@ -130,7 +130,7 @@ final class UserViewController: ViewController {
 }
 
 extension UserViewController: LoginViewControllerDelegate {
-    func onSuccess() {
-        // Probably useless delegate pattern as observing currentSession works
+    func dismiss() {
+        flowDelegate?.dismissLogin()
     }
 }
