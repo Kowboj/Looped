@@ -1,7 +1,7 @@
 protocol UserFlowControllerFactoryProtocol {
     func buildUserViewController(delegate: UserViewControllerFlowDelegate) -> UserViewController
     func buildDetailsViewController(gif: GifViewModel) -> DetailsViewController
-    func buildLoginViewController() -> LoginViewController
+    func buildLoginViewController(delegate: LoginViewControllerDelegate) -> LoginViewController
     func buildRegisterViewController() -> RegisterViewController
 }
 
@@ -15,7 +15,7 @@ final class  UserFlowControllerFactory: UserFlowControllerFactoryProtocol {
     
     func buildUserViewController(delegate: UserViewControllerFlowDelegate) -> UserViewController {
         
-        let service = ReactionTagsService(apiClient: applicationDependencies.apiClient)
+        let service = UserGifsService(apiClient: applicationDependencies.apiClient)
         let viewModel = UserViewModel(service: service, sessionProvider: applicationDependencies.sessionProvider)
         let viewController = UserViewController(userViewModel: viewModel)
         viewController.flowDelegate = delegate
@@ -31,12 +31,13 @@ final class  UserFlowControllerFactory: UserFlowControllerFactoryProtocol {
         return viewController
     }
     
-    func buildLoginViewController() -> LoginViewController {
+    func buildLoginViewController(delegate: LoginViewControllerDelegate) -> LoginViewController {
         
         let service = LoginService(apiClient: applicationDependencies.apiClient)
         let viewModel = LoginViewModel(service: service, sessionProvider: applicationDependencies.sessionProvider)
         let viewController = LoginViewController(viewModel: viewModel)
-
+        viewController.delegate = delegate
+        
         return viewController
     }
     

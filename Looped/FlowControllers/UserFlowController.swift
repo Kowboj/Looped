@@ -26,8 +26,12 @@ extension UserFlowController: UserViewControllerFlowDelegate {
         navigationController.pushViewController(controllersFactory.buildDetailsViewController(gif: gif), animated: true)
     }
     
-    func presentLogin() {
-        navigationController.present(controllersFactory.buildLoginViewController(), animated: true, completion: nil)
+    func presentLogin(delegate: LoginViewControllerDelegate) {
+        navigationController.present(controllersFactory.buildLoginViewController(delegate: delegate), animated: true, completion: nil)
+    }
+    
+    func dismissLogin() {
+        navigationController.dismiss(animated: true, completion: nil)
     }
     
     func presentRegister() {

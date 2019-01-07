@@ -5,36 +5,40 @@ protocol SessionProviding {
     var currentSession: Observable<Session?> { get }
 
     func saveSession(session: Session)
-    func deleteSession(session: Session)
+    func deleteSession()
 }
 
 final class SessionProvider: SessionProviding {
     
     init(sessionStore: SessionStoring) {
         self.sessionStore = sessionStore
+        lastSession = sessionStore.getSession()
     }
     
     // MARK: - Properties
     
     private let sessionStore: SessionStoring
     private let disposeBag = DisposeBag()
+    private lazy var currentSessionSubject = BehaviorSubject<Session?>(value: sessionStore.getSession())
 
     // MARK: - SessionProvidingProtocol
     
-    func saveSession(session: Session) {
-        lastSession = session
-        return sessionStore.save(session: session)
-    }
-    
-    func deleteSession(session: Session) {
-        return sessionStore.deleteSession()
-    }
+    var lastSession: Session?
     
     lazy var currentSession: Observable<Session?> = {
-        return .just(sessionStore.getSession())
+        return currentSessionSubject
     }()
     
-    var lastSession: Session?
+    func saveSession(session: Session) {
+        lastSession = session
+        currentSessionSubject.onNext(session)
+        sessionStore.save(session: session)
+    }
+    
+    func deleteSession() {
+        currentSessionSubject.onNext(nil)
+        sessionStore.deleteSession()
+    }
 }
 
 struct Session {

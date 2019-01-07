@@ -2,7 +2,7 @@ import Foundation
 import RxSwift
 
 protocol ReactionTagsServiceProtocol {
-    func getReactionTags() -> Single<[ReactionTag]>
+    func fetchReactionTags() -> Single<[ReactionTag]>
 }
 
 final class ReactionTagsService: ReactionTagsServiceProtocol {
@@ -17,7 +17,7 @@ final class ReactionTagsService: ReactionTagsServiceProtocol {
     
     // MARK: - Public
     
-    func getReactionTags() -> Single<[ReactionTag]> {
+    func fetchReactionTags() -> Single<[ReactionTag]> {
         return apiClient.send(request: ReactionTagsRequest())
             .filter { $0.data != nil }
             .map { try JSONDecoder().decode(ReactionTagsResponse.self, from: $0.data!) }

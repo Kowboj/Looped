@@ -1,6 +1,10 @@
 import UIKit
 import RxSwift
 
+protocol LoginViewControllerDelegate: class {
+    func dismiss()
+}
+
 final class LoginViewController: ViewController {
     
     init(viewModel: LoginViewModelProtocol) {
@@ -11,8 +15,9 @@ final class LoginViewController: ViewController {
     // MARK: - Properties
     
     private let viewModel: LoginViewModelProtocol
-    private let loginView = LoginView(buttonTitle: "Login")
+    private let loginView = LoginView()
     private let disposeBag = DisposeBag()
+    weak var delegate: LoginViewControllerDelegate?
     
     // MARK: - Overrides
     
@@ -40,7 +45,7 @@ final class LoginViewController: ViewController {
 
         loginView.closeButton.rx.tap
             .subscribe(onNext: { [unowned self] in
-                self.dismiss(animated: true, completion: nil)
+                self.delegate?.dismiss()
             })
             .disposed(by: disposeBag)
 
@@ -54,7 +59,7 @@ final class LoginViewController: ViewController {
                     self.loginView.infoLabel.text = "No internet connection"
                 case .incorrectURL(let url):
                     self.loginView.infoLabel.text = url
-                case .incorrectStatusCode(let code, let data):
+                case .incorrectStatusCode( _, let data):
                     if let data = data {
                         do {
                             let message = try JSONDecoder().decode(ErrorResponse.self, from: data).errorMessage.description
@@ -70,12 +75,11 @@ final class LoginViewController: ViewController {
             .disposed(by: disposeBag)
 
         viewModel.didLogin
+            .observeOn(MainScheduler.instance)
             .subscribe(onCompleted: { [unowned self] in
-                self.loginView.infoLabel.text = "Did login"
-                // TODO: Dismiss
+                self.delegate?.dismiss()
             })
             .disposed(by: disposeBag)
-
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {

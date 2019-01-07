@@ -1,7 +1,6 @@
 import Foundation
 
 protocol GifCellViewModelProtocol {
-    var likes: String { get }
     var title: String { get }
     var gifURLString: String { get }
 }
@@ -14,14 +13,6 @@ final class GifCellViewModel: GifCellViewModelProtocol {
     init(viewModel: GifViewModel, reactionTag: ReactionTag?) {
         self.gifViewModel = viewModel
         self.reactionTag = reactionTag ?? nil
-    }
-    
-    var likes: String {
-        if reactionTag == nil {
-            return gifViewModel.likes
-        } else {
-            return ""
-        }
     }
     
     var title: String {

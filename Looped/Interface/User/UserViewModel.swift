@@ -1,57 +1,68 @@
 import Foundation
 import RxSwift
+import RxCocoa
 
 protocol UserViewModelProtocol {
-    func getLikedReactionTags()
-    func getUploadedReactionTags()
+    func logout()
+    func getUploadedGifs()
+    func getLikedGifs()
     
-    var likedReactionTags: Observable<[ReactionTag]> { get }
-    var uploadedReactionTags: Observable<[ReactionTag]> { get }
+    var userGifs: Observable<[GifViewModel]> { get }
     var isLogged: Observable<Bool> { get }
 }
 
 final class UserViewModel: UserViewModelProtocol {
     
-    init(service: ReactionTagsServiceProtocol, sessionProvider: SessionProviding) {
+    init(service: UserGifsServiceProtocol, sessionProvider: SessionProviding) {
         self.service = service
         self.sessionProvider = sessionProvider
-        sessionProvider.currentSession
-            .map { $0 != nil }
-            .asObservable()
-            .bind(to: isLoggedSubject)
-            .disposed(by: disposeBag)
+        checkIfIsLogged()
     }
     
-    private let service: ReactionTagsServiceProtocol
+    // MARK: - Properties
+    
+    private let service: UserGifsServiceProtocol
     private let sessionProvider: SessionProviding
     private let disposeBag = DisposeBag()
-    private let likedTagsSubject = PublishSubject<[ReactionTag]>()
-    private let uploadedTagsSubject = PublishSubject<[ReactionTag]>()
-    private let isLoggedSubject = PublishSubject<Bool>()
+    private let isLoggedSubject = ReplaySubject<Bool>.create(bufferSize: 1)
+    private let userGifsRelay = PublishRelay<[GifViewModel]>()
     
-    lazy var likedReactionTags: Observable<[ReactionTag]> = {
-       return likedTagsSubject
-    }()
+    // MARK: - UserViewModelProtocol
     
-    lazy var uploadedReactionTags: Observable<[ReactionTag]> = {
-        return uploadedTagsSubject
+    lazy var userGifs: Observable<[GifViewModel]> = {
+        return userGifsRelay.asObservable()
     }()
     
     lazy var isLogged: Observable<Bool> = {
         return isLoggedSubject
     }()
     
-    func getLikedReactionTags() {
-        service.getReactionTags() // TODO: Add proper API method (getLiked)
+    func logout() {
+        userGifsRelay.accept([])
+        sessionProvider.deleteSession()
+    }
+    
+    func getUploadedGifs() {
+        service.fetchUploadedGifs()
             .asObservable()
-            .bind(to: likedTagsSubject)
+            .bind(to: userGifsRelay)
             .disposed(by: disposeBag)
     }
     
-    func getUploadedReactionTags() {
-        service.getReactionTags() // TODO: Add proper API method (getUploaded)
+    func getLikedGifs() {
+        service.fetchLikedGifs()
             .asObservable()
-            .bind(to: uploadedTagsSubject)
+            .bind(to: userGifsRelay)
+            .disposed(by: disposeBag)
+    }
+    
+    // MARK: - Private
+    
+    private func checkIfIsLogged() {
+        sessionProvider.currentSession
+            .map { $0 != nil }
+            .asObservable()
+            .bind(to: isLoggedSubject)
             .disposed(by: disposeBag)
     }
 }

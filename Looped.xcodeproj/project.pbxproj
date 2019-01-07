@@ -17,6 +17,9 @@
 		F403A8D121A4678100087587 /* PopularViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F403A8D021A4678100087587 /* PopularViewModel.swift */; };
 		F403A8D321A4684900087587 /* ReactionTagsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F403A8D221A4684900087587 /* ReactionTagsService.swift */; };
 		F403A8D621A46FFF00087587 /* GifCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F403A8D521A46FFF00087587 /* GifCellViewModel.swift */; };
+		F405BD9521E21E9700E79697 /* UserGifsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F405BD9421E21E9700E79697 /* UserGifsService.swift */; };
+		F405BD9721E2207C00E79697 /* BookmarkedRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F405BD9621E2207C00E79697 /* BookmarkedRequest.swift */; };
+		F405BD9921E2208700E79697 /* UploadedRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F405BD9821E2208700E79697 /* UploadedRequest.swift */; };
 		F40CE23F21D4F1AC0086FA03 /* RegisterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40CE23E21D4F1AC0086FA03 /* RegisterService.swift */; };
 		F40CE24121D4F1B70086FA03 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40CE24021D4F1B70086FA03 /* RegisterViewModel.swift */; };
 		F40CE24321D4F1C00086FA03 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40CE24221D4F1C00086FA03 /* RegisterViewController.swift */; };
@@ -108,6 +111,9 @@
 		F403A8D021A4678100087587 /* PopularViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularViewModel.swift; sourceTree = "<group>"; };
 		F403A8D221A4684900087587 /* ReactionTagsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactionTagsService.swift; sourceTree = "<group>"; };
 		F403A8D521A46FFF00087587 /* GifCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifCellViewModel.swift; sourceTree = "<group>"; };
+		F405BD9421E21E9700E79697 /* UserGifsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGifsService.swift; sourceTree = "<group>"; };
+		F405BD9621E2207C00E79697 /* BookmarkedRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkedRequest.swift; sourceTree = "<group>"; };
+		F405BD9821E2208700E79697 /* UploadedRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadedRequest.swift; sourceTree = "<group>"; };
 		F40CE23E21D4F1AC0086FA03 /* RegisterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterService.swift; sourceTree = "<group>"; };
 		F40CE24021D4F1B70086FA03 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		F40CE24221D4F1C00086FA03 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
@@ -426,6 +432,7 @@
 		F4B424CF2194613400C3709B /* User */ = {
 			isa = PBXGroup;
 			children = (
+				F405BD9421E21E9700E79697 /* UserGifsService.swift */,
 				F486A42821B155CB00BEA589 /* UserViewModel.swift */,
 				F4B424D12194616600C3709B /* UserViewController.swift */,
 				F4B424D32194616E00C3709B /* UserView.swift */,
@@ -496,9 +503,11 @@
 			isa = PBXGroup;
 			children = (
 				F4F1FAB921A4211B00980C9E /* ReactionTagsRequest.swift */,
+				F405BD9621E2207C00E79697 /* BookmarkedRequest.swift */,
+				F405BD9821E2208700E79697 /* UploadedRequest.swift */,
 				F4F1FAD121A425FA00980C9E /* SearchRequest.swift */,
-				F4EE316521B01F330023B68A /* LoginRequest.swift */,
 				F41A6F3E21D679480060EED3 /* AuthenticateRequest.swift */,
+				F4EE316521B01F330023B68A /* LoginRequest.swift */,
 				F40CE24821D508CC0086FA03 /* RegisterRequest.swift */,
 			);
 			path = Requests;
@@ -685,6 +694,7 @@
 			files = (
 				F44001DD2195A1C50039A707 /* CreateFlowControllerFactory.swift in Sources */,
 				F4B424D82194617F00C3709B /* CreateView.swift in Sources */,
+				F405BD9721E2207C00E79697 /* BookmarkedRequest.swift in Sources */,
 				F44001DB2195A1BB0039A707 /* UserFlowControllerFactory.swift in Sources */,
 				F4F1FAC921A4211B00980C9E /* GfycatService.swift in Sources */,
 				F4B424D62194617800C3709B /* CreateViewController.swift in Sources */,
@@ -702,6 +712,7 @@
 				F44001D721959F3D0039A707 /* PopularFlowControllerFactory.swift in Sources */,
 				73292F6021B12D3F00330469 /* SessionProvider.swift in Sources */,
 				F4EE316B21B029BE0023B68A /* LoginView.swift in Sources */,
+				F405BD9521E21E9700E79697 /* UserGifsService.swift in Sources */,
 				738E0AEF21D5762A00D7F946 /* Reactive.Observable.swift in Sources */,
 				F4F1FADB21A42E3900980C9E /* GifViewModel.swift in Sources */,
 				73292F6221B12D8B00330469 /* SessionStore.swift in Sources */,
@@ -737,6 +748,7 @@
 				F4EFA41821BE43AB00EB5B22 /* LoginViewModel.swift in Sources */,
 				F48B4B812199DFD100E4C1DF /* CreateOnlineViewController.swift in Sources */,
 				F4F1FAC021A4211B00980C9E /* APIError.swift in Sources */,
+				F405BD9921E2208700E79697 /* UploadedRequest.swift in Sources */,
 				F40CE24121D4F1B70086FA03 /* RegisterViewModel.swift in Sources */,
 				F40CE23F21D4F1AC0086FA03 /* RegisterService.swift in Sources */,
 				F403A8D121A4678100087587 /* PopularViewModel.swift in Sources */,
