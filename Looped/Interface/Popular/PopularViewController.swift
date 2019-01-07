@@ -44,7 +44,6 @@ final class PopularViewController: ViewController {
             .bind(to: popularView.tableView.rx.items(cellIdentifier: GifCell.reuseIdentifier, cellType: GifCell.self)) { _ , element, cell in
                 let cellViewModel = GifCellViewModel(viewModel: element.gfycats.first!, reactionTag: element)
                 cell.titleLabel.text = cellViewModel.title
-                cell.likesLabel.text = cellViewModel.likes
                 if let url = URL(string: cellViewModel.gifURLString) {
                     cell.openGifFrom(url: url)
                 }

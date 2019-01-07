@@ -51,11 +51,15 @@ final class UserViewController: ViewController {
             .bind(to: userView.registerButton.rx.isHidden)
             .disposed(by: disposeBag)
         
-        userViewModel.uploadedGifs
+        userViewModel.isLogged
+            .bind(to: userView.infoLabel.rx.isHidden)
+            .disposed(by: disposeBag)
+        
+            userViewModel.userGifs
+            .debug()
             .bind(to: userView.tableView.rx.items(cellIdentifier: GifCell.reuseIdentifier, cellType: GifCell.self)) { _ , element, cell in
                 let cellViewModel = GifCellViewModel(viewModel: element, reactionTag: nil)
                 cell.titleLabel.text = cellViewModel.title
-                cell.likesLabel.text = cellViewModel.likes
                 if let url = URL(string: cellViewModel.gifURLString) {
                     cell.openGifFrom(url: url)
                 }
@@ -93,7 +97,7 @@ final class UserViewController: ViewController {
                 case 0:
                     self.userViewModel.getUploadedGifs()
                 case 1:
-                    self.userViewModel.getBookmarkedGifs()
+                    self.userViewModel.getLikedGifs()
                 default:
                     break
                 }
@@ -106,12 +110,13 @@ final class UserViewController: ViewController {
     
     private func setupSegmentedControl() {
         userView.segmentedControl.setTitle("My GIFs", forSegmentAt: 0)
-        userView.segmentedControl.setTitle("Saved", forSegmentAt: 1)
+        userView.segmentedControl.setTitle("Liked", forSegmentAt: 1)
     }
 }
 
 extension UserViewController: LoginViewControllerDelegate {
     func dismiss() {
+        userViewModel.getUploadedGifs()
         flowDelegate?.dismissLogin()
     }
 }

@@ -67,10 +67,20 @@ final class UserView: View {
         return tableView
     }()
     
+    private(set) lazy var infoLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Login to see your gifs"
+        label.textColor = UIColor.init(white: 0.9, alpha: 0.9)
+        label.font = UIFont(name: "AmericanTypewriter", size: 16)
+        label.textAlignment = .center
+        return label
+    }()
+    
     override func setupViewHierarchy() {
         super.setupViewHierarchy()
         
-        [logoutButton, photoImageView, segmentedControl, loginButton, registerButton, tableView].forEach(addSubview)
+        [logoutButton, photoImageView, segmentedControl, loginButton, registerButton, tableView, infoLabel].forEach(addSubview)
     }
     
     override func setupLayoutConstraints() {
@@ -90,7 +100,10 @@ final class UserView: View {
             
             registerButton.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 60),
             registerButton.bottomAnchor.constraint(equalTo: segmentedControl.topAnchor, constant: -20),
-            registerButton.widthAnchor.constraint(equalToConstant: 80)
+            registerButton.widthAnchor.constraint(equalToConstant: 80),
+            
+            infoLabel.centerXAnchor.constraint(equalTo: tableView.centerXAnchor),
+            infoLabel.centerYAnchor.constraint(equalTo: tableView.centerYAnchor)
             ])
         
         tableView.anchor(top: segmentedControl.bottomAnchor, leading: leadingAnchor, trailing: trailingAnchor, bottom: safeAreaLayoutGuide.bottomAnchor, padding: UIEdgeInsets(top: 10, left: 10, bottom: -10, right: -10))

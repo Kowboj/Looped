@@ -2,7 +2,7 @@ import RxSwift
 
 protocol UserGifsServiceProtocol {
     func fetchUploadedGifs() -> Single<[GifViewModel]>
-    func fetchBookmarkedGifs()
+    func fetchLikedGifs() -> Single<[GifViewModel]>
 }
 
 final class UserGifsService: UserGifsServiceProtocol {
@@ -20,19 +20,24 @@ final class UserGifsService: UserGifsServiceProtocol {
     func fetchUploadedGifs() -> Single<[GifViewModel]> {
         return apiClient.send(request: UploadedRequest())
             .filter { $0.data != nil }
-            .map { try JSONDecoder().decode(GfycatGifs.self, from: $0.data!) }
+            .map { try JSONDecoder().decode(UserGifs.self, from: $0.data!) }
             .map { $0.gfycats }
             .asObservable()
             .asSingle()
     }
     
-    func fetchBookmarkedGifs() {
-        // TODO: Bookmarked gifs API call
+    func fetchLikedGifs() -> Single<[GifViewModel]> {
+        return apiClient.send(request: LikedRequest())
+            .filter { $0.data != nil }
+            .map { try JSONDecoder().decode(UserGifs.self, from: $0.data!) }
+            .map { $0.gfycats }
+            .asObservable()
+            .asSingle()
     }
     
     // MARK: - Private
     
-    private struct GfycatGifs: Decodable {
+    private struct UserGifs: Decodable {
         let gfycats: [GifViewModel]
     }
 }

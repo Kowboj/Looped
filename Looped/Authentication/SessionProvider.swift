@@ -12,6 +12,7 @@ final class SessionProvider: SessionProviding {
     
     init(sessionStore: SessionStoring) {
         self.sessionStore = sessionStore
+        lastSession = sessionStore.getSession()
     }
     
     // MARK: - Properties

@@ -1,13 +1,13 @@
 import Foundation
 import RxSwift
+import RxCocoa
 
 protocol UserViewModelProtocol {
     func logout()
     func getUploadedGifs()
-    func getBookmarkedGifs()
+    func getLikedGifs()
     
-    var uploadedGifs: Observable<[GifViewModel]> { get }
-    var bookmarkedGifs: Observable<[GifViewModel]> { get }
+    var userGifs: Observable<[GifViewModel]> { get }
     var isLogged: Observable<Bool> { get }
 }
 
@@ -24,18 +24,13 @@ final class UserViewModel: UserViewModelProtocol {
     private let service: UserGifsServiceProtocol
     private let sessionProvider: SessionProviding
     private let disposeBag = DisposeBag()
-    private let uploadedGifsSubject = PublishSubject<[GifViewModel]>()
-    private let bookmarkedGifsSubject = PublishSubject<[GifViewModel]>()
     private let isLoggedSubject = ReplaySubject<Bool>.create(bufferSize: 1)
+    private let userGifsRelay = PublishRelay<[GifViewModel]>()
     
     // MARK: - UserViewModelProtocol
     
-    lazy var uploadedGifs: Observable<[GifViewModel]> = {
-        return uploadedGifsSubject
-    }()
-    
-    lazy var bookmarkedGifs: Observable<[GifViewModel]> = {
-        return bookmarkedGifsSubject
+    lazy var userGifs: Observable<[GifViewModel]> = {
+        return userGifsRelay.asObservable()
     }()
     
     lazy var isLogged: Observable<Bool> = {
@@ -43,18 +38,22 @@ final class UserViewModel: UserViewModelProtocol {
     }()
     
     func logout() {
+        userGifsRelay.accept([])
         sessionProvider.deleteSession()
     }
     
     func getUploadedGifs() {
         service.fetchUploadedGifs()
             .asObservable()
-            .bind(to: uploadedGifsSubject)
+            .bind(to: userGifsRelay)
             .disposed(by: disposeBag)
     }
     
-    func getBookmarkedGifs() {
-        // TODO: get bookmarked gifs with service
+    func getLikedGifs() {
+        service.fetchLikedGifs()
+            .asObservable()
+            .bind(to: userGifsRelay)
+            .disposed(by: disposeBag)
     }
     
     // MARK: - Private
